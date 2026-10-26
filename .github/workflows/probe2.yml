@@ -1,0 +1,88 @@
+name: Probe ESPN structure
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Print ESPN response structure
+        run: |
+          cat > /tmp/probe2.py <<'PY'
+          import json, subprocess
+
+          UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'
+
+          def get(url):
+              r = subprocess.run(['curl', '-s', '-L', '--max-time', '20', '-H', f'User-Agent: {UA}', url],
+                                 capture_output=True, text=True)
+              try:
+                  return json.loads(r.stdout)
+              except Exception as e:
+                  print('  parse error', e, r.stdout[:200])
+                  return {}
+
+          def cut(o, n=1800):
+              s = json.dumps(o, separators=(',', ':'))
+              return s if len(s) <= n else s[:n] + f'...[+{len(s)-n} chars]'
+
+          print('##### 1. byathlete (limit=500)')
+          B = ('https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/statistics/byathlete'
+               '?region=us&lang=en&contentorigin=espn&isqualified=false&page=1&limit=500'
+               '&sort=offensive.avgPoints%3Adesc&season=2027&seasontype=2')
+          d = get(B)
+          print('top-level keys:', list(d.keys()))
+          print('pagination:', {k: v for k, v in d.get('pagination', {}).items() if k in ('count', 'limit', 'page', 'pages')})
+          print('athletes returned:', len(d.get('athletes', [])))
+          cats = d.get('categories', [])
+          print('top-level categories:')
+          for c in cats:
+              print('  ', c.get('name'), '| labels:', c.get('labels'), '| names:', c.get('names'))
+          a = d.get('athletes', [])
+          if a:
+              print('first athlete (full):')
+              print(cut(a[0], 3500))
+
+          print()
+          print('##### 2. team statistics (Celtics, id 2)')
+          t = get('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/2/statistics')
+          res = t.get('results', {})
+          for c in res.get('stats', {}).get('categories', []):
+              print(' category', c.get('name'), ':', [(s['name'], s.get('value')) for s in c.get('stats', [])])
+          print('other result keys:', [k for k in res.keys()])
+          print('top-level keys:', list(t.keys()))
+          for k in ('opponent', 'opponents', 'opponentStats'):
+              if k in res:
+                  print(k, cut(res[k], 1500))
+
+          print()
+          print('##### 3. athlete gamelog')
+          pid = None
+          if a:
+              ath = a[0].get('athlete', {})
+              pid = ath.get('id')
+              print('first athlete id/name:', pid, ath.get('displayName'))
+          if pid:
+              g = get(f'https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba/athletes/{pid}/gamelog?region=us&lang=en&contentorigin=espn&season=2027')
+              print('top-level keys:', list(g.keys()))
+              print('names:', g.get('names'))
+              print('labels:', g.get('labels'))
+              print('seasonTypes count:', len(g.get('seasonTypes', [])))
+              st = g.get('seasonTypes', [])
+              if st:
+                  cat0 = st[0].get('categories', [])
+                  print('first seasonType:', st[0].get('displayName'), '| categories:', len(cat0))
+                  if cat0:
+                      print('events sample:', cut(cat0[0].get('events', [])[:3], 1500))
+              print('events keys sample:', cut(dict(list(g.get('events', {}).items())[:1]), 1200))
+
+          print()
+          print('##### 4. teams list (id, abbreviation, displayName)')
+          tl = get('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams')
+          rows = [(x['team']['id'], x['team']['abbreviation'], x['team']['displayName'])
+                  for x in tl['sports'][0]['leagues'][0]['teams']]
+          print(rows)
+          PY
+          python3 /tmp/probe2.py

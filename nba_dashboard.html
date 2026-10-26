@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Court Report — NBA Dashboard</title>
+<!-- SLATE:START -->
+<script src="slate_data.js"></script>
+<!-- SLATE:END -->
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0D1117;
+  --surface:#161B22;
+  --card:#1C2128;
+  --border-c:rgba(255,255,255,0.08);
+  --border-acc:rgba(255,255,255,0.14);
+  --txt:#E6EDF3;
+  --txt2:#8B949E;
+  --txt3:#484F58;
+  --grade-a-bg:#1A3A2A;
+  --grade-a-txt:#4ADE80;
+  --grade-b-bg:#1A2A3A;
+  --grade-b-txt:#60A5FA;
+  --grade-c-bg:#2A2010;
+  --grade-c-txt:#FBBF24;
+  --grade-d-bg:#2A1A1A;
+  --grade-d-txt:#F87171;
+}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',system-ui,sans-serif;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:780px;margin:0 auto;padding:24px 20px 48px;}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-dot{width:9px;height:9px;border-radius:50%;background:#F5A623;}
+.brand-name{font-size:17px;font-weight:600;color:var(--txt);letter-spacing:-0.02em;}
+.brand-sub{font-size:11px;color:var(--txt3);margin-left:2px;font-weight:400;}
+.topbar-right{text-align:right;}
+.update-time{font-size:11px;color:var(--txt3);}
+.slate-date{font-size:12px;color:var(--txt2);margin-bottom:2px;}
+
+.tab-bar{display:flex;gap:4px;margin-bottom:24px;background:var(--surface);border-radius:12px;padding:4px;border:1px solid var(--border-c);}
+.tab{flex:1;text-align:center;padding:8px 4px;font-size:12px;font-weight:400;color:var(--txt2);cursor:pointer;border-radius:9px;border:none;background:none;transition:all 0.15s;}
+.tab.active{background:var(--card);color:var(--txt);font-weight:500;}
+.tab:hover:not(.active){color:var(--txt);}
+.tab-count{font-size:10px;color:var(--txt3);margin-left:3px;}
+.tab-short{display:none;}
+@media(max-width:420px){
+  .tab-long{display:none;}
+  .tab-short{display:inline;}
+  .tab{padding:8px 2px;font-size:11px;}
+}
+.panel{display:none;}
+.panel.active{display:block;}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--txt3);font-size:13px;}
+.empty-icon{font-size:32px;margin-bottom:12px;opacity:0.3;}
+
+.game-card{border-radius:14px;overflow:hidden;border:1px solid var(--border-c);margin-bottom:14px;}
+.game-accent{height:3px;width:100%;}
+.game-header{padding:14px 16px 12px;background:var(--surface);border-bottom:1px solid var(--border-c);}
+.game-header-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+.game-matchup{display:flex;align-items:center;gap:8px;}
+.team-name{font-size:14px;font-weight:600;letter-spacing:0.01em;}
+.vs-sep{font-size:11px;color:var(--txt3);}
+.home-badge{font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-left:4px;}
+.game-meta{font-size:11px;color:var(--txt3);}
+.game-body{background:var(--card);}
+.lean-row{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border-c);}
+.lean-row:last-child{border-bottom:none;}
+.lean-label{font-size:12px;color:var(--txt2);width:90px;}
+.lean-pick{font-size:13px;font-weight:500;color:var(--txt);flex:1;}
+.lean-odds{font-size:11px;color:var(--txt3);margin-left:6px;}
+.grade-pill{font-size:11px;font-weight:600;padding:3px 11px;border-radius:20px;white-space:nowrap;}
+.ga{background:var(--grade-a-bg);color:var(--grade-a-txt);}
+.gb{background:var(--grade-b-bg);color:var(--grade-b-txt);}
+.gc{background:var(--grade-c-bg);color:var(--grade-c-txt);}
+.gd{background:var(--grade-d-bg);color:var(--grade-d-txt);}
+.gn{background:rgba(255,255,255,0.06);color:var(--txt3);}
+
+.filter-bar{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.fpill{font-size:11px;padding:5px 13px;border-radius:20px;cursor:pointer;border:1px solid var(--border-c);background:var(--surface);color:var(--txt2);transition:all 0.15s;}
+.fpill.active{background:var(--txt);color:var(--bg);border-color:var(--txt);font-weight:500;}
+
+.team-divider{display:flex;align-items:center;gap:8px;margin:18px 0 10px;}
+.divider-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.divider-label{font-size:10px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;white-space:nowrap;}
+.divider-line{flex:1;height:1px;background:var(--border-c);}
+
+.prop-row{display:flex;align-items:center;gap:12px;padding:12px 0 12px 10px;border-bottom:1px solid var(--border-c);border-left:3px solid transparent;margin-left:-13px;padding-left:10px;transition:border-color 0.15s;}
+.prop-row:last-child{border-bottom:none;}
+.prop-row.grade-highlight{border-left-color:var(--row-accent,#4ADE80);background:rgba(var(--row-accent-rgb,74,222,128),0.04);border-radius:0 6px 6px 0;}
+.prop-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0;letter-spacing:0.02em;}
+.prop-info{flex:1;min-width:0;}
+.prop-name{font-size:13px;font-weight:500;color:var(--txt);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.prop-sub{font-size:11px;color:var(--txt3);margin-top:1px;}
+.prop-line-wrap{text-align:right;margin-right:8px;}
+.prop-line{font-size:13px;font-weight:500;color:var(--txt);}
+.prop-odds{font-size:11px;color:var(--txt3);margin-top:1px;}
+.odds-pos{color:#4ADE80;}
+.odds-neg{color:var(--txt3);}
+
+.best-card{background:var(--card);border:1px solid var(--border-c);border-radius:14px;padding:16px 18px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;}
+.best-grade-box{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;}
+.best-content{flex:1;min-width:0;}
+.best-name{font-size:14px;font-weight:600;color:var(--txt);margin-bottom:3px;}
+.best-detail{font-size:12px;color:var(--txt2);}
+.best-why{font-size:11px;color:var(--txt3);margin-top:7px;line-height:1.6;}
+.best-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,0.06);color:var(--txt2);margin-top:6px;margin-right:4px;}
+
+.tracker-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px;}
+.stat-box{background:var(--surface);border-radius:11px;padding:14px 16px;border:1px solid var(--border-c);}
+.stat-label{font-size:10px;color:var(--txt3);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:5px;}
+.stat-val{font-size:24px;font-weight:600;color:var(--txt);letter-spacing:-0.02em;}
+.stat-sub{font-size:10px;color:var(--txt3);margin-top:3px;}
+.tracker-table{width:100%;}
+.tr-head{display:grid;grid-template-columns:72px 1fr 52px 52px;gap:0 10px;font-size:10px;color:var(--txt3);text-transform:uppercase;letter-spacing:0.05em;padding:0 0 8px;border-bottom:1px solid var(--border-c);margin-bottom:2px;}
+.tr-row{display:grid;grid-template-columns:72px 1fr 52px 52px;gap:0 10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--border-c);font-size:12px;}
+.tr-row:last-child{border-bottom:none;}
+.tr-date{color:var(--txt3);}
+.tr-pick{color:var(--txt);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tr-win{color:#4ADE80;font-weight:600;}
+.tr-loss{color:#F87171;font-weight:600;}
+.tr-push{color:#FBBF24;font-weight:600;}
+.tr-pending{color:var(--txt3);font-weight:500;font-style:italic;}
+.tr-pl{text-align:right;font-weight:500;color:var(--txt);}
+.tr-pl.neg{color:#F87171;}
+
+.status-banner{background:var(--grade-c-bg);color:var(--grade-c-txt);border:1px solid rgba(251,191,36,0.25);border-radius:10px;padding:10px 14px;font-size:12px;line-height:1.5;margin-bottom:16px;}
+.no-games{text-align:center;padding:56px 20px;}
+.no-games-icon{font-size:36px;margin-bottom:14px;opacity:0.25;}
+.no-games-title{font-size:14px;font-weight:500;color:var(--txt2);margin-bottom:6px;}
+.no-games-sub{font-size:12px;color:var(--txt3);line-height:1.6;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-dot"></div>
+      <span class="brand-name">Court Report</span>
+      <span class="brand-sub">NBA</span>
+    </div>
+    <div class="topbar-right">
+      <div class="slate-date" id="slateDate">—</div>
+      <div class="update-time" id="updateTime">—</div>
+    </div>
+  </div>
+
+  <div id="statusBanner"></div>
+
+  <div class="tab-bar">
+    <button class="tab active" onclick="switchTab('leans',this)"><span class="tab-long">Leans</span><span class="tab-short">📊</span><span class="tab-count" id="cnt-leans"></span></button>
+    <button class="tab" onclick="switchTab('props',this)"><span class="tab-long">Props</span><span class="tab-short">🏀</span><span class="tab-count" id="cnt-props"></span></button>
+    <button class="tab" onclick="switchTab('best',this)"><span class="tab-long">Best bets</span><span class="tab-short">⭐</span><span class="tab-count" id="cnt-best"></span></button>
+    <button class="tab" onclick="switchTab('tracker',this)"><span class="tab-long">Tracker</span><span class="tab-short">📈</span></button>
+  </div>
+
+  <div id="leans" class="panel active"></div>
+  <div id="props" class="panel"></div>
+  <div id="best" class="panel"></div>
+  <div id="tracker" class="panel"></div>
+
+</div>
+
+<script>
+// ── helpers ──────────────────────────────────────────────────────────────────
+function gradeClass(g){
+  if(!g) return 'gn';
+  const u=g.toUpperCase();
+  if(u==='A'||u==='A+') return 'ga';
+  if(u==='B'||u==='B+') return 'gb';
+  if(u==='C'||u==='C+') return 'gc';
+  if(u==='D') return 'gd';
+  return 'gn';
+}
+
+function initials(name){
+  if(!name) return '??';
+  const parts=name.trim().split(' ');
+  if(parts.length===1) return parts[0].slice(0,2).toUpperCase();
+  return (parts[0][0]+(parts[parts.length-1][0])).toUpperCase();
+}
+
+function hexToRgb(hex){
+  const r=parseInt(hex.slice(1,3),16);
+  const g=parseInt(hex.slice(3,5),16);
+  const b=parseInt(hex.slice(5,7),16);
+  return `${r},${g},${b}`;
+}
+
+function fmtOdds(o,html=false){
+  if(!o && o!==0) return '';
+  const str=o>0?`+${o}`:String(o);
+  if(!html) return str;
+  const cls=o>0?'odds-pos':'odds-neg';
+  return `<span class="${cls}">${str}</span>`;
+}
+
+const GRADE_ORDER={'A':0,'A+':0,'B':1,'B+':1,'C':2,'C+':2,'D':3,'N/A':4,'':5};
+function gradeSort(a,b){
+  const ga=GRADE_ORDER[a.grade?.toUpperCase()]??5;
+  const gb=GRADE_ORDER[b.grade?.toUpperCase()]??5;
+  return ga-gb;
+}
+
+// ── tab switching ─────────────────────────────────────────────────────────────
+function switchTab(id,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ── filter pills ──────────────────────────────────────────────────────────────
+let activeFilter='all';
+function setFilter(type,el){
+  activeFilter=type;
+  document.querySelectorAll('.fpill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.prop-team-section').forEach(sec=>{
+    const rows=sec.querySelectorAll('.prop-row');
+    let visible=0;
+    rows.forEach(row=>{
+      const match=type==='all'||row.dataset.type===type;
+      row.style.display=match?'flex':'none';
+      if(match) visible++;
+    });
+    sec.style.display=visible>0?'block':'none';
+  });
+}
+
+// ── render leans ─────────────────────────────────────────────────────────────
+function gameGroup(timeStr){
+  if(!timeStr) return 'other';
+  const m=timeStr.match(/(\d+):(\d+)\s*(AM|PM)/i);
+  if(!m) return 'other';
+  let h=parseInt(m[1]); const pm=m[3].toUpperCase()==='PM';
+  if(pm && h!==12) h+=12;
+  if(h<17) return 'afternoon';
+  if(h<20) return 'evening';
+  return 'primetime';
+}
+const GROUP_LABELS={afternoon:'Afternoon Games',evening:'Evening Games',primetime:'Primetime Games',other:'Games'};
+
+function renderLeans(games){
+  const el=document.getElementById('leans');
+  if(!games||!games.length){
+    el.innerHTML=`<div class="no-games">
+      <div class="no-games-icon">🏀</div>
+      <div class="no-games-title">No games on the slate today</div>
+      <div class="no-games-sub">Check back at 10 AM ET when the daily slate is loaded.<br>Games are added as lines are posted.</div>
+    </div>`;
+    document.getElementById('cnt-leans').textContent='';
+    return;
+  }
+  document.getElementById('cnt-leans').textContent=games.length;
+
+  // Group by time slot
+  const groups={};
+  const ORDER=['afternoon','evening','primetime','other'];
+  games.forEach(g=>{
+    const grp=gameGroup(g.game_time);
+    if(!groups[grp]) groups[grp]=[];
+    groups[grp].push(g);
+  });
+
+  const renderCard=g=>{
+    const hp=g.home_color_primary||'#444';
+    const hs=g.home_color_secondary||'#666';
+    const hrgb=hexToRgb(hp);
+    const rows=[
+      {label:'Spread',    pick:g.lean_spread, odds:g.odds_spread, grade:g.grade_spread},
+      {label:'Total',     pick:g.lean_total,  odds:g.odds_total,  grade:g.grade_total},
+      {label:'Moneyline', pick:g.lean_ml,     odds:g.odds_ml,     grade:g.grade_ml},
+    ].filter(r=>r.pick);
+    return `
+    <div class="game-card">
+      <div class="game-accent" style="background:linear-gradient(90deg,${hp} 0%,${hs} 100%);"></div>
+      <div class="game-header">
+        <div class="game-header-top">
+          <div class="game-matchup">
+            <span class="team-name" style="color:${g.away_color_primary||'#60A5FA'}">${g.away_abbr||''}</span>
+            <span class="vs-sep">@</span>
+            <span class="team-name" style="color:${hp}">${g.home_abbr||''}</span>
+            <span class="home-badge" style="background:rgba(${hrgb},0.18);color:${hp};">Home</span>
+          </div>
+          <span class="game-meta">${g.game_time||''}</span>
+        </div>
+        <div style="font-size:11px;color:var(--txt3);">${g.venue||''}</div>
+      </div>
+      <div class="game-body">
+        ${!rows.length?'<div class="lean-row"><span class="lean-label" style="width:auto;">No lean available for this game</span></div>':''}${rows.map(r=>`
+        <div class="lean-row">
+          <span class="lean-label">${r.label}</span>
+          <span class="lean-pick">${r.pick||'—'} <span class="lean-odds">${fmtOdds(r.odds,true)}</span></span>
+          <span class="grade-pill ${gradeClass(r.grade)}">${r.grade||'—'}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  };
+
+  el.innerHTML=ORDER.filter(k=>groups[k]).map(k=>`
+    <div style="margin-bottom:6px;">
+      <div style="font-size:10px;font-weight:600;color:var(--txt3);letter-spacing:0.07em;text-transform:uppercase;margin-bottom:10px;">${GROUP_LABELS[k]}</div>
+      ${groups[k].map(renderCard).join('')}
+    </div>
+  `).join('');
+}
+
+// ── render props ──────────────────────────────────────────────────────────────
+function renderProps(games){
+  const el=document.getElementById('props');
+  const allProps=[];
+  (games||[]).forEach(g=>{ (g.props||[]).forEach(p=>allProps.push({...p,game:g})); });
+  if(!allProps.length){
+    el.innerHTML=`<div class="no-games">
+      <div class="no-games-icon">📋</div>
+      <div class="no-games-title">No props on the slate yet</div>
+      <div class="no-games-sub">Player props are usually posted a few hours before tip-off.<br>Check back closer to game time.</div>
+    </div>`;
+    document.getElementById('cnt-props').textContent='';
+    return;
+  }
+  document.getElementById('cnt-props').textContent=allProps.length;
+
+  const filterBar=`<div class="filter-bar">
+    <span class="fpill active" onclick="setFilter('all',this)">All</span>
+    <span class="fpill" onclick="setFilter('pts',this)">Points</span>
+    <span class="fpill" onclick="setFilter('reb',this)">Rebounds</span>
+    <span class="fpill" onclick="setFilter('ast',this)">Assists</span>
+    <span class="fpill" onclick="setFilter('3pm',this)">3PM</span>
+    <span class="fpill" onclick="setFilter('pra',this)">PRA</span>
+  </div>`;
+
+  const byGame={};
+  allProps.forEach(p=>{
+    const key=p.game.game_id||p.game.away_abbr+p.game.home_abbr;
+    if(!byGame[key]) byGame[key]={game:p.game,home:[],away:[]};
+    if(p.team===p.game.home_abbr) byGame[key].home.push(p);
+    else byGame[key].away.push(p);
+  });
+
+  const sections=Object.values(byGame).map(({game,home,away})=>{
+    const hp=game.home_color_primary||'#444';
+    const ap=game.away_color_primary||'#60A5FA';
+
+    const renderTeamProps=(props,color,teamFull,abbr)=>{
+      if(!props.length) return '';
+      const avBg=`rgba(${hexToRgb(color)},0.18)`;
+      const sorted=[...props].sort(gradeSort);
+      const colorRgb=hexToRgb(color);
+      return `
+      <div class="prop-team-section">
+        <div class="team-divider">
+          <div class="divider-dot" style="background:${color};"></div>
+          <span class="divider-label" style="color:${color};">${teamFull||abbr}</span>
+          <div class="divider-line"></div>
+        </div>
+        ${sorted.map(p=>{
+          const isA=p.grade&&p.grade.toUpperCase().startsWith('A');
+          const hlStyle=isA?` style="--row-accent:${color};--row-accent-rgb:${colorRgb};"`:''
+          const hlClass=isA?' grade-highlight':'';
+          return `
+        <div class="prop-row${hlClass}" data-type="${p.prop_type||''}"${hlStyle}>
+          <div class="prop-avatar" style="background:${avBg};color:${color};">${initials(p.player_name)}</div>
+          <div class="prop-info">
+            <div class="prop-name">${p.player_name||'—'}</div>
+            <div class="prop-sub">${[p.position,abbr].filter(Boolean).join(' · ')}</div>
+          </div>
+          <div class="prop-line-wrap">
+            <div class="prop-line">${p.direction||''} ${p.line||'—'} ${p.prop_label||''}</div>
+            <div class="prop-odds">${fmtOdds(p.odds,true)}</div>
+          </div>
+          <span class="grade-pill ${gradeClass(p.grade)}">${p.grade||'—'}</span>
+        </div>`;}).join('')}
+      </div>`;
+    };
+
+    return `
+    <div style="margin-bottom:24px;">
+      <div style="font-size:11px;color:var(--txt3);margin-bottom:8px;font-weight:500;">
+        ${game.away_abbr} @ ${game.home_abbr} &nbsp;·&nbsp; ${game.game_time||''}
+      </div>
+      ${renderTeamProps(away,ap,game.away_full,game.away_abbr)}
+      ${renderTeamProps(home,hp,game.home_full,game.home_abbr)}
+    </div>`;
+  }).join('');
+
+  el.innerHTML=filterBar+sections;
+}
+
+// ── render best bets ──────────────────────────────────────────────────────────
+function renderBest(games){
+  const el=document.getElementById('best');
+  const best=[];
+  (games||[]).forEach(g=>{
+    (g.props||[]).forEach(p=>{ if(p.best_bet) best.push({...p,game:g}); });
+    if(g.best_bet_spread) best.push({type:'lean',label:`${g.lean_spread}`,detail:`${g.away_abbr} @ ${g.home_abbr} · Spread`,odds:g.odds_spread,grade:g.grade_spread,why:g.why_spread,game:g});
+    if(g.best_bet_total)  best.push({type:'lean',label:`${g.lean_total}`,detail:`${g.away_abbr} @ ${g.home_abbr} · Total`,odds:g.odds_total,grade:g.grade_total,why:g.why_total,game:g});
+  });
+
+  if(!best.length){
+    el.innerHTML=`<div class="no-games">
+      <div class="no-games-icon">⭐</div>
+      <div class="no-games-title">No best bets today</div>
+      <div class="no-games-sub">Best bets appear when props or leans grade A or B.<br>Check back after props post closer to tip-off.</div>
+    </div>`;
+    document.getElementById('cnt-best').textContent='';
+    return;
+  }
+  // Only count A/B grades for the tab badge
+  const strongCount=best.filter(b=>b.grade&&'AB'.includes(b.grade.toUpperCase()[0])).length;
+  document.getElementById('cnt-best').textContent=strongCount||best.length;
+
+  el.innerHTML=best.sort(gradeSort).map(b=>{
+    const gc=gradeClass(b.grade);
+    const isLean=b.type==='lean';
+    const name=isLean?b.label:`${b.player_name} — ${b.direction} ${b.line} ${b.prop_label||''}`;
+    const detail=isLean?b.detail:`${b.game.away_abbr} @ ${b.game.home_abbr} · ${b.game.game_time||''}`;
+    const why=b.why||b.rationale||'';
+    return `
+    <div class="best-card">
+      <div class="best-grade-box ${gc}">${b.grade||'—'}</div>
+      <div class="best-content">
+        <div class="best-name">${name}</div>
+        <div class="best-detail">${detail}</div>
+        ${why?`<div class="best-why">${why}</div>`:''}
+        <span class="best-tag">${fmtOdds(b.odds,true)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── render tracker ────────────────────────────────────────────────────────────
+function renderTracker(tracker){
+  const el=document.getElementById('tracker');
+  if(!tracker||!tracker.picks||!tracker.picks.length){
+    el.innerHTML=`<div class="no-games">
+      <div class="no-games-icon">📈</div>
+      <div class="no-games-title">No picks tracked yet</div>
+      <div class="no-games-sub">Picks are logged automatically each day.<br>Results are updated after games complete.</div>
+    </div>`;
+    return;
+  }
+  const picks=tracker.picks.slice().reverse();
+  const graded=picks.filter(p=>p.result&&p.result!=='Pending');
+  const wins=graded.filter(p=>p.result==='Win').length;
+  const losses=graded.filter(p=>p.result==='Loss').length;
+  const pushes=graded.filter(p=>p.result==='Push').length;
+  const total=wins+losses+pushes;
+  const pct=total>0?((wins/total)*100).toFixed(1):'0.0';
+  const profit=graded.reduce((s,p)=>s+(parseFloat(p.pl)||0),0);
+  const roi=total>0?((profit/total)*100).toFixed(1):'0.0';
+  const pendingCount=picks.filter(p=>!p.result||p.result==='Pending').length;
+
+  el.innerHTML=`
+  <div class="tracker-stats">
+    <div class="stat-box">
+      <div class="stat-label">Record</div>
+      <div class="stat-val">${wins}-${losses}${pushes>0?`-${pushes}`:''}</div>
+      <div class="stat-sub">${pct}% win rate${pendingCount?` · ${pendingCount} pending`:''}</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">Profit</div>
+      <div class="stat-val" style="color:${profit>=0?'#4ADE80':'#F87171'}">${profit>=0?'+':''}${profit.toFixed(1)}u</div>
+      <div class="stat-sub">flat betting</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-label">ROI</div>
+      <div class="stat-val" style="color:${parseFloat(roi)>=0?'#4ADE80':'#F87171'}">${parseFloat(roi)>=0?'+':''}${roi}%</div>
+      <div class="stat-sub">graded picks only</div>
+    </div>
+  </div>
+  <div class="tracker-table">
+    <div class="tr-head"><div>Date</div><div>Pick</div><div>Result</div><div style="text-align:right;">P/L</div></div>
+    ${picks.map(p=>{
+      const isPending=!p.result||p.result==='Pending';
+      const rc=isPending?'tr-pending':p.result==='Win'?'tr-win':p.result==='Loss'?'tr-loss':'tr-push';
+      const plNum=parseFloat(p.pl)||0;
+      const plClass=isPending?'tr-pl':plNum<0?'tr-pl neg':'tr-pl';
+      const plStr=isPending?'—':plNum>=0?`+${plNum.toFixed(2)}u`:`${plNum.toFixed(2)}u`;
+      return `
+      <div class="tr-row">
+        <div class="tr-date">${p.date||''}</div>
+        <div class="tr-pick">${p.pick||''}</div>
+        <div class="${rc}">${isPending?'Pending':p.result||''}</div>
+        <div class="${plClass}">${plStr}</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+// ── boot ──────────────────────────────────────────────────────────────────────
+(function init(){
+  // SLATE_DATA is a top-level const in slate_data.js, so it is NOT a window property
+  const S=(typeof SLATE_DATA!=='undefined'&&SLATE_DATA)||{};
+  const games=S.games||[];
+  const tracker=S.tracker||null;
+
+  if(S.slate_date){
+    document.getElementById('slateDate').textContent=S.slate_date;
+  }
+  // Show when the slate was BUILT (not the viewer's clock) so stale data is visible
+  let updated='—';
+  if(S.generated_at){
+    const d=new Date(S.generated_at);
+    if(!isNaN(d)){
+      updated='Updated '+d.toLocaleString('en-US',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/New_York'})+' ET';
+    }
+  }
+  document.getElementById('updateTime').textContent=updated;
+
+  // Surface a dead stats feed instead of silently showing blank grades
+  const ds=S.data_status||{};
+  let warn='';
+  if(games.length && !ds.player_rows) warn='Player stats feed returned no data this run, so player props are hidden.';
+  else if(games.length && !ds.team_rows) warn='Team stats feed returned no data this run, so game leans are not graded.';
+  else if(ds.props_unmatched>0) warn=ds.props_unmatched+' prop line(s) hidden: player not found in the stats feed.';
+  if(warn) document.getElementById('statusBanner').innerHTML='<div class="status-banner">'+warn+'</div>';
+
+  renderLeans(games);
+  renderProps(games);
+  renderBest(games);
+  renderTracker(tracker);
+})();
+</script>
+</body>
+</html>

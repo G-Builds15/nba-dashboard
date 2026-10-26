@@ -1,0 +1,6 @@
+raw_*.json
+odds_data.json
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/

@@ -1,0 +1,61 @@
+yaml
+name: NBA Dashboard Update
+
+on:
+  schedule:
+    # GitHub cron is UTC only. These are 10:00 AM / 5:00 PM EDT.
+    # After clocks fall back (Nov 1, 2026) they run at 9:00 AM / 4:00 PM EST.
+    - cron: '0 14 * * *'
+    - cron: '0 21 * * *'
+  workflow_dispatch:        # manual "Run workflow" button
+
+permissions:
+  contents: write           # lets the built-in token push the generated files
+
+concurrency:
+  group: nba-dashboard-update
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch odds, props and NBA stats
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python fetch_data.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Assemble odds
+        run: python odds_fetcher.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Grade slate
+        run: python slate_builder.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Update tracker
+        run: python update_tracker.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Build dashboard
+        run: python build.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Commit and push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nba_dashboard.html slate_data.js tracker.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Auto-update: $(TZ='America/New_York' date +'%Y-%m-%d %I:%M %p ET')"
+          git pull --rebase origin main
+          git push origin main

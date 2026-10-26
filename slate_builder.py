@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 slate_builder.py
-Grades props and game leans using NBA Stats API data.
+Grades props and game leans using ESPN stats (written by fetch_data.py in NBA Stats table format).
 Injects team colors from TEAM_COLORS lookup.
 Writes slate_data.js for the dashboard to render.
 """
@@ -115,9 +115,9 @@ def write_js(data):
         f.write(';\n')
     print(f'[slate] wrote {path}')
 
-# ── NBA Stats API data parsers ────────────────────────────────────────────────
+# ── stats table parsers ────────────────────────────────────────────────
 def parse_nba_stats(raw):
-    """Parse NBA Stats API resultSet format into list of dicts."""
+    """Parse a {"resultSets":[{"headers","rowSet"}]} table into a list of dicts."""
     if not raw:
         return []
     result_sets = raw.get('resultSets', [])
@@ -178,7 +178,7 @@ def build_player_stat_lookup(base_stats, adv_stats, l10_stats=None, l5_stats=Non
 
         lookup[key] = {
             'player_name':    name,
-            'team_abbr':      row.get('TEAM_ABBREVIATION', ''),
+            'team_abbr':      _team_abbr(row),
             'gp':             row.get('GP', 0) or 0,
             # blended per-game averages
             'pts':            b('PTS'),
@@ -209,7 +209,7 @@ def build_player_stat_lookup(base_stats, adv_stats, l10_stats=None, l5_stats=Non
         else:
             lookup[key] = {
                 'player_name': name,
-                'team_abbr':   row.get('TEAM_ABBREVIATION', ''),
+                'team_abbr':   _team_abbr(row),
                 'usg_pct':     row.get('USG_PCT', 0) or 0,
                 'reb_pct':     row.get('REB_PCT', 0) or 0,
                 'ast_pct':     row.get('AST_PCT', 0) or 0,
@@ -218,7 +218,7 @@ def build_player_stat_lookup(base_stats, adv_stats, l10_stats=None, l5_stats=Non
     return lookup
 
 def _team_abbr(row):
-    """leaguedashteamstats returns TEAM_ID / TEAM_NAME only, so derive the abbreviation from the name."""
+    """Stats tables carry the full team name only, so derive our abbreviation (NYK, GSW...) from it."""
     abbr = row.get('TEAM_ABBREVIATION')
     if abbr:
         return abbr
@@ -374,6 +374,8 @@ def grade_spread(home_abbr, away_abbr, spread_home, team_stats):
     """Simple spread grade based on home/away net rating differential."""
     home = team_stats.get(home_abbr, {})
     away = team_stats.get(away_abbr, {})
+    if not (home.get('def_rtg') and away.get('def_rtg')):
+        return 'N/A', None          # no points-allowed data yet: do not grade on offense alone
     home_net = home.get('off_rtg', 0) - home.get('def_rtg', 0)
     away_net = away.get('off_rtg', 0) - away.get('def_rtg', 0)
     if home_net == 0 and away_net == 0:
@@ -514,7 +516,7 @@ def build():
             pdata = player_stats.get(normalize_player(p.get('player_name', '')))
             player_team = (pdata or {}).get('team_abbr', '')
             if player_team not in (home_abbr, away_abbr):
-                # Not found in the NBA feed (name mismatch, rookie, traded) - do not guess a team
+                # Not found in the stats feed (name mismatch, rookie, traded) - do not guess a team
                 unmatched.append(p.get('player_name', '?'))
                 continue
             opp = away_abbr if player_team == home_abbr else home_abbr
@@ -577,7 +579,7 @@ def build():
     }
     if unmatched:
         names = sorted(set(unmatched))
-        print(f'[slate] {len(unmatched)} props skipped, player not found in NBA feed: {names[:15]}'
+        print(f'[slate] {len(unmatched)} props skipped, player not found in stats feed: {names[:15]}'
               f'{" ..." if len(names) > 15 else ""}', file=sys.stderr)
     write_js(slate)
     print(f'[slate] {len(output_games)} games, {best_bets_count} best bets')

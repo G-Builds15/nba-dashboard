@@ -559,6 +559,13 @@ def build():
             'odds_total':           total_odds_val,
             'grade_total':          total_grade,
             'best_bet_total':       best_bet_total,
+            'posted': {
+                'spread_home':      g.get('spread_home'),  'spread_away':      g.get('spread_away'),
+                'odds_spread_home': g.get('odds_spread_home'), 'odds_spread_away': g.get('odds_spread_away'),
+                'total':            g.get('total_line'),
+                'odds_over':        g.get('odds_over'),    'odds_under':       g.get('odds_under'),
+                'ml_home':          g.get('odds_ml_home'), 'ml_away':          g.get('odds_ml_away'),
+            },
             'lean_ml':              lean_ml_str,
             'odds_ml':              ml_odds_val,
             'grade_ml':             grade_ml,

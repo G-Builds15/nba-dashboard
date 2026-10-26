@@ -12,11 +12,12 @@ jobs:
         run: |
           probe() {
             echo "=== $1"
-            code=$(curl -s -L --max-time 20 -o /tmp/out.txt -w '%{http_code} %{size_download}B %{time_total}s' \
+            rm -f /tmp/out.txt; : > /tmp/out.txt
+            code=$(curl -s -L --max-time 12 -o /tmp/out.txt -w '%{http_code} %{size_download}B %{time_total}s' \
               -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36' \
               "$2") || true
             echo "status/size/time: $code"
-            head -c 400 /tmp/out.txt; echo; echo
+            head -c 400 /tmp/out.txt || true; echo; echo
           }
           probe "stats.nba.com (current, expected to fail)" \
             "https://stats.nba.com/stats/leaguedashplayerstats?Season=2026-27&SeasonType=Regular+Season&PerMode=PerGame&MeasureType=Base&LastNGames=0&LeagueID=00&Month=0&OpponentTeamID=0&PORound=0&PaceAdjust=N&Period=0&PlusMinus=N&Rank=N&Outcome=&Location=&SeasonSegment=&DateFrom=&DateTo=&VsConference=&VsDivision=&GameSegment=&Conference=&Division=&DraftPick=&DraftYear=&GameScope=&PlayerExperience=&PlayerPosition=&StarterBench=&TeamID=0&College=&Country=&Height=&Weight="

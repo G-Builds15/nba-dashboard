@@ -1016,6 +1016,24 @@
       "type": "pra",
       "result": "Pending",
       "pl": null
+    },
+    {
+      "date": "2026-10-26",
+      "pick": "Under 233.5 (CHI @ BOS total)",
+      "odds": -108,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null
+    },
+    {
+      "date": "2026-10-26",
+      "pick": "Under 237.5 (MEM @ UTA total)",
+      "odds": -108,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null
     }
   ]
 }

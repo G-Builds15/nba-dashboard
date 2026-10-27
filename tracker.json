@@ -3706,6 +3706,23 @@
         "direction": "Over",
         "opp_full": "Sacramento Kings"
       }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Paul George Over 26.5 PRA",
+      "odds": -128,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Paul George",
+        "prop_type": "pra",
+        "line": 26.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      }
     }
   ]
 }

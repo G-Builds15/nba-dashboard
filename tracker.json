@@ -3773,6 +3773,57 @@
         "home_full": "Los Angeles Lakers",
         "away_full": "Portland Trail Blazers"
       }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Sam Hauser Over 7.5 pts",
+      "odds": 100,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Hauser",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Sam Hauser Over 1.5 3PM",
+      "odds": -182,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Hauser",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "De'Andre Hunter Under 9.5 pts",
+      "odds": -132,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "De'Andre Hunter",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "San Antonio Spurs"
+      }
     }
   ]
 }

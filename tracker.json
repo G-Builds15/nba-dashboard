@@ -3723,6 +3723,56 @@
         "direction": "Over",
         "opp_full": "Brooklyn Nets"
       }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Julius Randle Over 30.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Julius Randle",
+        "prop_type": "pra",
+        "line": 30.5,
+        "direction": "Over",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Domantas Sabonis Over 15.5 pts",
+      "odds": -114,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Domantas Sabonis",
+        "prop_type": "pts",
+        "line": 15.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "LAL ML (POR @ LAL moneyline)",
+      "odds": -125,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Los Angeles Lakers",
+        "opp_full": "Portland Trail Blazers",
+        "home_full": "Los Angeles Lakers",
+        "away_full": "Portland Trail Blazers"
+      }
     }
   ]
 }

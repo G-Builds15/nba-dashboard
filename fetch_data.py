@@ -19,6 +19,8 @@ from datetime import datetime, timedelta, timezone
 # ── parse args before anything else ──────────────────────────────────────────
 parser = argparse.ArgumentParser()
 parser.add_argument('--outdir', default=os.path.dirname(os.path.abspath(__file__)))
+parser.add_argument('--injuries-only', action='store_true',
+                    help='refresh only the injury report (no odds, props or stats; uses no Odds API credits)')
 args = parser.parse_args()
 OUTDIR = args.outdir
 
@@ -447,8 +449,40 @@ def fetch_recent_form(players):
             rows.append([p['id'], p['name'], len(w), avg('pts'), avg('reb'), avg('ast'), avg('fg3m')])
         write_table(f'raw_player_stats_{label}.json', headers, rows, f'player_stats_{label}')
 
+def fetch_espn_injuries():
+    """League-wide injury report -> raw_injuries.json: [{team, player, status, comment}]."""
+    data = fetch_json(f'{ESPN_SITE}/injuries', ESPN_HEADERS, 'espn_injuries') or {}
+    rows = []
+    for t in data.get('injuries', []):
+        tname = t.get('displayName') or (t.get('team') or {}).get('displayName') or ''
+        for i in t.get('injuries', []):
+            ath = i.get('athlete') or {}
+            st = i.get('status')
+            if isinstance(st, dict):
+                st = st.get('name') or st.get('description')
+            st = st or (i.get('type') or {}).get('description') or ''
+            name = ath.get('displayName') or ath.get('fullName') or ''
+            if name and tname:
+                rows.append({'team': tname, 'player': name, 'status': st,
+                             'comment': (i.get('shortComment') or '')[:200]})
+    teams_in = len(data.get('injuries', []))
+    print(f'[fetch] {"OK" if rows else "WARNING EMPTY"} injuries: {len(rows)} players across {teams_in} teams')
+    if not rows:
+        print(f'[fetch] injuries top-level keys: {list(data.keys())}', file=sys.stderr)
+        if os.path.exists(os.path.join(OUTDIR, 'raw_injuries.json')):
+            print('[fetch] keeping the previous injury report (an empty result never replaces it)')
+            return
+    else:
+        out = [r for r in rows if r['status'].lower() in ('out', 'doubtful')]
+        print(f'[fetch] injuries out/doubtful: {len(out)}; statuses seen: {sorted({r["status"] for r in rows})}')
+    write_json('raw_injuries.json', rows)
+
 # ── main ──────────────────────────────────────────────────────────────────────
 if __name__ == '__main__':
+    if args.injuries_only:
+        print(f'[fetch] injuries-only refresh, slate date: {TODAY_ET}')
+        fetch_espn_injuries()
+        sys.exit(0)
     print(f'[fetch] slate date: {TODAY_ET}  season: {CURRENT_SEASON} (ESPN season={ESPN_SEASON})')
     print('[fetch] fetching games + odds...')
     fetch_games_and_odds()
@@ -465,4 +499,6 @@ if __name__ == '__main__':
     players = fetch_espn_players(team_names, totals)
     print('[fetch] fetching recent form (game logs)...')
     fetch_recent_form(players)
+    print('[fetch] fetching injuries...')
+    fetch_espn_injuries()
     print('[fetch] done.')

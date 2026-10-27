@@ -1,0 +1,97 @@
+name: NBA Injury Refresh
+
+# Refetches ONLY the injury report every 30 minutes on game days and regrades the slate from the
+# data the last full run cached. Uses no Odds API credits. Commits only when the slate changed.
+on:
+  schedule:
+    # UTC. 16:00-23:59 and 00:00-03:59 UTC = 12:00 PM - 11:59 PM ET in summer (11:00 AM - 10:59 PM in winter).
+    - cron: '7,37 16-23 * * *'
+    - cron: '7,37 0-3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nba-dashboard-update      # same group as the full run, so the two never push at once
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Restore cached raw data
+        id: cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            odds_data.json
+            raw_*.json
+            cache_stamp.txt
+          key: nba-raw-none
+          restore-keys: nba-raw-
+
+      - name: Check the cached data is from today
+        id: fresh
+        run: |
+          today=$(TZ=America/New_York date +%F)
+          stamp=$(cat cache_stamp.txt 2>/dev/null || echo none)
+          echo "today=$today cached=$stamp matched=${{ steps.cache.outputs.cache-matched-key }}"
+          if [ "$today" = "$stamp" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "No cached data for today yet (the 10 AM full run saves it). Nothing to refresh."
+          fi
+
+      - name: Set up Python
+        if: steps.fresh.outputs.ok == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Refetch injuries only
+        if: steps.fresh.outputs.ok == 'true'
+        run: python fetch_data.py --outdir "$GITHUB_WORKSPACE" --injuries-only
+
+      - name: Regrade slate
+        if: steps.fresh.outputs.ok == 'true'
+        run: |
+          cp slate_data.js /tmp/slate_before.js
+          python slate_builder.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Did anything change?
+        if: steps.fresh.outputs.ok == 'true'
+        id: diff
+        run: |
+          python3 - <<'PY'
+          import os, re
+          def norm(p):
+              return re.sub(r'"generated_at": "[^"]*"', '', open(p, encoding='utf-8').read())
+          changed = norm('/tmp/slate_before.js') != norm('slate_data.js')
+          print('slate changed:', changed)
+          open(os.environ['GITHUB_OUTPUT'], 'a').write(f'changed={str(changed).lower()}\n')
+          PY
+
+      - name: Build dashboard
+        if: steps.diff.outputs.changed == 'true'
+        run: python build.py --outdir "$GITHUB_WORKSPACE"
+
+      - name: Commit and push
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nba_dashboard.html slate_data.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Injury refresh: $(TZ='America/New_York' date +'%Y-%m-%d %I:%M %p ET')"
+          git pull --rebase -X theirs origin main
+          git push origin main

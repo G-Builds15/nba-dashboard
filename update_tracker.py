@@ -243,10 +243,15 @@ def settle_pick(pick):
     date = pick.get('date')
     if not kind or not date:
         return None
-    if kind in ('spread', 'total'):
+    if kind in ('spread', 'total', 'ml'):
         game = finals_for(date).get(frozenset({meta.get('home_full'), meta.get('away_full')}))
         if not game:
             return None
+        if kind == 'ml':
+            mine, theirs = game.get(meta.get('team_full')), game.get(meta.get('opp_full'))
+            if mine is None or theirs is None or mine == theirs:
+                return None
+            return 'Win' if mine > theirs else 'Loss'
         if kind == 'spread':
             mine, theirs = game.get(meta.get('team_full')), game.get(meta.get('opp_full'))
             if mine is None or theirs is None:
@@ -308,8 +313,8 @@ def pick_key(p):
     """One pick per day per market: (date, game, 'total'/'spread') or (date, player, stat).
     A line move or a flipped direction on a later run does not create a second pick."""
     label, typ, date = p.get('pick', ''), p.get('type', ''), p.get('date', '')
-    if typ in ('spread', 'total'):
-        m = re.search(r'\((\w+) @ (\w+) (?:spread|total)\)', label)
+    if typ in ('spread', 'total', 'moneyline'):
+        m = re.search(r'\((\w+) @ (\w+) (?:spread|total|moneyline)\)', label)
         return (date, typ, m.group(1) + '@' + m.group(2) if m else label)
     m = re.match(r'^(.*?)\s+(Over|Under)\s+[\d.]+\s+', label)
     return (date, typ, norm_player(m.group(1)) if m else label)
@@ -359,6 +364,16 @@ def spread_meta(g):
     except Exception:
         return None
 
+def ml_meta(g):
+    lean = g.get('lean_ml')
+    try:
+        home = lean == g.get('home_abbr')
+        return {'kind': 'ml', 'team_full': g['home_full'] if home else g['away_full'],
+                'opp_full': g['away_full'] if home else g['home_full'],
+                'home_full': g['home_full'], 'away_full': g['away_full']}
+    except KeyError:
+        return None
+
 def total_meta(g):
     try:
         direction, line = g['lean_total'].split()
@@ -404,6 +419,22 @@ if __name__ == '__main__':
                     'result':   'Pending',
                     'pl':       None,
                     'meta':     spread_meta(g),
+                })
+
+        if g.get('best_bet_ml') and g.get('lean_ml'):
+            label = f"{g['lean_ml']} ML ({game_label} moneyline)"
+            cand = {'date': slate_date, 'pick': label, 'type': 'moneyline'}
+            if pick_key(cand) not in existing_picks:
+                existing_picks.add(pick_key(cand))
+                new_picks.append({
+                    'date':     slate_date,
+                    'pick':     label,
+                    'odds':     g.get('odds_ml'),
+                    'grade':    g.get('grade_ml'),
+                    'type':     'moneyline',
+                    'result':   'Pending',
+                    'pl':       None,
+                    'meta':     ml_meta(g),
                 })
 
         if g.get('best_bet_total') and g.get('lean_total'):

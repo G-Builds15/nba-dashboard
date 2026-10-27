@@ -245,7 +245,7 @@ def fetch_espn_points_allowed():
     days   = [first + timedelta(days=i) for i in range((today - first).days + 1)]
     pages  = _pmap(lambda d: fetch_json(f"{ESPN_SITE}/scoreboard?dates={d.strftime('%Y%m%d')}&limit=100",
                                         ESPN_HEADERS, f'scoreboard/{d}'), days)
-    agg, seen_ids = {}, set()
+    agg, seen_ids, last = {}, set(), {}
     seen = used = not_final = preseason = 0
     for page in pages:
         for ev in (page or {}).get('events', []):
@@ -274,17 +274,23 @@ def fetch_espn_points_allowed():
             if not (sa or sb):
                 continue
             used += 1
+            try:
+                gdate = datetime.fromisoformat(str(ev.get('date', '')).replace('Z', '+00:00')).astimezone(ET).date()
+            except ValueError:
+                gdate = None
             for tid, pa in ((ia, sb), (ib, sa)):
                 tot = agg.setdefault(tid, [0.0, 0])
                 tot[0] += pa
                 tot[1] += 1
+                if gdate and gdate < today and (tid not in last or gdate > last[tid]):
+                    last[tid] = gdate
     print(f'[fetch] espn scoreboard: {len(days)} days, {seen} events, {used} final regular-season games used '
           f'({preseason} non-regular-season, {not_final} not final)')
     if not used:
         sample = next((p for p in pages if p), None)
         print(f'[fetch] WARNING no usable games; scoreboard top-level keys: {list((sample or {}).keys())}',
               file=sys.stderr)
-    return {tid: (t[0] / t[1], t[1]) for tid, t in agg.items() if t[1]}
+    return {tid: (t[0] / t[1], t[1]) for tid, t in agg.items() if t[1]}, last
 
 def build_team_tables(team_names, totals, allowed):
     team_rows, opp_rows = [], []
@@ -493,8 +499,9 @@ if __name__ == '__main__':
     print('[fetch] fetching ESPN team stats...')
     totals = fetch_espn_team_totals(team_names)
     print('[fetch] fetching points allowed (scoreboard)...')
-    allowed = fetch_espn_points_allowed()
+    allowed, last_games = fetch_espn_points_allowed()
     build_team_tables(team_names, totals, allowed)
+    write_json('raw_schedule.json', {team_names[t]: d.isoformat() for t, d in last_games.items() if t in team_names})
     print('[fetch] fetching ESPN player stats...')
     players = fetch_espn_players(team_names, totals)
     print('[fetch] fetching recent form (game logs)...')

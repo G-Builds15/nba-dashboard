@@ -233,39 +233,55 @@ def fetch_espn_team_totals(team_names):
 
 def fetch_espn_points_allowed():
     """
-    Points allowed per game, season to date, from completed regular-season games on the
-    scoreboard. {team_id: (points_allowed_per_game, games)}
+    Points allowed per game, season to date, from completed regular-season games.
+    One scoreboard call per day (the plain, well-supported form of the endpoint).
+    {team_id: (points_allowed_per_game, games)}
     """
-    start = f'{ESPN_SEASON - 1}1001'
-    end   = datetime.now(ET).strftime('%Y%m%d')
-    d = fetch_json(f'{ESPN_SITE}/scoreboard?dates={start}-{end}&limit=1000', ESPN_HEADERS, 'espn_scoreboard')
-    agg = {}
-    seen = used = 0
-    for ev in (d or {}).get('events', []):
-        seen += 1
-        stype = (ev.get('season') or {}).get('type')
-        if stype is not None and stype != 2:        # skip preseason / playoffs / other
-            continue
-        comp = (ev.get('competitions') or [{}])[0]
-        if not ((comp.get('status') or {}).get('type') or {}).get('completed'):
-            continue
-        cs = comp.get('competitors') or []
-        if len(cs) != 2:
-            continue
-        try:
-            a, b = cs
-            sa, sb = _num(a.get('score')), _num(b.get('score'))
-            ia, ib = str(a['team']['id']), str(b['team']['id'])
-        except Exception:
-            continue
-        if not (sa or sb):
-            continue
-        used += 1
-        for tid, pa in ((ia, sb), (ib, sa)):
-            tot = agg.setdefault(tid, [0.0, 0])
-            tot[0] += pa
-            tot[1] += 1
-    print(f'[fetch] espn scoreboard: {seen} events, {used} completed regular-season games used')
+    from datetime import date as _date
+    today  = datetime.now(ET).date()
+    first  = _date(ESPN_SEASON - 1, 10, 1)
+    days   = [first + timedelta(days=i) for i in range((today - first).days + 1)]
+    pages  = _pmap(lambda d: fetch_json(f"{ESPN_SITE}/scoreboard?dates={d.strftime('%Y%m%d')}&limit=100",
+                                        ESPN_HEADERS, f'scoreboard/{d}'), days)
+    agg, seen_ids = {}, set()
+    seen = used = not_final = preseason = 0
+    for page in pages:
+        for ev in (page or {}).get('events', []):
+            if ev.get('id') in seen_ids:
+                continue
+            seen_ids.add(ev.get('id'))
+            seen += 1
+            stype = (ev.get('season') or {}).get('type')
+            if stype is not None and stype != 2:        # skip preseason / playoffs / other
+                preseason += 1
+                continue
+            comp = (ev.get('competitions') or [{}])[0]
+            stt  = (comp.get('status') or ev.get('status') or {}).get('type') or {}
+            if not (stt.get('completed') or stt.get('state') == 'post'):
+                not_final += 1
+                continue
+            cs = comp.get('competitors') or []
+            if len(cs) != 2:
+                continue
+            try:
+                a, b = cs
+                sa, sb = _num(a.get('score')), _num(b.get('score'))
+                ia, ib = str(a['team']['id']), str(b['team']['id'])
+            except Exception:
+                continue
+            if not (sa or sb):
+                continue
+            used += 1
+            for tid, pa in ((ia, sb), (ib, sa)):
+                tot = agg.setdefault(tid, [0.0, 0])
+                tot[0] += pa
+                tot[1] += 1
+    print(f'[fetch] espn scoreboard: {len(days)} days, {seen} events, {used} final regular-season games used '
+          f'({preseason} non-regular-season, {not_final} not final)')
+    if not used:
+        sample = next((p for p in pages if p), None)
+        print(f'[fetch] WARNING no usable games; scoreboard top-level keys: {list((sample or {}).keys())}',
+              file=sys.stderr)
     return {tid: (t[0] / t[1], t[1]) for tid, t in agg.items() if t[1]}
 
 def build_team_tables(team_names, totals, allowed):

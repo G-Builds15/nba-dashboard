@@ -204,6 +204,7 @@ def game_stat(pick_date, meta):
     start = datetime.strptime(pick_date, '%Y-%m-%d').replace(tzinfo=ET)
     end   = start + timedelta(days=1)
     meta_ev = d.get('events') or {}
+    total_events = dated_events = 0
     for st in d.get('seasonTypes', []):
         if 'regular' not in (st.get('displayName') or '').lower():
             continue
@@ -211,6 +212,8 @@ def game_stat(pick_date, meta):
             for e in cat.get('events', []):
                 m = meta_ev.get(str(e.get('eventId'))) or {}
                 gd = m.get('gameDate')
+                total_events += 1
+                dated_events += 1 if gd else 0
                 hit = False
                 if gd:
                     try:
@@ -229,7 +232,9 @@ def game_stat(pick_date, meta):
                             'ast': num(s[idx['assists']]), '3pm': f3}
                 except IndexError:
                     return None
-    return None
+    # Not found. {} = the log is trustworthy (dated games, or no games) and this game isn't in it;
+    # None = cannot tell (no game dates in the log), so the pick stays Pending.
+    return {} if (total_events == 0 or dated_events > 0) else None
 
 def settle_pick(pick):
     """Return 'Win'/'Loss'/'Push' or None (leave Pending)."""
@@ -251,6 +256,8 @@ def settle_pick(pick):
     # props
     stat = game_stat(date, meta)
     if stat is None:
+        return None
+    if not stat:
         age = (datetime.now(ET).date() - datetime.strptime(date, '%Y-%m-%d').date()).days
         return 'Push' if age >= VOID_AFTER_DAYS else None                 # never played -> prop voided
     if stat['min'] <= 0:
@@ -259,11 +266,74 @@ def settle_pick(pick):
     value = (stat['pts'] + stat['reb'] + stat['ast']) if pt == 'pra' else stat.get(pt)
     return verdict(value, meta.get('line'), meta.get('direction'))
 
+TEAM_FULL = {
+    'ATL': 'Atlanta Hawks', 'BOS': 'Boston Celtics', 'BKN': 'Brooklyn Nets', 'CHA': 'Charlotte Hornets',
+    'CHI': 'Chicago Bulls', 'CLE': 'Cleveland Cavaliers', 'DAL': 'Dallas Mavericks', 'DEN': 'Denver Nuggets',
+    'DET': 'Detroit Pistons', 'GSW': 'Golden State Warriors', 'HOU': 'Houston Rockets', 'IND': 'Indiana Pacers',
+    'LAC': 'LA Clippers', 'LAL': 'Los Angeles Lakers', 'MEM': 'Memphis Grizzlies', 'MIA': 'Miami Heat',
+    'MIL': 'Milwaukee Bucks', 'MIN': 'Minnesota Timberwolves', 'NOP': 'New Orleans Pelicans',
+    'NYK': 'New York Knicks', 'OKC': 'Oklahoma City Thunder', 'ORL': 'Orlando Magic',
+    'PHI': 'Philadelphia 76ers', 'PHX': 'Phoenix Suns', 'POR': 'Portland Trail Blazers',
+    'SAC': 'Sacramento Kings', 'SAS': 'San Antonio Spurs', 'TOR': 'Toronto Raptors',
+    'UTA': 'Utah Jazz', 'WAS': 'Washington Wizards',
+}
+
+def legacy_meta(pick):
+    """Rebuild settlement details for picks logged before 'meta' existed, from the pick label."""
+    label, typ = pick.get('pick', ''), pick.get('type', '')
+    try:
+        if typ in ('spread', 'total'):
+            m = re.match(r'^(\S+)\s+(\S+)\s+\((\w+) @ (\w+) (?:spread|total)\)$', label)
+            if not m:
+                return None
+            first, second, away, home = m.groups()
+            hf, af = TEAM_FULL.get(home), TEAM_FULL.get(away)
+            if not (hf and af):
+                return None
+            if typ == 'total':
+                return {'kind': 'total', 'direction': first, 'line': float(second), 'home_full': hf, 'away_full': af}
+            team_home = first == home
+            return {'kind': 'spread', 'line': float(second),
+                    'team_full': hf if team_home else af, 'opp_full': af if team_home else hf,
+                    'home_full': hf, 'away_full': af}
+        m = re.match(r'^(.*?)\s+(Over|Under)\s+([\d.]+)\s+(.*)$', label)
+        if not m:
+            return None
+        return {'kind': 'prop', 'player': m.group(1), 'direction': m.group(2),
+                'line': float(m.group(3)), 'prop_type': typ}
+    except (ValueError, TypeError):
+        return None
+
+def pick_key(p):
+    """One pick per day per market: (date, game, 'total'/'spread') or (date, player, stat).
+    A line move or a flipped direction on a later run does not create a second pick."""
+    label, typ, date = p.get('pick', ''), p.get('type', ''), p.get('date', '')
+    if typ in ('spread', 'total'):
+        m = re.search(r'\((\w+) @ (\w+) (?:spread|total)\)', label)
+        return (date, typ, m.group(1) + '@' + m.group(2) if m else label)
+    m = re.match(r'^(.*?)\s+(Over|Under)\s+[\d.]+\s+', label)
+    return (date, typ, norm_player(m.group(1)) if m else label)
+
+def dedupe(tracker):
+    """Drop later duplicates (keep the first logged). Returns how many were removed."""
+    seen, keep = set(), []
+    for p in tracker.get('picks', []):
+        k = pick_key(p)
+        if k in seen:
+            continue
+        seen.add(k)
+        keep.append(p)
+    removed = len(tracker.get('picks', [])) - len(keep)
+    tracker['picks'] = keep
+    return removed
+
 def settle_pending(tracker):
     changed = 0
     for pick in tracker.get('picks', []):
         if pick.get('result') not in (None, 'Pending'):
             continue
+        if not pick.get('meta'):
+            pick['meta'] = legacy_meta(pick)           # picks logged before settlement existed
         if not pick.get('meta') or (pick.get('date') or '9999') > TODAY_ET:
             continue
         try:
@@ -307,7 +377,10 @@ if __name__ == '__main__':
     games = slate.get('games', [])
 
     tracker = load_tracker()
-    existing_picks = {(p['date'], p['pick']) for p in tracker.get('picks', [])}
+    removed = dedupe(tracker)
+    if removed:
+        print(f'[tracker] removed {removed} duplicate pick(s) (line moves / flipped direction)')
+    existing_picks = {pick_key(p) for p in tracker.get('picks', [])}
 
     new_picks = []
 
@@ -319,8 +392,9 @@ if __name__ == '__main__':
         # Best bet game leans
         if g.get('best_bet_spread') and g.get('lean_spread'):
             label = f"{g['lean_spread']} ({game_label} spread)"
-            key = (slate_date, label)
-            if key not in existing_picks:
+            cand = {'date': slate_date, 'pick': label, 'type': 'spread'}
+            if pick_key(cand) not in existing_picks:
+                existing_picks.add(pick_key(cand))
                 new_picks.append({
                     'date':     slate_date,
                     'pick':     label,
@@ -334,8 +408,9 @@ if __name__ == '__main__':
 
         if g.get('best_bet_total') and g.get('lean_total'):
             label = f"{g['lean_total']} ({game_label} total)"
-            key = (slate_date, label)
-            if key not in existing_picks:
+            cand = {'date': slate_date, 'pick': label, 'type': 'total'}
+            if pick_key(cand) not in existing_picks:
+                existing_picks.add(pick_key(cand))
                 new_picks.append({
                     'date':     slate_date,
                     'pick':     label,
@@ -352,8 +427,9 @@ if __name__ == '__main__':
             if not p.get('best_bet'):
                 continue
             label = format_pick_label(p)
-            key = (slate_date, label)
-            if key not in existing_picks:
+            cand = {'date': slate_date, 'pick': label, 'type': p.get('prop_type', 'prop')}
+            if pick_key(cand) not in existing_picks:
+                existing_picks.add(pick_key(cand))
                 player_team_home = p.get('team') == home
                 new_picks.append({
                     'date':     slate_date,
@@ -378,7 +454,7 @@ if __name__ == '__main__':
     settled = settle_pending(tracker)
     print(f'[tracker] settled {settled} pick(s); {pending - settled} still pending')
 
-    if new_picks or settled or not os.path.exists(TRACKER_FILE):
+    if new_picks or settled or removed or not os.path.exists(TRACKER_FILE):
         write_tracker(tracker)
 
     # Always sync the embedded tracker, then build.py inlines the up-to-date slate

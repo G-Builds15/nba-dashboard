@@ -2402,6 +2402,156 @@
       "type": "3pm",
       "result": "Pending",
       "pl": null
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Over 221.5 (BKN @ BOS total)",
+      "odds": -105,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Over",
+        "line": 221.5,
+        "home_full": "Boston Celtics",
+        "away_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Mitchell Robinson Under 7.5 reb",
+      "odds": -136,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mitchell Robinson",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Michael Porter Jr Under 31.5 PRA",
+      "odds": -110,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Michael Porter Jr",
+        "prop_type": "pra",
+        "line": 31.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Mikal Bridges Under 10.5 pts",
+      "odds": 102,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mikal Bridges",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Miles McBride Over 1.5 3PM",
+      "odds": -120,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Miles McBride",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Under 230.5 (SAC @ SAS total)",
+      "odds": -105,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 230.5,
+        "home_full": "San Antonio Spurs",
+        "away_full": "Sacramento Kings"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "De'Aaron Fox Over 26.5 PRA",
+      "odds": -112,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "De'Aaron Fox",
+        "prop_type": "pra",
+        "line": 26.5,
+        "direction": "Over",
+        "opp_full": "Sacramento Kings"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Domantas Sabonis Over 36.5 PRA",
+      "odds": -106,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Domantas Sabonis",
+        "prop_type": "pra",
+        "line": 36.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-27",
+      "pick": "Over 235.5 (POR @ LAL total)",
+      "odds": -108,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Over",
+        "line": 235.5,
+        "home_full": "Los Angeles Lakers",
+        "away_full": "Portland Trail Blazers"
+      }
     }
   ]
 }

@@ -3,14 +3,17 @@
 update_tracker.py
 Appends today's best bets from slate_data.js to tracker.json.
 Parlay pieces are tracked individually — no combined parlay slips.
-Results are left as 'Pending' until graded manually or by a future grading script.
+Each run also settles older Pending picks (Win / Loss / Push) from ESPN final scores and
+player game logs, with profit/loss in units (flat 1u per pick).
 """
 
 import argparse
 import json
 import os
 import re
+import subprocess
 import sys
+import unicodedata
 from datetime import datetime, timedelta, timezone
 
 parser = argparse.ArgumentParser()
@@ -86,6 +89,214 @@ def format_pick_label(p):
     label     = p.get('prop_label', '')
     return f"{player} {direction} {line} {label}".strip()
 
+
+# ── settlement (ESPN finals + player game logs) ───────────────────────────────
+ESPN_SEASON = (datetime.now(ET).year + 1) if datetime.now(ET).month >= 10 else datetime.now(ET).year
+ESPN_SITE   = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba'
+ESPN_COMMON = 'https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba'
+UA          = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'
+VOID_AFTER_DAYS = 3          # a prop whose player never shows in the log is voided (Push) after this
+
+def get_json(url):
+    try:
+        r = subprocess.run(['curl', '-s', '-L', '--max-time', '25', '-H', f'User-Agent: {UA}', url],
+                           capture_output=True, text=True, timeout=30)
+        return json.loads(r.stdout) if r.stdout else None
+    except Exception as e:
+        print(f'[tracker] fetch failed {url[:90]}: {e}', file=sys.stderr)
+        return None
+
+def norm_player(name):
+    n = unicodedata.normalize('NFKD', name or '').encode('ascii', 'ignore').decode().lower().strip()
+    n = n.replace('.', '').replace("'", '').replace(',', '').replace('-', ' ')
+    parts = [x for x in n.split() if x]
+    while parts and parts[-1] in {'jr', 'sr', 'ii', 'iii', 'iv', 'v'}:
+        parts.pop()
+    return ' '.join(parts)
+
+def num(v):
+    if isinstance(v, dict):
+        v = v.get('value', v.get('displayValue'))
+    try:
+        return float(str(v).replace(',', ''))
+    except (TypeError, ValueError):
+        return None
+
+def profit(result, odds):
+    """Units won/lost on a flat 1u stake at American odds."""
+    if result == 'Push':
+        return 0.0
+    if result == 'Loss':
+        return -1.0
+    try:
+        o = float(odds)
+    except (TypeError, ValueError):
+        return 0.0
+    if o == 0:
+        return 0.0
+    return round(o / 100 if o > 0 else 100 / abs(o), 2)
+
+def verdict(value, line, direction):
+    """Win/Loss/Push for Over/Under against a line."""
+    if value is None or line is None:
+        return None
+    if value == line:
+        return 'Push'
+    return 'Win' if ((value > line) == (direction == 'Over')) else 'Loss'
+
+_finals_cache = {}
+def finals_for(date_str):
+    """{frozenset({home_full, away_full}): {full_name: score}} for completed games on an ET date."""
+    if date_str in _finals_cache:
+        return _finals_cache[date_str]
+    d0 = datetime.strptime(date_str, '%Y-%m-%d')
+    rng = f"{d0.strftime('%Y%m%d')}-{(d0 + timedelta(days=1)).strftime('%Y%m%d')}"
+    data = get_json(f'{ESPN_SITE}/scoreboard?dates={rng}&limit=200') or {}
+    out = {}
+    for ev in data.get('events', []):
+        comp = (ev.get('competitions') or [{}])[0]
+        if not ((comp.get('status') or {}).get('type') or {}).get('completed'):
+            continue
+        cs = comp.get('competitors') or []
+        if len(cs) != 2:
+            continue
+        try:
+            scores = {c['team']['displayName']: num(c.get('score')) for c in cs}
+        except Exception:
+            continue
+        if None in scores.values():
+            continue
+        out[frozenset(scores)] = scores
+    print(f'[tracker] finals for {date_str}: {len(out)} completed games')
+    _finals_cache[date_str] = out
+    return out
+
+_player_ids = None
+def player_id(name):
+    global _player_ids
+    if _player_ids is None:
+        _player_ids = {}
+        try:
+            with open(os.path.join(OUTDIR, 'raw_player_stats.json')) as f:
+                rs = json.load(f)['resultSets'][0]
+            h = rs['headers']
+            for row in rs['rowSet']:
+                r = dict(zip(h, row))
+                _player_ids[norm_player(r.get('PLAYER_NAME'))] = r.get('PLAYER_ID')
+        except Exception as e:
+            print(f'[tracker] no player id table ({e}); props cannot be settled this run', file=sys.stderr)
+    return _player_ids.get(norm_player(name))
+
+_gamelogs = {}
+def game_stat(pick_date, meta):
+    """The player's stat line for the game on pick_date, or None if not in the log yet."""
+    pid = player_id(meta.get('player'))
+    if not pid:
+        return None
+    if pid not in _gamelogs:
+        _gamelogs[pid] = get_json(f'{ESPN_COMMON}/athletes/{pid}/gamelog?region=us&lang=en&contentorigin=espn'
+                                  f'&season={ESPN_SEASON}') or {}
+    d = _gamelogs[pid]
+    idx = {n: i for i, n in enumerate(d.get('names', []))}
+    need = ('minutes', 'points', 'totalRebounds', 'assists', 'threePointFieldGoalsMade-threePointFieldGoalsAttempted')
+    if any(k not in idx for k in need):
+        return None
+    start = datetime.strptime(pick_date, '%Y-%m-%d').replace(tzinfo=ET)
+    end   = start + timedelta(days=1)
+    meta_ev = d.get('events') or {}
+    for st in d.get('seasonTypes', []):
+        if 'regular' not in (st.get('displayName') or '').lower():
+            continue
+        for cat in st.get('categories', []):
+            for e in cat.get('events', []):
+                m = meta_ev.get(str(e.get('eventId'))) or {}
+                gd = m.get('gameDate')
+                hit = False
+                if gd:
+                    try:
+                        hit = start <= datetime.fromisoformat(gd.replace('Z', '+00:00')) < end
+                    except ValueError:
+                        hit = False
+                elif (m.get('opponent') or {}).get('displayName') == meta.get('opp_full'):
+                    hit = True
+                if not hit:
+                    continue
+                s = e.get('stats') or []
+                try:
+                    mins = num(s[idx['minutes']]) or 0
+                    f3 = num(str(s[idx['threePointFieldGoalsMade-threePointFieldGoalsAttempted']]).split('-')[0])
+                    return {'min': mins, 'pts': num(s[idx['points']]), 'reb': num(s[idx['totalRebounds']]),
+                            'ast': num(s[idx['assists']]), '3pm': f3}
+                except IndexError:
+                    return None
+    return None
+
+def settle_pick(pick):
+    """Return 'Win'/'Loss'/'Push' or None (leave Pending)."""
+    meta = pick.get('meta') or {}
+    kind = meta.get('kind')
+    date = pick.get('date')
+    if not kind or not date:
+        return None
+    if kind in ('spread', 'total'):
+        game = finals_for(date).get(frozenset({meta.get('home_full'), meta.get('away_full')}))
+        if not game:
+            return None
+        if kind == 'spread':
+            mine, theirs = game.get(meta.get('team_full')), game.get(meta.get('opp_full'))
+            if mine is None or theirs is None:
+                return None
+            return verdict(mine + meta['line'] - theirs, 0, 'Over')       # covers if margin + line > 0
+        return verdict(sum(game.values()), meta.get('line'), meta.get('direction'))
+    # props
+    stat = game_stat(date, meta)
+    if stat is None:
+        age = (datetime.now(ET).date() - datetime.strptime(date, '%Y-%m-%d').date()).days
+        return 'Push' if age >= VOID_AFTER_DAYS else None                 # never played -> prop voided
+    if stat['min'] <= 0:
+        return 'Push'                                                       # DNP -> voided
+    pt = meta.get('prop_type')
+    value = (stat['pts'] + stat['reb'] + stat['ast']) if pt == 'pra' else stat.get(pt)
+    return verdict(value, meta.get('line'), meta.get('direction'))
+
+def settle_pending(tracker):
+    changed = 0
+    for pick in tracker.get('picks', []):
+        if pick.get('result') not in (None, 'Pending'):
+            continue
+        if not pick.get('meta') or (pick.get('date') or '9999') > TODAY_ET:
+            continue
+        try:
+            res = settle_pick(pick)
+        except Exception as e:
+            print(f"[tracker] could not settle '{pick.get('pick')}': {e}", file=sys.stderr)
+            continue
+        if res:
+            pick['result'] = res
+            pick['pl'] = profit(res, pick.get('odds'))
+            changed += 1
+    return changed
+
+def spread_meta(g):
+    """meta for a spread pick, parsed from the lean ('BOS -4.5')."""
+    try:
+        abbr, line = g['lean_spread'].split()
+        home = abbr == g.get('home_abbr')
+        return {'kind': 'spread', 'line': float(line),
+                'team_full': g['home_full'] if home else g['away_full'],
+                'opp_full':  g['away_full'] if home else g['home_full'],
+                'home_full': g['home_full'], 'away_full': g['away_full']}
+    except Exception:
+        return None
+
+def total_meta(g):
+    try:
+        direction, line = g['lean_total'].split()
+        return {'kind': 'total', 'direction': direction, 'line': float(line),
+                'home_full': g['home_full'], 'away_full': g['away_full']}
+    except Exception:
+        return None
+
 if __name__ == '__main__':
     slate = load_slate_from_js()
     if not slate:
@@ -118,6 +329,7 @@ if __name__ == '__main__':
                     'type':     'spread',
                     'result':   'Pending',
                     'pl':       None,
+                    'meta':     spread_meta(g),
                 })
 
         if g.get('best_bet_total') and g.get('lean_total'):
@@ -132,6 +344,7 @@ if __name__ == '__main__':
                     'type':     'total',
                     'result':   'Pending',
                     'pl':       None,
+                    'meta':     total_meta(g),
                 })
 
         # Best bet props (graded individually)
@@ -141,6 +354,7 @@ if __name__ == '__main__':
             label = format_pick_label(p)
             key = (slate_date, label)
             if key not in existing_picks:
+                player_team_home = p.get('team') == home
                 new_picks.append({
                     'date':     slate_date,
                     'pick':     label,
@@ -149,14 +363,23 @@ if __name__ == '__main__':
                     'type':     p.get('prop_type', 'prop'),
                     'result':   'Pending',
                     'pl':       None,
+                    'meta':     {'kind': 'prop', 'player': p.get('player_name'), 'prop_type': p.get('prop_type'),
+                                 'line': p.get('line'), 'direction': p.get('direction'),
+                                 'opp_full': g.get('away_full') if player_team_home else g.get('home_full')},
                 })
 
     if new_picks:
         tracker.setdefault('picks', []).extend(new_picks)
-        write_tracker(tracker)
         print(f'[tracker] added {len(new_picks)} new picks for {slate_date}')
     else:
         print(f'[tracker] no new picks for {slate_date} (already logged or none)')
+
+    pending = sum(1 for p in tracker.get('picks', []) if p.get('result') in (None, 'Pending'))
+    settled = settle_pending(tracker)
+    print(f'[tracker] settled {settled} pick(s); {pending - settled} still pending')
+
+    if new_picks or settled or not os.path.exists(TRACKER_FILE):
+        write_tracker(tracker)
 
     # Always sync the embedded tracker, then build.py inlines the up-to-date slate
     slate['tracker'] = tracker

@@ -2790,8 +2790,8 @@
       "odds": -122,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Derrick White",
@@ -2806,8 +2806,8 @@
       "odds": -108,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "prop",
         "player": "Paul George",
@@ -2822,8 +2822,8 @@
       "odds": 108,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Julius Randle",
@@ -2838,8 +2838,8 @@
       "odds": -152,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.66,
       "meta": {
         "kind": "prop",
         "player": "Jayson Tatum",
@@ -2854,8 +2854,8 @@
       "odds": -106,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Payton Pritchard",
@@ -2870,8 +2870,8 @@
       "odds": -196,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.51,
       "meta": {
         "kind": "prop",
         "player": "Michael Porter Jr",
@@ -2886,8 +2886,8 @@
       "odds": -160,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.62,
       "meta": {
         "kind": "prop",
         "player": "Michael Porter Jr",
@@ -2902,8 +2902,8 @@
       "odds": -118,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Payton Pritchard",
@@ -2918,8 +2918,8 @@
       "odds": 132,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Paul George",
@@ -2934,8 +2934,8 @@
       "odds": -192,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.52,
       "meta": {
         "kind": "prop",
         "player": "Jayson Tatum",
@@ -2950,8 +2950,8 @@
       "odds": -102,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Derrick White",
@@ -2966,8 +2966,8 @@
       "odds": -118,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.85,
       "meta": {
         "kind": "prop",
         "player": "Day'Ron Sharpe",
@@ -2982,8 +2982,8 @@
       "odds": -125,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.8,
       "meta": {
         "kind": "prop",
         "player": "Payton Pritchard",
@@ -2998,8 +2998,8 @@
       "odds": -106,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Jayson Tatum",
@@ -3014,8 +3014,8 @@
       "odds": -128,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Mikal Bridges",
@@ -3030,8 +3030,8 @@
       "odds": -108,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Duncan Robinson",
@@ -3046,8 +3046,8 @@
       "odds": -112,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Jalen Brunson",
@@ -3062,8 +3062,8 @@
       "odds": -210,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.48,
       "meta": {
         "kind": "prop",
         "player": "Jalen Brunson",
@@ -3078,8 +3078,8 @@
       "odds": 136,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "John Collins",
@@ -3094,8 +3094,8 @@
       "odds": -162,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Duncan Robinson",
@@ -3110,8 +3110,8 @@
       "odds": -125,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.8,
       "meta": {
         "kind": "prop",
         "player": "Jalen Brunson",
@@ -3126,8 +3126,8 @@
       "odds": -128,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Duncan Robinson",
@@ -3142,8 +3142,8 @@
       "odds": -118,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Mikal Bridges",
@@ -3158,8 +3158,8 @@
       "odds": -110,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.91,
       "meta": {
         "kind": "prop",
         "player": "Cade Cunningham",
@@ -3190,8 +3190,8 @@
       "odds": 100,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Stephon Castle",
@@ -3206,8 +3206,8 @@
       "odds": -125,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Darius Acuff Jr.",
@@ -3222,8 +3222,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Zach LaVine",
@@ -3238,8 +3238,8 @@
       "odds": -112,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Precious Achiuwa",
@@ -3254,8 +3254,8 @@
       "odds": -114,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Domantas Sabonis",
@@ -3270,8 +3270,8 @@
       "odds": -130,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.77,
       "meta": {
         "kind": "prop",
         "player": "Domantas Sabonis",
@@ -3286,8 +3286,8 @@
       "odds": -112,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "De'Aaron Fox",
@@ -3302,8 +3302,8 @@
       "odds": -160,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.62,
       "meta": {
         "kind": "prop",
         "player": "Stephon Castle",
@@ -3318,8 +3318,8 @@
       "odds": -220,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Devin Vassell",
@@ -3334,8 +3334,8 @@
       "odds": -138,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.72,
       "meta": {
         "kind": "prop",
         "player": "Zach LaVine",
@@ -3350,8 +3350,8 @@
       "odds": -114,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Domantas Sabonis",
@@ -3366,8 +3366,8 @@
       "odds": -118,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.85,
       "meta": {
         "kind": "prop",
         "player": "Victor Wembanyama",
@@ -3382,8 +3382,8 @@
       "odds": -114,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Zach LaVine",
@@ -3414,8 +3414,8 @@
       "odds": -112,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.89,
       "meta": {
         "kind": "prop",
         "player": "Luka Doncic",
@@ -3430,8 +3430,8 @@
       "odds": -136,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.74,
       "meta": {
         "kind": "prop",
         "player": "Walker Kessler",
@@ -3446,8 +3446,8 @@
       "odds": -162,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.62,
       "meta": {
         "kind": "prop",
         "player": "Austin Reaves",
@@ -3462,8 +3462,8 @@
       "odds": -166,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.6,
       "meta": {
         "kind": "prop",
         "player": "Austin Reaves",
@@ -3478,8 +3478,8 @@
       "odds": 104,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Matisse Thybulle",
@@ -3494,8 +3494,8 @@
       "odds": -138,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.72,
       "meta": {
         "kind": "prop",
         "player": "Luka Doncic",
@@ -3526,8 +3526,8 @@
       "odds": -136,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.74,
       "meta": {
         "kind": "prop",
         "player": "Mitchell Robinson",
@@ -3543,8 +3543,8 @@
       "odds": -110,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Michael Porter Jr",
@@ -3560,8 +3560,8 @@
       "odds": -120,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Miles McBride",
@@ -3577,8 +3577,8 @@
       "odds": -112,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "De'Aaron Fox",
@@ -3611,8 +3611,8 @@
       "odds": -132,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Landry Shamet",
@@ -3628,8 +3628,8 @@
       "odds": -102,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Paul Reed Jr",
@@ -3645,8 +3645,8 @@
       "odds": -114,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Jalen Brunson",
@@ -3679,8 +3679,8 @@
       "odds": -128,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "De'Aaron Fox",
@@ -3696,8 +3696,8 @@
       "odds": -106,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Dylan Harper",
@@ -3713,8 +3713,8 @@
       "odds": -128,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.78,
       "meta": {
         "kind": "prop",
         "player": "Paul George",
@@ -3730,8 +3730,8 @@
       "odds": -122,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.82,
       "meta": {
         "kind": "prop",
         "player": "Julius Randle",
@@ -3747,8 +3747,8 @@
       "odds": -114,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Domantas Sabonis",
@@ -3780,8 +3780,8 @@
       "odds": 100,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.0,
       "meta": {
         "kind": "prop",
         "player": "Sam Hauser",
@@ -3797,8 +3797,8 @@
       "odds": -182,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.55,
       "meta": {
         "kind": "prop",
         "player": "Sam Hauser",
@@ -3814,8 +3814,8 @@
       "odds": -132,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "De'Andre Hunter",
@@ -3831,8 +3831,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Nolan Traore",
@@ -3848,8 +3848,8 @@
       "odds": -114,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Jayson Tatum",
@@ -3865,8 +3865,8 @@
       "odds": -158,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.63,
       "meta": {
         "kind": "prop",
         "player": "Noah Clowney",
@@ -3882,8 +3882,8 @@
       "odds": -172,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.58,
       "meta": {
         "kind": "prop",
         "player": "Derrick White",
@@ -3899,8 +3899,8 @@
       "odds": -102,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Nolan Traore",
@@ -3916,8 +3916,8 @@
       "odds": -188,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Derrick White",
@@ -3933,8 +3933,8 @@
       "odds": -188,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Julius Randle",
@@ -3950,8 +3950,8 @@
       "odds": -270,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Jordan Walsh",
@@ -3967,8 +3967,8 @@
       "odds": 105,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Keon Ellis",
@@ -3984,8 +3984,8 @@
       "odds": -130,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.77,
       "meta": {
         "kind": "prop",
         "player": "Nolan Traore",
@@ -4017,8 +4017,8 @@
       "odds": -113,
       "grade": "B",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Kevin Huerter",
@@ -4034,8 +4034,8 @@
       "odds": 136,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.36,
       "meta": {
         "kind": "prop",
         "player": "Daniss Jenkins",
@@ -4051,8 +4051,8 @@
       "odds": 106,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Daniss Jenkins",
@@ -4068,8 +4068,8 @@
       "odds": -175,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.57,
       "meta": {
         "kind": "prop",
         "player": "OG Anunoby",
@@ -4085,8 +4085,8 @@
       "odds": -200,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.5,
       "meta": {
         "kind": "prop",
         "player": "Daniss Jenkins",
@@ -4102,8 +4102,8 @@
       "odds": 149,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Javonte Green",
@@ -4119,8 +4119,8 @@
       "odds": -113,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Daniss Jenkins",
@@ -4136,8 +4136,8 @@
       "odds": -192,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.52,
       "meta": {
         "kind": "prop",
         "player": "Julian Champagnie",
@@ -4153,8 +4153,8 @@
       "odds": -125,
       "grade": "B",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Devin Vassell",
@@ -4162,6 +4162,2918 @@
         "line": 20.5,
         "direction": "Under",
         "opp_full": "Sacramento Kings"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "ATL ML (MIA @ ATL moneyline)",
+      "odds": -146,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Atlanta Hawks",
+        "opp_full": "Miami Heat",
+        "home_full": "Atlanta Hawks",
+        "away_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 240.5 (MIA @ ATL total)",
+      "odds": -105,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 240.5,
+        "home_full": "Atlanta Hawks",
+        "away_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Bam Adebayo Under 17.5 pts",
+      "odds": -102,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bam Adebayo",
+        "prop_type": "pts",
+        "line": 17.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dyson Daniels Over 11.5 pts",
+      "odds": -106,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dyson Daniels",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Johnson Over 22.5 pts",
+      "odds": -125,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Johnson",
+        "prop_type": "pts",
+        "line": 22.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Davion Mitchell Over 12.5 pts",
+      "odds": 104,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Davion Mitchell",
+        "prop_type": "pts",
+        "line": 12.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Johnson Over 9.5 reb",
+      "odds": -138,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Johnson",
+        "prop_type": "reb",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Bobby Portis Over 7.5 reb",
+      "odds": 120,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bobby Portis",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Davion Mitchell Over 6.5 ast",
+      "odds": -136,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Davion Mitchell",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Johnson Over 6.5 ast",
+      "odds": -148,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Johnson",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "C.J. McCollum Over 2.5 3PM",
+      "odds": 128,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "C.J. McCollum",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Klay Thompson Over 2.5 3PM",
+      "odds": -112,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Klay Thompson",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Davion Mitchell Over 1.5 3PM",
+      "odds": 112,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Davion Mitchell",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Bobby Portis Over 1.5 3PM",
+      "odds": -125,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bobby Portis",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Nickeil Alexander-Walker Over 2.5 3PM",
+      "odds": -166,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nickeil Alexander-Walker",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Bam Adebayo Under 30.5 PRA",
+      "odds": -114,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bam Adebayo",
+        "prop_type": "pra",
+        "line": 30.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Giannis Antetokounmpo Under 48.5 PRA",
+      "odds": -114,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Giannis Antetokounmpo",
+        "prop_type": "pra",
+        "line": 48.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Davion Mitchell Over 21.5 PRA",
+      "odds": -114,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Davion Mitchell",
+        "prop_type": "pra",
+        "line": 21.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Brandon Miller Under 25.5 pts",
+      "odds": -117,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brandon Miller",
+        "prop_type": "pts",
+        "line": 25.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Cade Cunningham Under 24.5 pts",
+      "odds": -116,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cade Cunningham",
+        "prop_type": "pts",
+        "line": 24.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dennis Schroder Under 13.5 pts",
+      "odds": -128,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dennis Schroder",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Moussa Diabate Under 8.5 pts",
+      "odds": -107,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Moussa Diabate",
+        "prop_type": "pts",
+        "line": 8.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Sion James Under 5.5 pts",
+      "odds": -127,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "pts",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Sion James Under 3.5 reb",
+      "odds": -147,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "reb",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Cade Cunningham Under 9.5 ast",
+      "odds": -141,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cade Cunningham",
+        "prop_type": "ast",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dennis Schroder Under 5.5 ast",
+      "odds": -109,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dennis Schroder",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Brandon Miller Under 3.5 ast",
+      "odds": -169,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brandon Miller",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Naz Reid Over 2.5 3PM",
+      "odds": 105,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Naz Reid",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dennis Schroder Under 1.5 3PM",
+      "odds": -173,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dennis Schroder",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Sion James Under 1.5 3PM",
+      "odds": -192,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Cade Cunningham Under 39.5 PRA",
+      "odds": -109,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cade Cunningham",
+        "prop_type": "pra",
+        "line": 39.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Brandon Miller Under 33.5 PRA",
+      "odds": -107,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brandon Miller",
+        "prop_type": "pra",
+        "line": 33.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Sion James Under 11.5 PRA",
+      "odds": -104,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "pra",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 239.5 (WAS @ CLE total)",
+      "odds": -110,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 239.5,
+        "home_full": "Cleveland Cavaliers",
+        "away_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Anthony Davis Over 21.5 pts",
+      "odds": -114,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Anthony Davis",
+        "prop_type": "pts",
+        "line": 21.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kyshawn George Over 13.5 pts",
+      "odds": -122,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kyshawn George",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Trae Young Over 20.5 pts",
+      "odds": -114,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Trae Young",
+        "prop_type": "pts",
+        "line": 20.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tre Johnson Over 9.5 pts",
+      "odds": 102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tre Johnson",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Donovan Mitchell Over 4.5 reb",
+      "odds": -136,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Donovan Mitchell",
+        "prop_type": "reb",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Deandre Ayton Over 4.5 reb",
+      "odds": -122,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Deandre Ayton",
+        "prop_type": "reb",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Trae Young Over 9.5 ast",
+      "odds": -122,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Trae Young",
+        "prop_type": "ast",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Evan Mobley Over 1.5 3PM",
+      "odds": 162,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Evan Mobley",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Donovan Mitchell Over 2.5 3PM",
+      "odds": -136,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Donovan Mitchell",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Sam Merrill Under 2.5 3PM",
+      "odds": -220,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Merrill",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Trae Young Over 33.5 PRA",
+      "odds": -104,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Trae Young",
+        "prop_type": "pra",
+        "line": 33.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kyshawn George Over 21.5 PRA",
+      "odds": -120,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kyshawn George",
+        "prop_type": "pra",
+        "line": 21.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "IND +4.5 (PHI @ IND spread)",
+      "odds": -102,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 4.5,
+        "team_full": "Indiana Pacers",
+        "opp_full": "Philadelphia 76ers",
+        "home_full": "Indiana Pacers",
+        "away_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 237.5 (PHI @ IND total)",
+      "odds": -105,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 237.5,
+        "home_full": "Indiana Pacers",
+        "away_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Pascal Siakam Over 22.5 pts",
+      "odds": -102,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Pascal Siakam",
+        "prop_type": "pts",
+        "line": 22.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tyrese Maxey Over 24.5 pts",
+      "odds": 102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyrese Maxey",
+        "prop_type": "pts",
+        "line": 24.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jay Huff Under 10.5 pts",
+      "odds": -132,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jay Huff",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jarace Walker Under 11.5 pts",
+      "odds": -120,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jarace Walker",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Pascal Siakam Over 6.5 reb",
+      "odds": -136,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Pascal Siakam",
+        "prop_type": "reb",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Joel Embiid Over 8.5 reb",
+      "odds": -140,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Joel Embiid",
+        "prop_type": "reb",
+        "line": 8.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "VJ Edgecombe Over 5.5 reb",
+      "odds": -114,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "VJ Edgecombe",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Joel Embiid Over 4.5 ast",
+      "odds": 110,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Joel Embiid",
+        "prop_type": "ast",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Pascal Siakam Over 1.5 3PM",
+      "odds": 108,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Pascal Siakam",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jaylen Brown Over 1.5 3PM",
+      "odds": -112,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaylen Brown",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "LeBron James Under 1.5 3PM",
+      "odds": -245,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "LeBron James",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tyrese Maxey Over 33.5 PRA",
+      "odds": -102,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyrese Maxey",
+        "prop_type": "pra",
+        "line": 33.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Pascal Siakam Over 33.5 PRA",
+      "odds": -112,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Pascal Siakam",
+        "prop_type": "pra",
+        "line": 33.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "TOR ML (ORL @ TOR moneyline)",
+      "odds": -186,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Toronto Raptors",
+        "opp_full": "Orlando Magic",
+        "home_full": "Toronto Raptors",
+        "away_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 223.5 (ORL @ TOR total)",
+      "odds": -115,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 223.5,
+        "home_full": "Toronto Raptors",
+        "away_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Desmond Bane Under 19.5 pts",
+      "odds": -110,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Desmond Bane",
+        "prop_type": "pts",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Collin Murray-Boyles Under 9.5 pts",
+      "odds": -118,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Collin Murray-Boyles",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jakob Poeltl Under 7.5 pts",
+      "odds": -120,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jakob Poeltl",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Wendell Carter Jr Over 7.5 reb",
+      "odds": -102,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Wendell Carter Jr",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Collin Murray-Boyles Over 5.5 reb",
+      "odds": -114,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Collin Murray-Boyles",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Franz Wagner Over 6.5 reb",
+      "odds": 100,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Franz Wagner",
+        "prop_type": "reb",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Desmond Bane Under 3.5 ast",
+      "odds": -152,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Desmond Bane",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Franz Wagner Over 6.5 ast",
+      "odds": 124,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Franz Wagner",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "R.J. Barrett Under 1.5 3PM",
+      "odds": -110,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "R.J. Barrett",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tristan da Silva Over 2.5 3PM",
+      "odds": 108,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tristan da Silva",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Desmond Bane Over 2.5 3PM",
+      "odds": -132,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Desmond Bane",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Ja'Kobe Walter Over 2.5 3PM",
+      "odds": 162,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ja'Kobe Walter",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Wendell Carter Jr Over 0.5 3PM",
+      "odds": -172,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Wendell Carter Jr",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Desmond Bane Under 28.5 PRA",
+      "odds": -125,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Desmond Bane",
+        "prop_type": "pra",
+        "line": 28.5,
+        "direction": "Under",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Scottie Barnes Under 35.5 PRA",
+      "odds": -112,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Scottie Barnes",
+        "prop_type": "pra",
+        "line": 35.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jamal Shead Under 13.5 PRA",
+      "odds": -108,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jamal Shead",
+        "prop_type": "pra",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jakob Poeltl Under 16.5 PRA",
+      "odds": -114,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jakob Poeltl",
+        "prop_type": "pra",
+        "line": 16.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Wendell Carter Jr Over 21.5 PRA",
+      "odds": -123,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Wendell Carter Jr",
+        "prop_type": "pra",
+        "line": 21.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 232.5 (NYK @ CHI total)",
+      "odds": -108,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 232.5,
+        "home_full": "Chicago Bulls",
+        "away_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Caleb Wilson Over 16.5 pts",
+      "odds": -108,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Caleb Wilson",
+        "prop_type": "pts",
+        "line": 16.5,
+        "direction": "Over",
+        "opp_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Karl-Anthony Towns Over 22.5 pts",
+      "odds": -130,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Karl-Anthony Towns",
+        "prop_type": "pts",
+        "line": 22.5,
+        "direction": "Over",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Josh Giddey Under 10.5 pts",
+      "odds": 100,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Giddey",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Karl-Anthony Towns Over 13.5 reb",
+      "odds": 110,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Karl-Anthony Towns",
+        "prop_type": "reb",
+        "line": 13.5,
+        "direction": "Over",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Brunson Under 6.5 ast",
+      "odds": -148,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Brunson",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "OG Anunoby Over 1.5 ast",
+      "odds": -188,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "OG Anunoby",
+        "prop_type": "ast",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Brunson Under 2.5 3PM",
+      "odds": -194,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Brunson",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Josh Hart Over 1.5 3PM",
+      "odds": -118,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Hart",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Mikal Bridges Under 17.5 PRA",
+      "odds": -108,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mikal Bridges",
+        "prop_type": "pra",
+        "line": 17.5,
+        "direction": "Under",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jalen Brunson Under 36.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Brunson",
+        "prop_type": "pra",
+        "line": 36.5,
+        "direction": "Under",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Caleb Wilson Over 24.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Caleb Wilson",
+        "prop_type": "pra",
+        "line": 24.5,
+        "direction": "Over",
+        "opp_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Josh Giddey Under 25.5 PRA",
+      "odds": -130,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Giddey",
+        "prop_type": "pra",
+        "line": 25.5,
+        "direction": "Under",
+        "opp_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "NOP +4.5 (DEN @ NOP spread)",
+      "odds": -104,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 4.5,
+        "team_full": "New Orleans Pelicans",
+        "opp_full": "Denver Nuggets",
+        "home_full": "New Orleans Pelicans",
+        "away_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 240.5 (DEN @ NOP total)",
+      "odds": -108,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 240.5,
+        "home_full": "New Orleans Pelicans",
+        "away_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Zion Williamson Over 18.5 pts",
+      "odds": -130,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Zion Williamson",
+        "prop_type": "pts",
+        "line": 18.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "DeMar DeRozan Over 13.5 pts",
+      "odds": -130,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "DeMar DeRozan",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Over",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Derik Queen Over 11.5 pts",
+      "odds": 100,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derik Queen",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dejounte Murray Over 17.5 pts",
+      "odds": -106,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dejounte Murray",
+        "prop_type": "pts",
+        "line": 17.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Nikola Jokic Under 12.5 reb",
+      "odds": 102,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nikola Jokic",
+        "prop_type": "reb",
+        "line": 12.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Derik Queen Over 7.5 reb",
+      "odds": 112,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derik Queen",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Zion Williamson Under 5.5 reb",
+      "odds": -158,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Zion Williamson",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "DeMar DeRozan Under 3.5 ast",
+      "odds": -188,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "DeMar DeRozan",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Derik Queen Under 3.5 ast",
+      "odds": -174,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derik Queen",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jamal Murray Over 2.5 3PM",
+      "odds": -174,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jamal Murray",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Aaron Gordon Under 24.5 PRA",
+      "odds": -104,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Aaron Gordon",
+        "prop_type": "pra",
+        "line": 24.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dejounte Murray Over 28.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dejounte Murray",
+        "prop_type": "pra",
+        "line": 28.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jeremiah Fears Under 18.5 PRA",
+      "odds": -128,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jeremiah Fears",
+        "prop_type": "pra",
+        "line": 18.5,
+        "direction": "Under",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Nikola Jokic Under 50.5 PRA",
+      "odds": -118,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nikola Jokic",
+        "prop_type": "pra",
+        "line": 50.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Gui Santos Under 10.5 pts",
+      "odds": -108,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Gui Santos",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Draymond Green Under 7.5 pts",
+      "odds": -106,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Draymond Green",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Rudy Gobert Over 11.5 reb",
+      "odds": -128,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Rudy Gobert",
+        "prop_type": "reb",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jaden McDaniels Over 4.5 reb",
+      "odds": -144,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaden McDaniels",
+        "prop_type": "reb",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "LaMelo Ball Under 4.5 reb",
+      "odds": 112,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "LaMelo Ball",
+        "prop_type": "reb",
+        "line": 4.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Gui Santos Under 3.5 ast",
+      "odds": -136,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Gui Santos",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Draymond Green Over 5.5 ast",
+      "odds": -152,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Draymond Green",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Stephen Curry Under 4.5 ast",
+      "odds": -152,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Stephen Curry",
+        "prop_type": "ast",
+        "line": 4.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jonathan Kuminga Over 1.5 3PM",
+      "odds": -108,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jonathan Kuminga",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Stephen Curry Under 33.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Stephen Curry",
+        "prop_type": "pra",
+        "line": 33.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Gui Santos Under 19.5 PRA",
+      "odds": -128,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Gui Santos",
+        "prop_type": "pra",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "LaMelo Ball Under 35.5 PRA",
+      "odds": -112,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "LaMelo Ball",
+        "prop_type": "pra",
+        "line": 35.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Draymond Green Under 19.5 PRA",
+      "odds": -118,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Draymond Green",
+        "prop_type": "pra",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Over 226.5 (HOU @ MIL total)",
+      "odds": -108,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Over",
+        "line": 226.5,
+        "home_full": "Milwaukee Bucks",
+        "away_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jabari Smith Jr Over 15.5 pts",
+      "odds": -106,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jabari Smith Jr",
+        "prop_type": "pts",
+        "line": 15.5,
+        "direction": "Over",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Myles Turner Under 10.5 pts",
+      "odds": -114,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Myles Turner",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Reed Sheppard Over 11.5 pts",
+      "odds": -108,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Reed Sheppard",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kyle Kuzma Over 5.5 reb",
+      "odds": -125,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kyle Kuzma",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kel'el Ware Over 7.5 reb",
+      "odds": 108,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kel'el Ware",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jaime Jaquez Jr Over 5.5 reb",
+      "odds": -125,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaime Jaquez Jr",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tyler Herro Over 4.5 ast",
+      "odds": 102,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyler Herro",
+        "prop_type": "ast",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Fred VanVleet Over 6.5 ast",
+      "odds": 110,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Fred VanVleet",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Reed Sheppard Over 3.5 ast",
+      "odds": -122,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Reed Sheppard",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jaime Jaquez Jr Over 0.5 3PM",
+      "odds": -225,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaime Jaquez Jr",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tyler Herro Over 2.5 3PM",
+      "odds": -154,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyler Herro",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tari Eason Under 1.5 3PM",
+      "odds": -260,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tari Eason",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "UTA +11.5 (SAS @ UTA spread)",
+      "odds": -104,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 11.5,
+        "team_full": "Utah Jazz",
+        "opp_full": "San Antonio Spurs",
+        "home_full": "Utah Jazz",
+        "away_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 234.5 (SAS @ UTA total)",
+      "odds": -112,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 234.5,
+        "home_full": "Utah Jazz",
+        "away_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Darryn Peterson Under 13.5 pts",
+      "odds": -125,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Darryn Peterson",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dylan Harper Over 15.5 pts",
+      "odds": -130,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dylan Harper",
+        "prop_type": "pts",
+        "line": 15.5,
+        "direction": "Over",
+        "opp_full": "Utah Jazz"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Ace Bailey Over 5.5 reb",
+      "odds": -106,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ace Bailey",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "De'Aaron Fox Over 6.5 ast",
+      "odds": -106,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "De'Aaron Fox",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Utah Jazz"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Stephon Castle Under 6.5 ast",
+      "odds": -136,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Stephon Castle",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Utah Jazz"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Ace Bailey Over 1.5 ast",
+      "odds": -144,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ace Bailey",
+        "prop_type": "ast",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Keyonte George Over 5.5 ast",
+      "odds": -138,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keyonte George",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Stephon Castle Over 2.5 3PM",
+      "odds": 120,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Stephon Castle",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Utah Jazz"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Keyonte George Over 30.5 PRA",
+      "odds": -114,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keyonte George",
+        "prop_type": "pra",
+        "line": 30.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Victor Wembanyama Under 39.5 PRA",
+      "odds": -118,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Victor Wembanyama",
+        "prop_type": "pra",
+        "line": 39.5,
+        "direction": "Under",
+        "opp_full": "Utah Jazz"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Ace Bailey Over 20.5 PRA",
+      "odds": -102,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ace Bailey",
+        "prop_type": "pra",
+        "line": 20.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "DAL +6.5 (OKC @ DAL spread)",
+      "odds": -102,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 6.5,
+        "team_full": "Dallas Mavericks",
+        "opp_full": "Oklahoma City Thunder",
+        "home_full": "Dallas Mavericks",
+        "away_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Under 229.5 (OKC @ DAL total)",
+      "odds": -110,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 229.5,
+        "home_full": "Dallas Mavericks",
+        "away_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jared McCain Under 17.5 pts",
+      "odds": -136,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jared McCain",
+        "prop_type": "pts",
+        "line": 17.5,
+        "direction": "Under",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Daniel Gafford Under 9.5 pts",
+      "odds": -125,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Daniel Gafford",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Max Christie Under 10.5 pts",
+      "odds": -112,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Max Christie",
+        "prop_type": "pts",
+        "line": 10.5,
+        "direction": "Under",
+        "opp_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Cooper Flagg Under 7.5 reb",
+      "odds": -160,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cooper Flagg",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Isaiah Hartenstein Over 9.5 reb",
+      "odds": -112,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Isaiah Hartenstein",
+        "prop_type": "reb",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Shai Gilgeous-Alexander Under 6.5 ast",
+      "odds": -136,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Shai Gilgeous-Alexander",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jared McCain Over 2.5 3PM",
+      "odds": -166,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jared McCain",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jared McCain Under 23.5 PRA",
+      "odds": -117,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jared McCain",
+        "prop_type": "pra",
+        "line": 23.5,
+        "direction": "Under",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Over 228.5 (LAL @ LAC total)",
+      "odds": -105,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Over",
+        "line": 228.5,
+        "home_full": "LA Clippers",
+        "away_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Luka Doncic Over 32.5 pts",
+      "odds": -118,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Luka Doncic",
+        "prop_type": "pts",
+        "line": 32.5,
+        "direction": "Over",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Darius Garland Over 24.5 pts",
+      "odds": -128,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Darius Garland",
+        "prop_type": "pts",
+        "line": 24.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Brook Lopez Over 11.5 pts",
+      "odds": -119,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brook Lopez",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Austin Reaves Over 5.5 ast",
+      "odds": -110,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Austin Reaves",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Luka Doncic Over 7.5 ast",
+      "odds": -140,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Luka Doncic",
+        "prop_type": "ast",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kris Dunn Over 4.5 ast",
+      "odds": -138,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kris Dunn",
+        "prop_type": "ast",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Austin Reaves Over 2.5 3PM",
+      "odds": 140,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Austin Reaves",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Luka Doncic Over 3.5 3PM",
+      "odds": -160,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Luka Doncic",
+        "prop_type": "3pm",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Darius Garland Over 2.5 3PM",
+      "odds": -158,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Darius Garland",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Derrick Jones Over 1.5 3PM",
+      "odds": 142,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derrick Jones",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Brook Lopez Over 1.5 3PM",
+      "odds": 107,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brook Lopez",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kobe Sanders Under 19.5 PRA",
+      "odds": -106,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kobe Sanders",
+        "prop_type": "pra",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
       }
     }
   ]

@@ -7075,6 +7075,329 @@
         "direction": "Under",
         "opp_full": "Los Angeles Lakers"
       }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "ATL -2.5 (MIA @ ATL spread)",
+      "odds": -102,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": -2.5,
+        "team_full": "Atlanta Hawks",
+        "opp_full": "Miami Heat",
+        "home_full": "Atlanta Hawks",
+        "away_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Luguentz Dort Over 7.5 pts",
+      "odds": -122,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Luguentz Dort",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Miami Heat"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Grayson Allen Under 14.5 pts",
+      "odds": -114,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Grayson Allen",
+        "prop_type": "pts",
+        "line": 14.5,
+        "direction": "Under",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "John Collins Under 14.5 pts",
+      "odds": -124,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "John Collins",
+        "prop_type": "pts",
+        "line": 14.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Paul Reed Jr Under 13.5 pts",
+      "odds": -114,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Paul Reed Jr",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kevin Huerter Under 8.5 pts",
+      "odds": -133,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kevin Huerter",
+        "prop_type": "pts",
+        "line": 8.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Duncan Robinson Over 2.5 3PM",
+      "odds": -178,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Duncan Robinson",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kevin Huerter Under 1.5 3PM",
+      "odds": -189,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kevin Huerter",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Franz Wagner Over 35.5 PRA",
+      "odds": -122,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Franz Wagner",
+        "prop_type": "pra",
+        "line": 35.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Saddiq Bey Over 11.5 pts",
+      "odds": -125,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Saddiq Bey",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Dejounte Murray Over 5.5 ast",
+      "odds": -154,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Dejounte Murray",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Saddiq Bey Over 1.5 3PM",
+      "odds": 104,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Saddiq Bey",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Saddiq Bey Over 17.5 PRA",
+      "odds": -106,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Saddiq Bey",
+        "prop_type": "pra",
+        "line": 17.5,
+        "direction": "Over",
+        "opp_full": "Denver Nuggets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Amen Thompson Over 17.5 pts",
+      "odds": -125,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Amen Thompson",
+        "prop_type": "pts",
+        "line": 17.5,
+        "direction": "Over",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Jaime Jaquez Jr Over 23.5 PRA",
+      "odds": -102,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaime Jaquez Jr",
+        "prop_type": "pra",
+        "line": 23.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Tyler Herro Over 30.5 PRA",
+      "odds": -125,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyler Herro",
+        "prop_type": "pra",
+        "line": 30.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kenrich Williams Under 8.5 pts",
+      "odds": -130,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kenrich Williams",
+        "prop_type": "pts",
+        "line": 8.5,
+        "direction": "Under",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Kris Dunn Over 8.5 pts",
+      "odds": -125,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kris Dunn",
+        "prop_type": "pts",
+        "line": 8.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "pick": "Keaton Wagler Over 1.5 3PM",
+      "odds": -175,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keaton Wagler",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Los Angeles Lakers"
+      }
     }
   ]
 }

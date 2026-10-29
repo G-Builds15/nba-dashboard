@@ -1,3 +1,39 @@
 {
-  "picks": []
+  "rules": "top-v1",
+  "archived": 0,
+  "picks": [
+    {
+      "date": "2026-10-29",
+      "pick": "ATL ML (CLE @ ATL moneyline)",
+      "odds": -108,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Atlanta Hawks",
+        "opp_full": "Cleveland Cavaliers",
+        "home_full": "Atlanta Hawks",
+        "away_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Evan Mobley Over 1.5 3PM",
+      "odds": 158,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Evan Mobley",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Atlanta Hawks"
+      }
+    }
+  ]
 }

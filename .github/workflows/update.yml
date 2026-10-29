@@ -2,11 +2,14 @@ name: NBA Dashboard Update
 
 on:
   schedule:
-    # GitHub cron is UTC only. These are 10:00 AM / 5:00 PM EDT.
-    # After clocks fall back (Nov 1, 2026) they run at 9:00 AM / 4:00 PM EST.
-    - cron: '0 14 * * *'
-    - cron: '0 21 * * *'
-  workflow_dispatch:        # manual "Run workflow" button
+    # GitHub cron is UTC-only and runs on the hour are the ones it delays or drops most, so these use an
+    # off-peak minute. Each target time has two entries (summer and winter UTC hours); the "gate" job
+    # lets exactly one of them through, so runs stay at 10:00 AM and 5:00 PM ET all year.
+    - cron: '23 14 * * *'   # 10:23 AM EDT
+    - cron: '23 15 * * *'   # 10:23 AM EST
+    - cron: '23 21 * * *'   #  5:23 PM EDT
+    - cron: '23 22 * * *'   #  5:23 PM EST
+  workflow_dispatch:        # manual "Run workflow" button always runs
 
 permissions:
   contents: write           # lets the built-in token push the generated files
@@ -16,7 +19,33 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      go: ${{ steps.decide.outputs.go }}
+    steps:
+      - name: Decide whether this trigger is the one for the current UTC offset
+        id: decide
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"; echo "manual run: go"; exit 0
+          fi
+          sched="${{ github.event.schedule }}"
+          utc_hour=$(echo "$sched" | awk '{print $2}')
+          off=$(TZ=America/New_York date +%z)            # -0400 in summer, -0500 in winter
+          sign=${off:0:1}; off_h=${off:1:2}
+          local_hour=$(( (10#$utc_hour $sign 10#$off_h + 24) % 24 ))
+          echo "cron='$sched' utc_hour=$utc_hour offset=$off -> intended ET hour $local_hour"
+          if [ "$local_hour" = "10" ] || [ "$local_hour" = "17" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"; echo "skipping: not the trigger for this time of year"
+          fi
+
   build:
+    needs: gate
+    if: needs.gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -64,7 +93,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add nba_dashboard.html slate_data.js tracker.json
+          git add nba_dashboard.html slate_data.js tracker.json tracker_archive.json 2>/dev/null || git add nba_dashboard.html slate_data.js tracker.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
             exit 0

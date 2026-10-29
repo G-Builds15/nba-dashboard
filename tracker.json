@@ -51,6 +51,57 @@
         "direction": "Under",
         "opp_full": "Memphis Grizzlies"
       }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Derik Queen Under 2.5 ast",
+      "odds": 114,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derik Queen",
+        "prop_type": "ast",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Sacramento Kings"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Zion Williamson Over 0.5 3PM",
+      "odds": 226,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Zion Williamson",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Over",
+        "opp_full": "Sacramento Kings"
+      }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Cam Spencer Over 1.5 3PM",
+      "odds": 161,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cam Spencer",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Portland Trail Blazers"
+      }
     }
   ]
 }

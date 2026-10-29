@@ -95,6 +95,7 @@ ESPN_SEASON = (datetime.now(ET).year + 1) if datetime.now(ET).month >= 10 else d
 ESPN_SITE   = 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba'
 ESPN_COMMON = 'https://site.web.api.espn.com/apis/common/v3/sports/basketball/nba'
 UA          = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36'
+RULES = 'top-v1'             # bump to archive the visible record when pick-selection rules change
 VOID_AFTER_DAYS = 3          # a prop whose player never shows in the log is voided (Push) after this
 
 def get_json(url):
@@ -392,14 +393,47 @@ if __name__ == '__main__':
     games = slate.get('games', [])
 
     tracker = load_tracker()
+
+    # One-time reset when the pick-selection rules change: settle what can be settled, move the old picks to
+    # tracker_archive.json (nothing is deleted), and start the visible record fresh under the new rules.
+    migrated = False
+    if tracker.get('rules') != RULES:
+        settle_pending(tracker)
+        old = tracker.get('picks', [])
+        if old:
+            arch_path = os.path.join(OUTDIR, 'tracker_archive.json')
+            try:
+                with open(arch_path) as f:
+                    arch = json.load(f)
+            except Exception:
+                arch = {'picks': []}
+            arch.setdefault('picks', []).extend(old)
+            with open(arch_path, 'w') as f:
+                json.dump(arch, f, indent=1)
+            print(f'[tracker] archived {len(old)} earlier picks to tracker_archive.json')
+        tracker = {'rules': RULES, 'archived': tracker.get('archived', 0) + len(old), 'picks': []}
+        migrated = True
+
     removed = dedupe(tracker)
     if removed:
         print(f'[tracker] removed {removed} duplicate pick(s) (line moves / flipped direction)')
     existing_picks = {pick_key(p) for p in tracker.get('picks', [])}
 
     new_picks = []
+    now_utc = datetime.now(timezone.utc)
 
+    def started(g):
+        """True once tip-off has passed: odds may be in-play, so such a game is never logged."""
+        try:
+            return datetime.fromisoformat(str(g.get('commence_time', '')).replace('Z', '+00:00')) <= now_utc
+        except ValueError:
+            return False
+
+    skipped_started = 0
     for g in games:
+        if started(g):
+            skipped_started += 1
+            continue
         away = g.get('away_abbr', '')
         home = g.get('home_abbr', '')
         game_label = f"{away} @ {home}"
@@ -475,6 +509,8 @@ if __name__ == '__main__':
                                  'opp_full': g.get('away_full') if player_team_home else g.get('home_full')},
                 })
 
+    if skipped_started:
+        print(f'[tracker] skipped {skipped_started} game(s) already started (live odds are never logged)')
     if new_picks:
         tracker.setdefault('picks', []).extend(new_picks)
         print(f'[tracker] added {len(new_picks)} new picks for {slate_date}')
@@ -485,7 +521,7 @@ if __name__ == '__main__':
     settled = settle_pending(tracker)
     print(f'[tracker] settled {settled} pick(s); {pending - settled} still pending')
 
-    if new_picks or settled or removed or not os.path.exists(TRACKER_FILE):
+    if new_picks or settled or removed or migrated or not os.path.exists(TRACKER_FILE):
         write_tracker(tracker)
 
     # Always sync the embedded tracker, then build.py inlines the up-to-date slate

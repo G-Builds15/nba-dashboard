@@ -326,12 +326,52 @@ def _short(name):
     parts = (name or '').split()
     return f'{parts[0][0]}. {" ".join(parts[1:])}' if len(parts) > 1 else name
 
+# ── top picks ─────────────────────────────────────────────────────────────────
+# A/B grades are the shortlist; "best bet" (and the tracker) is the few highest-EV picks of the day.
+TOP_N        = 10     # most best bets per day, all kinds combined
+PER_GAME_MAX = 2      # most best bets from one game
+MIN_PICK_EV  = 0.03   # model EV required (at the posted price)
+
+def select_top_picks(output_games, n=TOP_N, per_game=PER_GAME_MAX, min_ev=MIN_PICK_EV):
+    """Clear every best-bet flag, then re-set it on the top picks. Returns how many were chosen."""
+    cands = []
+    for gi, g in enumerate(output_games):
+        for kind in ('spread', 'total', 'ml'):
+            g[f'best_bet_{kind}'] = False
+            if g.get(f'grade_{kind}') in ('A', 'B') and (g.get(f'ev_{kind}') or 0) >= min_ev:
+                cands.append((g[f'ev_{kind}'], gi, kind, g, f'best_bet_{kind}', None))
+        for p in g['props']:
+            p['best_bet'] = False
+            if p.get('grade') in ('A', 'B') and (p.get('ev') or 0) >= min_ev:
+                cands.append((p['ev'], gi, 'prop', p, 'best_bet', normalize_player(p.get('player_name', ''))))
+    cands.sort(key=lambda c: -c[0])
+    per, players, side_games, chosen = {}, set(), set(), 0
+    for ev, gi, kind, obj, flag, player in cands:
+        if chosen >= n:
+            break
+        if per.get(gi, 0) >= per_game:
+            continue
+        if player and player in players:
+            continue
+        if kind in ('spread', 'ml'):                  # a spread and a moneyline on the same game are one idea
+            if gi in side_games:
+                continue
+            side_games.add(gi)
+        obj[flag] = True
+        per[gi] = per.get(gi, 0) + 1
+        chosen += 1
+        if player:
+            players.add(player)
+    return chosen
+
 # ── grading logic ─────────────────────────────────────────────────────────────
 
 MIN_GP_GRADE    = 3       # games played before a prop is graded (below this -> 'N/A')
 LEAGUE_AVG_PACE = 99.2    # last-resort fallback only; the real value comes from team_stats
 
 # (strong, moderate, poor) edge cut-offs per prop type, in stat units
+PROP_CV     = {'pts': 0.38, 'reb': 0.50, 'ast': 0.55, '3pm': 0.85, 'pra': 0.30}   # typical game-to-game spread / line
+PROP_SHRINK = 0.5      # how much of the raw edge-implied win probability is believed
 EDGE_RULES = {'pts': (3, 1, -2), 'reb': (2, 0.5, -1.5), 'ast': (1.5, 0.5, -1),
               '3pm': (1, 0.3, -0.5), 'pra': (4, 1, -3)}
 
@@ -394,16 +434,16 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None):
     opp_abbr    = prop.get('opp_abbr', '')
 
     if line is None or direction not in ('Over', 'Under') or prop_type not in EDGE_RULES:
-        return 'N/A', ''
+        return 'N/A', '', None
     pdata = player_stats.get(normalize_player(prop.get('player_name', '')))
     if not pdata or (pdata.get('gp') or 0) < MIN_GP_GRADE:
-        return 'N/A', ''
+        return 'N/A', '', None
 
     injuries = injuries or {}
     pkey     = normalize_player(prop.get('player_name', ''))
     me_inj   = next((i for i in injuries.get(player_team, []) if i['key'] == pkey), None)
     if me_inj and me_inj['w'] >= 0.85:
-        return 'N/A', f"Listed {me_inj['status']}"
+        return 'N/A', f"Listed {me_inj['status']}", None
     opp   = team_stats.get(opp_abbr, {})
     sign  = 1 if direction == 'Over' else -1
     pf    = pace_factor(player_team, opp_abbr, team_stats, league.get('pace', 0))
@@ -416,7 +456,7 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None):
         raw = pdata.get(STAT_KEYS[prop_type], 0)
         parts = [injury_gain(player_team, pkey, STAT_KEYS[prop_type], player_stats, injuries)]
     if not raw:
-        return 'N/A', ''
+        return 'N/A', '', None
     inj_gain = sum(g for g, _ in parts)
     inj_who  = next((n for _, n in sorted(parts, key=lambda x: -x[0]) if n), '')
     raw += inj_gain
@@ -457,11 +497,17 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None):
     if inj_gain >= 0.1 and inj_who:
         rationale += f", w/o {_short(inj_who)} (+{inj_gain:.1f})"
     grade = 'A' if score >= 3 else 'B' if score == 2 else 'C' if score == 1 else 'D'
+    # Price-aware ranking score: edge -> win probability (shrunk hard: the market is efficient) -> EV at the posted odds
+    z  = edge / (PROP_CV[prop_type] * max(line, 0.5))
+    pw = 0.5 + PROP_SHRINK * (_phi(z) - 0.5)
+    ev = _ev(pw, prop.get('odds'), -110)
+    if ev is not None:
+        rationale += f", EV {ev*100:+.0f}%"
     if me_inj:
         rationale += f", listed {me_inj['status']}"
         if grade in ('A', 'B'):
             grade = 'C'                               # own injury status uncertain: never a best bet
-    return grade, rationale
+    return grade, rationale, ev
 
 # ── game model: expected margin vs the market ─────────────────────────────────
 # The market already knows more than a few games of box-score data, so the model is a second opinion:
@@ -559,7 +605,7 @@ def grade_spread(home, away, g, m):
     """(grade, lean_team, why). Picks the side the blended margin says covers, graded on price-adjusted EV."""
     sh = g.get('spread_home')
     if m is None or sh is None:
-        return 'N/A', None, ''
+        return 'N/A', None, '', None
     edge_home = m['E'] + sh                        # > 0: home covers
     side      = home if edge_home > 0 else away
     p         = _phi(abs(edge_home) / MARGIN_SD)
@@ -568,13 +614,13 @@ def grade_spread(home, away, g, m):
     grade     = _grade_ev(ev, SPREAD_EV)
     why = (f"Model {home} {m['model']:+.1f} vs market {m['market']:+.1f} (model weight {m['w']*100:.0f}%); "
            f"edge {abs(edge_home):.1f} pts, cover {p*100:.0f}%, EV {ev*100:+.1f}%{_context(m, home, away)}")
-    return grade, side, why
+    return grade, side, why, ev
 
 def grade_moneyline(home, away, g, m):
     """(grade, lean_team, why). Best-EV side, which can be the underdog; D means no side has value."""
     dh, da = _dec(g.get('odds_ml_home')), _dec(g.get('odds_ml_away'))
     if m is None or not (dh and da):
-        return 'N/A', None, ''
+        return 'N/A', None, '', None
     ph = _phi(m['E'] / MARGIN_SD)
     evs = {home: ph * (dh - 1) - (1 - ph), away: (1 - ph) * (da - 1) - ph}
     side = max(evs, key=evs.get)
@@ -590,24 +636,33 @@ def grade_moneyline(home, away, g, m):
             grade = 'ABCD'[max('ABCD'.index(grade), 'ABCD'.index(cap))]
             why += f"; longshot price, capped at {cap}"
             break
-    return grade, side, why
+    return grade, side, why, evs[side]
 
-def grade_total(home_abbr, away_abbr, total_line, team_stats):
-    """Grade total based on combined team pace and offensive ratings."""
-    home = team_stats.get(home_abbr, {})
-    away = team_stats.get(away_abbr, {})
-    combined_pace = (home.get('pace', 0) + away.get('pace', 0)) / 2
-    combined_off = (home.get('off_rtg', 0) + away.get('off_rtg', 0)) / 2
-    if combined_pace == 0 or total_line is None:
-        return 'N/A', None
-    # Rough expected total from pace + off rating
-    expected = combined_pace * (combined_off / 100) * 2
-    edge = expected - total_line
-    if edge > 8: return 'A', 'Over'
-    elif edge > 3: return 'B', 'Over'
-    elif edge < -8: return 'A', 'Under'
-    elif edge < -3: return 'B', 'Under'
-    else: return 'C', 'Over' if edge >= 0 else 'Under'
+TOTAL_SD = 18.0     # std dev of (actual total - model total), points
+
+def grade_total(home_abbr, away_abbr, g, team_stats):
+    """(grade, direction, ev, why). Expected total uses offense AND defense, blended toward the posted total."""
+    line = g.get('total_line')
+    h, a = team_stats.get(home_abbr, {}), team_stats.get(away_abbr, {})
+    pace = ((h.get('pace') or 0) + (a.get('pace') or 0)) / 2
+    if not pace or line is None or not (h.get('off_rtg') and a.get('off_rtg')):
+        return 'N/A', None, None, ''
+    if h.get('def_rtg') and a.get('def_rtg'):
+        expected = pace * (h['off_rtg'] + a['off_rtg'] + h['def_rtg'] + a['def_rtg']) / 200
+    else:
+        expected = pace * (h['off_rtg'] + a['off_rtg']) / 100
+    avg_gp = ((h.get('gp') or 0) + (a.get('gp') or 0)) / 2
+    w      = min(MODEL_W_MAX, avg_gp / (avg_gp + MODEL_W_K))
+    edge   = w * (expected - line)                       # blended toward the market
+    direction = 'Over' if edge >= 0 else 'Under'
+    p      = _phi(abs(edge) / TOTAL_SD)
+    odds   = g.get('odds_over') if direction == 'Over' else g.get('odds_under')
+    ev     = _ev(p, odds, -110)
+    why    = (f"Model total {expected:.1f} vs market {line} (model weight {w*100:.0f}%); "
+              f"edge {abs(edge):.1f} pts, {direction} {p*100:.0f}%, EV {ev*100:+.1f}%")
+    inj = [f"{ab} injuries (-{t['inj_lost_pts']:.1f} pts)" for ab, t in ((home_abbr, h), (away_abbr, a))
+           if t.get('inj_lost_pts', 0) >= 1]
+    return _grade_ev(ev, SPREAD_EV), direction, ev, why + ('; ' + ', '.join(inj) if inj else '')
 
 def get_team_info(team_name):
     """Fuzzy match team name to TEAM_COLORS."""
@@ -671,7 +726,7 @@ def build():
 
         # Grade spread
         model = game_model(home_abbr, away_abbr, g, team_stats, sched, TODAY_ET)
-        spread_grade, spread_lean_team, why_spread = grade_spread(home_abbr, away_abbr, g, model)
+        spread_grade, spread_lean_team, why_spread, ev_spread = grade_spread(home_abbr, away_abbr, g, model)
         if spread_lean_team == home_abbr:
             spread_line_val = g.get('spread_home')
             spread_odds_val = g.get('odds_spread_home')
@@ -682,14 +737,14 @@ def build():
             lean_spread_str = f"{away_abbr} {spread_line_val:+.1f}" if spread_line_val is not None else away_abbr
 
         # Grade total
-        total_grade, total_direction = grade_total(
-            home_abbr, away_abbr, g.get('total_line'), team_stats)
+        total_grade, total_direction, ev_total, why_total = grade_total(
+            home_abbr, away_abbr, g, team_stats)
         total_line_val = g.get('total_line')
         lean_total_str = f"{total_direction} {total_line_val}" if total_line_val else ''
         total_odds_val = g.get('odds_over') if total_direction == 'Over' else g.get('odds_under')
 
         # Moneyline: its own model, graded on expected value (can lean to the underdog)
-        grade_ml, ml_lean_team, why_ml = grade_moneyline(home_abbr, away_abbr, g, model)
+        grade_ml, ml_lean_team, why_ml, ev_ml = grade_moneyline(home_abbr, away_abbr, g, model)
         lean_ml_str = ml_lean_team or ''
         ml_odds_val = (g.get('odds_ml_home') if ml_lean_team == home_abbr
                        else g.get('odds_ml_away') if ml_lean_team else None)
@@ -723,7 +778,7 @@ def build():
             opp = away_abbr if player_team == home_abbr else home_abbr
 
             p_with_opp = {**p, 'opp_abbr': opp, 'team': player_team}
-            grade, rationale = grade_prop(p_with_opp, player_stats, team_stats, league, injuries)
+            grade, rationale, ev = grade_prop(p_with_opp, player_stats, team_stats, league, injuries)
 
             is_best = grade in ('A', 'B')
             if is_best:
@@ -733,6 +788,7 @@ def build():
                 **p,
                 'team':      player_team,
                 'grade':     grade,
+                'ev':        round(ev, 4) if ev is not None else None,
                 'rationale': rationale,
                 'best_bet':  is_best,
                 'opp_abbr':  opp,
@@ -751,6 +807,7 @@ def build():
             'away_color_primary':   away_info['primary'],
             'away_color_secondary': away_info['secondary'],
             'game_time':            g.get('game_time', ''),
+            'commence_time':        g.get('commence_time', ''),
             'venue':                '',
             'lean_spread':          lean_spread_str,
             'odds_spread':          spread_odds_val,
@@ -768,7 +825,11 @@ def build():
                 'ml_home':          g.get('odds_ml_home'), 'ml_away':          g.get('odds_ml_away'),
             },
             'why_spread':           why_spread,
+            'why_total':            why_total if total_grade != 'N/A' else '',
             'why_ml':               why_ml,
+            'ev_spread':            ev_spread,
+            'ev_total':             ev_total,
+            'ev_ml':                ev_ml,
             'best_bet_ml':          best_bet_ml,
             'lean_ml':              lean_ml_str,
             'odds_ml':              ml_odds_val,
@@ -778,6 +839,8 @@ def build():
                                       for ab in (away_abbr, home_abbr) for i in injuries.get(ab, []) if i['w'] >= 0.25],
             'props':                graded_props,
         })
+
+    best_bets_count = select_top_picks(output_games)
 
     slate = {
         'slate_date':    TODAY_ET,

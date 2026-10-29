@@ -34,6 +34,23 @@
         "direction": "Over",
         "opp_full": "Atlanta Hawks"
       }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Toumani Camara Under 3.5 reb",
+      "odds": 120,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Toumani Camara",
+        "prop_type": "reb",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Memphis Grizzlies"
+      }
     }
   ]
 }

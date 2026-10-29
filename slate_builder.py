@@ -421,6 +421,7 @@ def _trend_note(l5_val, l10_val, season_val):
 PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   # variance / mean
 PROP_MODEL_W = 0.40            # most weight the model ever gets against the market price
 PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
+EARLY_SCALE = 1.0   # set per run from average games played: early season shrinks the model toward the market, so cutoffs relax to match
 PROP_EV      = (0.08, 0.04, 0.015)     # EV per 1u needed for A / B / C
 OPP_WEIGHT   = 0.5             # share of an opponent's scoring-defense deviation applied to a projection
 HIT_W_MAX    = 0.35            # most weight the game-log hit rate gets against the distribution model
@@ -565,7 +566,7 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
     lam   = PROP_MODEL_W * (pdata.get('gp') or 0) / ((pdata.get('gp') or 0) + PROP_GP_K)
     p_fin = p_mkt + lam * (p_model - p_mkt)
     ev    = p_fin * (d - 1) - (1 - p_fin)
-    grade = _grade_ev(ev, PROP_EV)
+    grade = _grade_ev(ev, tuple(c * EARLY_SCALE for c in PROP_EV))
 
     rationale = (f"Proj {mu:.1f} {PROP_LABEL[prop_type]} (×{pf:.2f} pace): {p_model*100:.0f}% {direction.lower()} "
                  f"vs market {p_mkt*100:.0f}%, EV {ev*100:+.1f}%")
@@ -776,6 +777,11 @@ def build():
     league       = league_avgs(team_stats)
     sched        = {get_team_info(n)['abbr']: d for n, d in raw_sched.items()}
     logs         = {normalize_player(n): v for n, v in raw_logs.items()}
+    global EARLY_SCALE
+    gps = [v.get('gp') or 0 for v in player_stats.values() if (v.get('gp') or 0) > 0]
+    avg_gp = sum(gps) / len(gps) if gps else 0
+    EARLY_SCALE = 0.5 + 0.5 * min(1.0, avg_gp / 12)   # 0.5 at season start -> 1.0 by ~12 games
+    print(f'[slate] avg games played {avg_gp:.1f}; prop grade cutoffs scaled x{EARLY_SCALE:.2f}')
     disp, disp_n = estimate_dispersion(logs)
     print('[slate] spread (variance/mean) per stat: ' + ', '.join(f'{k} {disp[k]:.2f}' + ('' if disp_n[k] >= DISP_MIN_PLAYERS else '*') for k in disp) + '  (* = default, too few game logs)')
     injuries     = build_injuries(raw_injuries, player_stats, team_stats)

@@ -7,7 +7,7 @@ Automated NBA props and game-lean dashboard, rebuilt twice daily by GitHub Actio
 
 ## Pipeline (`.github/workflows/update.yml`)
 
-1. `fetch_data.py`   – game lines + player props (The Odds API); player/team stats (NBA Stats API). Logs rows/columns per endpoint.
+1. `fetch_data.py`   – game lines + player props (The Odds API); player, team and recent-form stats (ESPN public endpoints; stats.nba.com blocks GitHub runners). Logs rows per table.
 2. `odds_fetcher.py` – assembles raw odds into `odds_data.json`.
 3. `slate_builder.py` – grades props and leans, applies team colors, writes `slate_data.js`.
 4. `update_tracker.py` – appends today's A/B picks to `tracker.json` (results start as `Pending`) and refreshes the embedded tracker.
@@ -25,7 +25,7 @@ Raw API files are git-ignored; only `nba_dashboard.html`, `slate_data.js` and `t
 ## First-run check (fetch step log)
 
 Each NBA endpoint prints a line like `[fetch] OK team_stats: 30 rows; cols=[...]`.
-- `WARNING EMPTY` on the NBA lines means stats.nba.com returned nothing to the runner (the dashboard then shows a banner and hides player props).
+- `WARNING EMPTY` on a stats line means ESPN returned nothing to the runner (the dashboard then shows a banner and hides player props).
 - `team_stats` columns should include `TEAM_NAME`, `PACE`, `OFF_RATING`, `DEF_RATING`; `opp_stats` should include `OPP_PTS`, `OPP_REB`, `OPP_AST`, `OPP_FG3M`.
 
 ## Grading notes
@@ -34,3 +34,10 @@ Each NBA endpoint prints a line like `[fetch] OK team_stats: 30 rows; cols=[...]
 - Contextual signals (pace, usage, opponent) help Overs and hurt Unders.
 - Players with fewer than `MIN_GP_GRADE` (3) games are `N/A`. Players not found in the NBA feed are hidden and listed in the slate log.
 - Results in `tracker.json` are graded manually (`result`: Win/Loss/Push, `pl`: units).
+
+## Stats source notes
+- Season stats come from ESPN's `byathlete` endpoint; recent form (L5/L10) from per-player game logs, fetched only for players with a prop today.
+- ESPN does not publish pace, ratings or usage, so these are **estimated** from per-game box-score totals: possessions = FGA + 0.44*FTA - OREB + TO; usage, REB% and AST% from the player's and team's per-game totals; points allowed from completed scoreboard games.
+- Opponent rebounds / assists / 3PM allowed are not available, so only the opponent *points* signal is used.
+- With only a few games played, every average is noisy; props need 3+ games and recent splits need 3+ games.
+- Injuries come from ESPN's injury report. An absent player's scoring is split: 35% picked up by the rotation, 25% net loss to the team, 40% absorbed by the bench (tunable constants at the top of the injuries block in slate_builder.py). Out/Doubtful players are not graded; Questionable players are capped at C.

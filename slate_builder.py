@@ -330,7 +330,7 @@ def _short(name):
 # A/B grades are the shortlist; "best bet" (and the tracker) is the few highest-EV picks of the day.
 TOP_N        = 10     # most best bets per day, all kinds combined
 PER_GAME_MAX = 2      # most best bets from one game
-MIN_PICK_EV  = 0.03   # model EV required (at the posted price)
+MIN_PICK_EV  = 0.025  # model EV required (at the posted price)
 
 def select_top_picks(output_games, n=TOP_N, per_game=PER_GAME_MAX, min_ev=MIN_PICK_EV):
     """Clear every best-bet flag, then re-set it on the top picks. Returns how many were chosen."""
@@ -370,10 +370,6 @@ MIN_GP_GRADE    = 3       # games played before a prop is graded (below this -> 
 LEAGUE_AVG_PACE = 99.2    # last-resort fallback only; the real value comes from team_stats
 
 # (strong, moderate, poor) edge cut-offs per prop type, in stat units
-PROP_CV     = {'pts': 0.38, 'reb': 0.50, 'ast': 0.55, '3pm': 0.85, 'pra': 0.30}   # typical game-to-game spread / line
-PROP_SHRINK = 0.5      # how much of the raw edge-implied win probability is believed
-EDGE_RULES = {'pts': (3, 1, -2), 'reb': (2, 0.5, -1.5), 'ast': (1.5, 0.5, -1),
-              '3pm': (1, 0.3, -0.5), 'pra': (4, 1, -3)}
 
 def league_avgs(team_stats):
     """League-wide means computed from today's team table (no hardcoded league constants)."""
@@ -416,15 +412,95 @@ def _trend_note(l5_val, l10_val, season_val):
             return f', ↓ L10 {l10_val:.1f}'
     return ''
 
-def grade_prop(prop, player_stats, team_stats, league=None, injuries=None):
-    """
-    Grade a player prop A/B/C/D, or 'N/A' when there is not enough data.
+# ── prop model ────────────────────────────────────────────────────────────────
+# Sportsbook lines sit near the MEDIAN of a player's distribution, but box-score stats are right-skewed, so
+# the average is above the median. Comparing an average to a line therefore makes almost everything look
+# like an Over. Instead we model the full distribution (negative binomial: counts, right-skewed), take
+# P(win) for the chosen side, blend in how often the player actually cleared this line, and shrink the
+# result toward the market's own no-vig price by an amount that grows with games played.
+PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   # variance / mean
+PROP_MODEL_W = 0.40            # most weight the model ever gets against the market price
+PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
+PROP_EV      = (0.08, 0.04, 0.015)     # EV per 1u needed for A / B / C
+OPP_WEIGHT   = 0.5             # share of an opponent's scoring-defense deviation applied to a projection
+HIT_W_MAX    = 0.35            # most weight the game-log hit rate gets against the distribution model
+HIT_W_K      = 12
+LOG_GAMES    = 15
+PROP_LABEL   = {'pts': 'pts', 'reb': 'reb', 'ast': 'ast', '3pm': '3PM', 'pra': 'PRA'}
 
-    - Blended player average (season 60% / L10 25% / L5 15%), scaled to tonight's pace
-    - Opponent defense vs league average, usage / rate stats, pace
-    Contextual signals are multiplied by `sign` (+1 Over, -1 Under) so a fast game or a
-    high-usage player helps an Over and hurts an Under. Only the statistical edge is
-    already direction-aware.
+def _pmf_upto(mu, vr, k):
+    """P(X=0..k) for a negative binomial with mean mu and variance vr*mu (Poisson when vr <= 1)."""
+    if mu <= 0 or k < 0:
+        return [1.0] + [0.0] * max(k, 0)
+    pmf = []
+    if vr <= 1.0001:
+        p = math.exp(-mu)
+        for i in range(k + 1):
+            pmf.append(p)
+            p = p * mu / (i + 1)
+    else:
+        r = mu / (vr - 1)
+        q = mu / (r + mu)
+        p = math.exp(r * math.log(r / (r + mu)))
+        for i in range(k + 1):
+            pmf.append(p)
+            p = p * (i + r) / (i + 1) * q
+    return pmf
+
+def stat_probs(mu, vr, line):
+    """(P(over), P(under), P(push)) for a stat with the given mean against a line."""
+    if line < 0:
+        return 1.0, 0.0, 0.0
+    k   = int(math.floor(line))
+    pmf = _pmf_upto(mu, vr, k)
+    cdf = sum(pmf)
+    if float(line).is_integer():
+        push, under = pmf[k], cdf - pmf[k]
+    else:
+        push, under = 0.0, cdf
+    return max(0.0, 1.0 - cdf), max(under, 0.0), push
+
+def hit_rate(values, line, direction):
+    """(share of decided games the side won, games, wins) from recent game values."""
+    over  = sum(1 for v in values if v > line)
+    under = sum(1 for v in values if v < line)
+    wins, decided = (over if direction == 'Over' else under), over + under
+    return (wins / decided if decided else None), len(values), wins
+
+DISP_MIN_PLAYERS = 60     # need this many players with 3+ logged games before trusting the measured spread
+
+def estimate_dispersion(logs):
+    """
+    Measure variance/mean per stat from the players' own game logs (pooled across players), replacing the
+    fixed PROP_VR guesses once there is enough data. A wrong spread shifts the skew correction and
+    brings the Over bias back, so this is measured, not assumed. Returns (vr_by_stat, players_used_by_stat).
+    """
+    vr, used = dict(PROP_VR), {}
+    for t in PROP_VR:
+        sv = sm = 0.0
+        cnt = 0
+        for games in (logs or {}).values():
+            if t == 'pra':
+                vals = [g['pts'] + g['reb'] + g['ast'] for g in games[:LOG_GAMES]]
+            else:
+                vals = [g[STAT_KEYS[t]] for g in games[:LOG_GAMES]]
+            if len(vals) < 3:
+                continue
+            m = sum(vals) / len(vals)
+            if m <= 0:
+                continue
+            sv += sum((v - m) ** 2 for v in vals) / (len(vals) - 1)
+            sm += m
+            cnt += 1
+        used[t] = cnt
+        if cnt >= DISP_MIN_PLAYERS and sm > 0:
+            vr[t] = min(5.0, max(1.02, sv / sm))
+    return vr, used
+
+def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=None, opp_odds=None, disp=None):
+    """
+    Grade a player prop A/B/C/D on price-adjusted expected value, or 'N/A' when there is not enough data.
+    Returns (grade, rationale, ev).
     """
     league      = league or {}
     prop_type   = prop.get('prop_type', '')
@@ -433,76 +509,73 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None):
     player_team = prop.get('team', '')
     opp_abbr    = prop.get('opp_abbr', '')
 
-    if line is None or direction not in ('Over', 'Under') or prop_type not in EDGE_RULES:
+    if line is None or direction not in ('Over', 'Under') or prop_type not in PROP_VR:
         return 'N/A', '', None
-    pdata = player_stats.get(normalize_player(prop.get('player_name', '')))
+    pkey  = normalize_player(prop.get('player_name', ''))
+    pdata = player_stats.get(pkey)
     if not pdata or (pdata.get('gp') or 0) < MIN_GP_GRADE:
         return 'N/A', '', None
 
     injuries = injuries or {}
-    pkey     = normalize_player(prop.get('player_name', ''))
     me_inj   = next((i for i in injuries.get(player_team, []) if i['key'] == pkey), None)
     if me_inj and me_inj['w'] >= 0.85:
         return 'N/A', f"Listed {me_inj['status']}", None
-    opp   = team_stats.get(opp_abbr, {})
-    sign  = 1 if direction == 'Over' else -1
-    pf    = pace_factor(player_team, opp_abbr, team_stats, league.get('pace', 0))
-    pace_pt = (1 if pf > 1.03 else -1 if pf < 0.97 else 0) * sign
+    opp = team_stats.get(opp_abbr, {})
+    pf  = pace_factor(player_team, opp_abbr, team_stats, league.get('pace', 0))
 
     if prop_type == 'pra':
-        raw = pdata.get('pts', 0) + pdata.get('reb', 0) + pdata.get('ast', 0)
+        raw   = pdata.get('pts', 0) + pdata.get('reb', 0) + pdata.get('ast', 0)
         parts = [injury_gain(player_team, pkey, k, player_stats, injuries) for k in ('pts', 'reb', 'ast')]
     else:
-        raw = pdata.get(STAT_KEYS[prop_type], 0)
+        raw   = pdata.get(STAT_KEYS[prop_type], 0)
         parts = [injury_gain(player_team, pkey, STAT_KEYS[prop_type], player_stats, injuries)]
     if not raw:
         return 'N/A', '', None
     inj_gain = sum(g for g, _ in parts)
     inj_who  = next((n for _, n in sorted(parts, key=lambda x: -x[0]) if n), '')
     raw += inj_gain
-    avg  = raw * pf
-    edge = avg - line if direction == 'Over' else line - avg
-    hi, mid, lo = EDGE_RULES[prop_type]
-    score = 2 if edge > hi else 1 if edge > mid else -1 if edge < lo else 0
-    score += pace_pt
 
-    if prop_type == 'pts':
-        usg = pdata.get('usg_pct', 0)
-        if usg and usg > 0.28: score += sign
-        score += _opp_signal(opp.get('opp_pts'), league.get('opp_pts')) * sign
-        trend = _trend_note(pdata.get('pts_l5'), pdata.get('pts_l10'), raw)
-        rationale = f"Blended avg {avg:.1f} pts (×{pf:.2f} pace), USG {usg*100:.1f}%{trend}"
-    elif prop_type == 'reb':
-        reb_pct = pdata.get('reb_pct', 0)
-        if reb_pct and reb_pct > 0.15: score += sign
-        score += _opp_signal(opp.get('opp_reb'), league.get('opp_reb')) * sign
-        trend = _trend_note(pdata.get('reb_l5'), pdata.get('reb_l10'), raw)
-        rationale = f"Blended avg {avg:.1f} reb (×{pf:.2f} pace), REB% {reb_pct*100:.1f}%{trend}"
-    elif prop_type == 'ast':
-        ast_pct = pdata.get('ast_pct', 0)
-        if ast_pct and ast_pct > 0.25: score += sign
-        score += _opp_signal(opp.get('opp_ast'), league.get('opp_ast')) * sign
-        trend = _trend_note(pdata.get('ast_l5'), pdata.get('ast_l10'), raw)
-        rationale = f"Blended avg {avg:.1f} ast (×{pf:.2f} pace), AST% {ast_pct*100:.1f}%{trend}"
-    elif prop_type == '3pm':
-        pct, att = pdata.get('fg3_pct', 0), pdata.get('fg3a', 0)
-        if pct and pct > 0.38: score += sign
-        if att and att > 8:    score += sign
-        score += _opp_signal(opp.get('opp_fg3m'), league.get('opp_fg3m')) * sign
-        trend = _trend_note(pdata.get('fg3m_l5'), pdata.get('fg3m_l10'), raw)
-        rationale = f"Blended avg {avg:.1f} 3PM (×{pf:.2f} pace), {pct*100:.1f}% on {att:.1f} att{trend}"
-    else:  # pra
-        rationale = f"Blended PRA avg {avg:.1f} (×{pf:.2f} pace)"
+    # weak opponent scoring defense lifts a scorer, strong defense lowers him (only points allowed is available)
+    opp_mult = 1.0
+    if prop_type in ('pts', 'pra') and opp.get('opp_pts') and league.get('opp_pts'):
+        ratio    = opp['opp_pts'] / league['opp_pts']
+        opp_mult = min(1.05, max(0.95, 1 + OPP_WEIGHT * (ratio - 1)))
+    mu = raw * pf * opp_mult
 
+    # distribution model for the chosen side (pushes removed so it is comparable to a two-way market price)
+    over, under, _ = stat_probs(mu, (disp or PROP_VR)[prop_type], line)
+    win, lose = (over, under) if direction == 'Over' else (under, over)
+    p_nb = win / (win + lose) if (win + lose) > 0 else 0.5
+
+    # how often has he actually cleared this line?
+    games = (logs or {}).get(pkey) or []
+    if prop_type == 'pra':
+        vals = [g['pts'] + g['reb'] + g['ast'] for g in games[:LOG_GAMES]]
+    else:
+        vals = [g[STAT_KEYS[prop_type]] for g in games[:LOG_GAMES]]
+    hr, n_logs, hits = hit_rate(vals, line, direction)
+    omega   = min(HIT_W_MAX, n_logs / (n_logs + HIT_W_K)) if (hr is not None and n_logs >= 3) else 0.0
+    p_model = (1 - omega) * p_nb + omega * (hr if hr is not None else p_nb)
+
+    # the market's own no-vig price for this side
+    d = _dec(prop.get('odds'), _dec(-110))
+    d_opp = _dec(opp_odds)
+    ih = 1 / d
+    p_mkt = ih / (ih + 1 / d_opp) if d_opp else min(ih / 1.045, 0.97)      # one-sided quote: assume ~4.5% hold
+    lam   = PROP_MODEL_W * (pdata.get('gp') or 0) / ((pdata.get('gp') or 0) + PROP_GP_K)
+    p_fin = p_mkt + lam * (p_model - p_mkt)
+    ev    = p_fin * (d - 1) - (1 - p_fin)
+    grade = _grade_ev(ev, PROP_EV)
+
+    rationale = (f"Proj {mu:.1f} {PROP_LABEL[prop_type]} (×{pf:.2f} pace): {p_model*100:.0f}% {direction.lower()} "
+                 f"vs market {p_mkt*100:.0f}%, EV {ev*100:+.1f}%")
+    if hr is not None and n_logs >= 3:
+        rationale += f", cleared {hits}/{n_logs} L{n_logs}" if direction == 'Over' else f", stayed under {hits}/{n_logs} L{n_logs}"
+    if prop_type != 'pra':
+        key   = STAT_KEYS[prop_type]
+        rationale += _trend_note(pdata.get(f'{key}_l5'), pdata.get(f'{key}_l10'), raw)
     if inj_gain >= 0.1 and inj_who:
         rationale += f", w/o {_short(inj_who)} (+{inj_gain:.1f})"
-    grade = 'A' if score >= 3 else 'B' if score == 2 else 'C' if score == 1 else 'D'
-    # Price-aware ranking score: edge -> win probability (shrunk hard: the market is efficient) -> EV at the posted odds
-    z  = edge / (PROP_CV[prop_type] * max(line, 0.5))
-    pw = 0.5 + PROP_SHRINK * (_phi(z) - 0.5)
-    ev = _ev(pw, prop.get('odds'), -110)
-    if ev is not None:
-        rationale += f", EV {ev*100:+.0f}%"
     if me_inj:
         rationale += f", listed {me_inj['status']}"
         if grade in ('A', 'B'):
@@ -688,6 +761,7 @@ def build():
     raw_l5       = load_json('raw_player_stats_L5.json') or {}
     raw_injuries = load_json('raw_injuries.json') or []
     raw_sched    = load_json('raw_schedule.json') or {}
+    raw_logs     = load_json('raw_gamelogs.json') or {}
     tracker_data = load_json('tracker.json')
 
     base_stats = parse_nba_stats(raw_base)
@@ -701,6 +775,9 @@ def build():
     team_stats   = build_team_stat_lookup(team_rows, opp_rows)
     league       = league_avgs(team_stats)
     sched        = {get_team_info(n)['abbr']: d for n, d in raw_sched.items()}
+    logs         = {normalize_player(n): v for n, v in raw_logs.items()}
+    disp, disp_n = estimate_dispersion(logs)
+    print('[slate] spread (variance/mean) per stat: ' + ', '.join(f'{k} {disp[k]:.2f}' + ('' if disp_n[k] >= DISP_MIN_PLAYERS else '*') for k in disp) + '  (* = default, too few game logs)')
     injuries     = build_injuries(raw_injuries, player_stats, team_stats)
     team_stats   = adjust_team_for_injuries(team_stats, injuries)   # injury-adjusted offense for spread/total
 
@@ -767,6 +844,9 @@ def build():
         event_id = g.get('event_id', '')
         raw_props = props_by_event.get(event_id, [])
         graded_props = []
+        pair = {}                                       # (player, stat, line) -> {'Over': odds, 'Under': odds}
+        for q in raw_props:
+            pair.setdefault((normalize_player(q.get('player_name', '')), q.get('prop_type'), q.get('line')), {})[q.get('direction')] = q.get('odds')
         for p in raw_props:
             # Determine which team this player is on
             pdata = player_stats.get(normalize_player(p.get('player_name', '')))
@@ -778,7 +858,9 @@ def build():
             opp = away_abbr if player_team == home_abbr else home_abbr
 
             p_with_opp = {**p, 'opp_abbr': opp, 'team': player_team}
-            grade, rationale, ev = grade_prop(p_with_opp, player_stats, team_stats, league, injuries)
+            other = 'Under' if p.get('direction') == 'Over' else 'Over'
+            opp_odds = pair.get((normalize_player(p.get('player_name', '')), p.get('prop_type'), p.get('line')), {}).get(other)
+            grade, rationale, ev = grade_prop(p_with_opp, player_stats, team_stats, league, injuries, logs, opp_odds, disp)
 
             is_best = grade in ('A', 'B')
             if is_best:

@@ -444,6 +444,8 @@ def fetch_recent_form(players):
     targets = [p for p in players if _norm_name(p['name']) in wanted][:MAX_GAMELOGS]
     print(f'[fetch] game logs: {len(targets)} players with props (of {len(wanted)} prop names)')
     logs = _pmap(lambda p: (p, _gamelog(p['id'])), targets)
+    # per-game values (newest first) so the grader can see how often a player cleared a given line
+    write_json('raw_gamelogs.json', {p['name']: games[:15] for p, games in logs if games})
     headers = ['PLAYER_ID', 'PLAYER_NAME', 'GP', 'PTS', 'REB', 'AST', 'FG3M']
     for n, label in ((5, 'L5'), (10, 'L10')):
         rows = []

@@ -8,8 +8,8 @@
       "odds": -108,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "ml",
         "team_full": "Atlanta Hawks",
@@ -287,6 +287,91 @@
         "line": 6.5,
         "direction": "Under",
         "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "WAS -1.5 (CHA @ WAS spread)",
+      "odds": 102,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": -1.5,
+        "team_full": "Washington Wizards",
+        "opp_full": "Charlotte Hornets",
+        "home_full": "Washington Wizards",
+        "away_full": "Charlotte Hornets"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Sion James Under 5.5 pts",
+      "odds": -118,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "pts",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Mikal Bridges Under 9.5 pts",
+      "odds": 100,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mikal Bridges",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "IND +8.5 (IND @ MIA spread)",
+      "odds": -102,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 8.5,
+        "team_full": "Indiana Pacers",
+        "opp_full": "Miami Heat",
+        "home_full": "Miami Heat",
+        "away_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Kelly Oubre Jr. Under 3.5 reb",
+      "odds": 123,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kelly Oubre Jr.",
+        "prop_type": "reb",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
       }
     }
   ]

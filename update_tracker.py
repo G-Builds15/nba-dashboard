@@ -147,29 +147,40 @@ def verdict(value, line, direction):
 
 _finals_cache = {}
 def finals_for(date_str):
-    """{frozenset({home_full, away_full}): {full_name: score}} for completed games on an ET date."""
+    """{frozenset({home_full, away_full}): {full_name: score}} for completed games on an ET date.
+    Queries the day itself and the next day separately (late games can be filed under either), retries a
+    failed fetch, and never caches an empty or failed result, so one bad response cannot block settling."""
     if date_str in _finals_cache:
         return _finals_cache[date_str]
     d0 = datetime.strptime(date_str, '%Y-%m-%d')
-    rng = f"{d0.strftime('%Y%m%d')}-{(d0 + timedelta(days=1)).strftime('%Y%m%d')}"
-    data = get_json(f'{ESPN_SITE}/scoreboard?dates={rng}&limit=200') or {}
-    out = {}
-    for ev in data.get('events', []):
-        comp = (ev.get('competitions') or [{}])[0]
-        if not ((comp.get('status') or {}).get('type') or {}).get('completed'):
+    out, ok = {}, True
+    for off in (0, 1):
+        day = (d0 + timedelta(days=off)).strftime('%Y%m%d')
+        data = None
+        for _ in range(3):
+            data = get_json(f'{ESPN_SITE}/scoreboard?dates={day}&limit=200')
+            if data and 'events' in data:
+                break
+        if not data or 'events' not in data:
+            ok = False
+            print(f'[tracker] scoreboard {day} unavailable', file=sys.stderr)
             continue
-        cs = comp.get('competitors') or []
-        if len(cs) != 2:
-            continue
-        try:
-            scores = {c['team']['displayName']: num(c.get('score')) for c in cs}
-        except Exception:
-            continue
-        if None in scores.values():
-            continue
-        out[frozenset(scores)] = scores
+        for ev in data.get('events', []):
+            comp = (ev.get('competitions') or [{}])[0]
+            st = (comp.get('status') or {}).get('type') or {}
+            cs = comp.get('competitors') or []
+            if len(cs) != 2 or not (st.get('completed') or st.get('state') == 'post'):
+                continue
+            try:
+                scores = {c['team']['displayName']: num(c.get('score')) for c in cs}
+            except Exception:
+                continue
+            if None in scores.values():
+                continue
+            out[frozenset(scores)] = scores
     print(f'[tracker] finals for {date_str}: {len(out)} completed games')
-    _finals_cache[date_str] = out
+    if ok and out:
+        _finals_cache[date_str] = out
     return out
 
 _player_ids = None
@@ -247,6 +258,7 @@ def settle_pick(pick):
     if kind in ('spread', 'total', 'ml'):
         game = finals_for(date).get(frozenset({meta.get('home_full'), meta.get('away_full')}))
         if not game:
+            print(f"[tracker] no final found for {meta.get('away_full')} @ {meta.get('home_full')} on {date}", file=sys.stderr)
             return None
         if kind == 'ml':
             mine, theirs = game.get(meta.get('team_full')), game.get(meta.get('opp_full'))

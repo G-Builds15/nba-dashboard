@@ -330,7 +330,7 @@ def _short(name):
 # A/B grades are the shortlist; "best bet" (and the tracker) is the few highest-EV picks of the day.
 TOP_N        = 10     # most best bets per day, all kinds combined
 PER_GAME_MAX = 2      # most best bets from one game
-MIN_PICK_EV  = 0.025  # model EV required (at the posted price)
+MIN_PICK_EV = 0.02  # model EV required (at the posted price)
 
 def select_top_picks(output_games, n=TOP_N, per_game=PER_GAME_MAX, min_ev=MIN_PICK_EV):
     """Clear every best-bet flag, then re-set it on the top picks. Returns how many were chosen."""
@@ -419,12 +419,12 @@ def _trend_note(l5_val, l10_val, season_val):
 # P(win) for the chosen side, blend in how often the player actually cleared this line, and shrink the
 # result toward the market's own no-vig price by an amount that grows with games played.
 PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   # variance / mean
-PROP_MODEL_W = 0.40            # most weight the model ever gets against the market price
-MU_SHRINK_K  = 8               # games-played pseudo-count pulling the projected mean toward the market-implied mean (None = off)
+PROP_MODEL_W = 0.60            # most weight the model ever gets against the market price
+MU_SHRINK_K  = 5               # games-played pseudo-count pulling the projected mean toward the market-implied mean (None = off)
 PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
 LOW_3PA = 3.0       # 3-point attempts per game below which a 3PM prop is capped at C
 EARLY_SCALE = 1.0   # set per run from average games played: early season shrinks the model toward the market, so cutoffs relax to match
-PROP_EV      = (0.08, 0.04, 0.015)     # EV per 1u needed for A / B / C
+PROP_EV      = (0.05, 0.025, 0.01)     # EV per 1u needed for A / B / C
 OPP_WEIGHT   = 0.5             # share of an opponent's scoring-defense deviation applied to a projection
 HIT_W_MAX    = 0.35            # most weight the game-log hit rate gets against the distribution model
 HIT_W_K      = 12

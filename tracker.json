@@ -424,6 +424,57 @@
         "direction": "Under",
         "opp_full": "Golden State Warriors"
       }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Sion James Under 11.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sion James",
+        "prop_type": "pra",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "BKN +7.5 (DET @ BKN spread)",
+      "odds": -102,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 7.5,
+        "team_full": "Brooklyn Nets",
+        "opp_full": "Detroit Pistons",
+        "home_full": "Brooklyn Nets",
+        "away_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Cade Cunningham Under 8.5 ast",
+      "odds": 111,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cade Cunningham",
+        "prop_type": "ast",
+        "line": 8.5,
+        "direction": "Under",
+        "opp_full": "Brooklyn Nets"
+      }
     }
   ]
 }

@@ -24,8 +24,8 @@
       "odds": 158,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Evan Mobley",
@@ -41,8 +41,8 @@
       "odds": 120,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.2,
       "meta": {
         "kind": "prop",
         "player": "Toumani Camara",
@@ -58,8 +58,8 @@
       "odds": 114,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Derik Queen",
@@ -75,8 +75,8 @@
       "odds": 226,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Zion Williamson",
@@ -92,8 +92,8 @@
       "odds": 161,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Cam Spencer",
@@ -109,8 +109,8 @@
       "odds": 136,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.36,
       "meta": {
         "kind": "prop",
         "player": "Toumani Camara",
@@ -118,6 +118,175 @@
         "line": 2.5,
         "direction": "Over",
         "opp_full": "Memphis Grizzlies"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Paul Reed Jr Over 0.5 3PM",
+      "odds": 174,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Paul Reed Jr",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "PHI +2.5 (NYK @ PHI spread)",
+      "odds": -105,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 2.5,
+        "team_full": "Philadelphia 76ers",
+        "opp_full": "New York Knicks",
+        "home_full": "Philadelphia 76ers",
+        "away_full": "New York Knicks"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Mikal Bridges Under 15.5 PRA",
+      "odds": -112,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mikal Bridges",
+        "prop_type": "pra",
+        "line": 15.5,
+        "direction": "Under",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Jakob Poeltl Under 7.5 pts",
+      "odds": -111,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jakob Poeltl",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Jamal Shead Under 0.5 3PM",
+      "odds": 174,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jamal Shead",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Tari Eason Under 0.5 3PM",
+      "odds": 177,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tari Eason",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Under",
+        "opp_full": "Dallas Mavericks"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Under 236.5 (IND @ MIA total)",
+      "odds": -105,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 236.5,
+        "home_full": "Miami Heat",
+        "away_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Derrick Jones Over 1.5 3PM",
+      "odds": 145,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derrick Jones",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Minnesota Timberwolves"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "LaMelo Ball Under 32.5 PRA",
+      "odds": -108,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "LaMelo Ball",
+        "prop_type": "pra",
+        "line": 32.5,
+        "direction": "Under",
+        "opp_full": "LA Clippers"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Draymond Green Under 6.5 pts",
+      "odds": 100,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Draymond Green",
+        "prop_type": "pts",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
       }
     }
   ]

@@ -102,6 +102,23 @@
         "direction": "Over",
         "opp_full": "Portland Trail Blazers"
       }
+    },
+    {
+      "date": "2026-10-29",
+      "pick": "Toumani Camara Over 2.5 3PM",
+      "odds": 136,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Toumani Camara",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Memphis Grizzlies"
+      }
     }
   ]
 }

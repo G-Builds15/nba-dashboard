@@ -373,6 +373,57 @@
         "direction": "Under",
         "opp_full": "Miami Heat"
       }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Josh Giddey Under 11.5 pts",
+      "odds": -123,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Giddey",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Zaccharie Risacher Over 4.5 reb",
+      "odds": 128,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Zaccharie Risacher",
+        "prop_type": "reb",
+        "line": 4.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-10-30",
+      "pick": "Walker Kessler Under 9.5 reb",
+      "odds": 106,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Walker Kessler",
+        "prop_type": "reb",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
     }
   ]
 }

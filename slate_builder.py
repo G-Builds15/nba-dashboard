@@ -421,6 +421,7 @@ def _trend_note(l5_val, l10_val, season_val):
 PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   # variance / mean
 PROP_MODEL_W = 0.40            # most weight the model ever gets against the market price
 PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
+LOW_3PA = 3.0       # 3-point attempts per game below which a 3PM prop is capped at C
 EARLY_SCALE = 1.0   # set per run from average games played: early season shrinks the model toward the market, so cutoffs relax to match
 PROP_EV      = (0.08, 0.04, 0.015)     # EV per 1u needed for A / B / C
 OPP_WEIGHT   = 0.5             # share of an opponent's scoring-defense deviation applied to a projection
@@ -567,11 +568,16 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
     p_fin = p_mkt + lam * (p_model - p_mkt)
     ev    = p_fin * (d - 1) - (1 - p_fin)
     grade = _grade_ev(ev, tuple(c * EARLY_SCALE for c in PROP_EV))
+    low_volume = prop_type == '3pm' and (pdata.get('fg3a') or 0) < LOW_3PA
+    if low_volume and grade in ('A', 'B'):
+        grade = 'C'     # a handful of makes from a non-shooter is noise, not an edge
 
     rationale = (f"Proj {mu:.1f} {PROP_LABEL[prop_type]} (×{pf:.2f} pace): {p_model*100:.0f}% {direction.lower()} "
                  f"vs market {p_mkt*100:.0f}%, EV {ev*100:+.1f}%")
     if hr is not None and n_logs >= 3:
         rationale += f", cleared {hits}/{n_logs} L{n_logs}" if direction == 'Over' else f", stayed under {hits}/{n_logs} L{n_logs}"
+    if low_volume:
+        rationale += f"; only {pdata.get('fg3a') or 0:.1f} 3PA/g, capped at C"
     if prop_type != 'pra':
         key   = STAT_KEYS[prop_type]
         rationale += _trend_note(pdata.get(f'{key}_l5'), pdata.get(f'{key}_l10'), raw)

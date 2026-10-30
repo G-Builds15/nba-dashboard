@@ -420,6 +420,7 @@ def _trend_note(l5_val, l10_val, season_val):
 # result toward the market's own no-vig price by an amount that grows with games played.
 PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   # variance / mean
 PROP_MODEL_W = 0.40            # most weight the model ever gets against the market price
+MU_SHRINK_K  = 8               # games-played pseudo-count pulling the projected mean toward the market-implied mean (None = off)
 PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
 LOW_3PA = 3.0       # 3-point attempts per game below which a 3PM prop is capped at C
 EARLY_SCALE = 1.0   # set per run from average games played: early season shrinks the model toward the market, so cutoffs relax to match
@@ -544,8 +545,29 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
         opp_mult = min(1.05, max(0.95, 1 + OPP_WEIGHT * (ratio - 1)))
     mu = raw * pf * opp_mult
 
+    # the market's own no-vig price for this side
+    d = _dec(prop.get('odds'), _dec(-110))
+    d_opp = _dec(opp_odds)
+    ih = 1 / d
+    p_mkt = ih / (ih + 1 / d_opp) if d_opp else min(ih / 1.045, 0.97)      # one-sided quote: assume ~4.5% hold
+    # Shrink the projected MEAN toward the mean the book's price implies, by games played. A 4-game sample
+    # that says "3 pts" against a 7.5 line is far more likely noise than insight; shrinking the mean (not just
+    # the final probability) stops extreme projections from producing extreme probabilities in either direction.
+    vr_t = (disp or PROP_VR)[prop_type]
+    if MU_SHRINK_K is not None:
+        p_over_mkt = p_mkt if direction == 'Over' else 1 - p_mkt
+        lo, hi = 0.01, max(mu, line) * 4 + 5
+        for _ in range(40):
+            mid = (lo + hi) / 2
+            o_, u_, _x = stat_probs(mid, vr_t, line)
+            if o_ / (o_ + u_) < p_over_mkt: lo = mid
+            else: hi = mid
+        mu_mkt = (lo + hi) / 2
+        g_ = pdata.get('gp') or 0
+        mu = mu_mkt + (g_ / (g_ + MU_SHRINK_K)) * (mu - mu_mkt)
+
     # distribution model for the chosen side (pushes removed so it is comparable to a two-way market price)
-    over, under, _ = stat_probs(mu, (disp or PROP_VR)[prop_type], line)
+    over, under, _ = stat_probs(mu, vr_t, line)
     win, lose = (over, under) if direction == 'Over' else (under, over)
     p_nb = win / (win + lose) if (win + lose) > 0 else 0.5
 
@@ -559,11 +581,6 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
     omega   = min(HIT_W_MAX, n_logs / (n_logs + HIT_W_K)) if (hr is not None and n_logs >= 3) else 0.0
     p_model = (1 - omega) * p_nb + omega * (hr if hr is not None else p_nb)
 
-    # the market's own no-vig price for this side
-    d = _dec(prop.get('odds'), _dec(-110))
-    d_opp = _dec(opp_odds)
-    ih = 1 / d
-    p_mkt = ih / (ih + 1 / d_opp) if d_opp else min(ih / 1.045, 0.97)      # one-sided quote: assume ~4.5% hold
     lam   = PROP_MODEL_W * (pdata.get('gp') or 0) / ((pdata.get('gp') or 0) + PROP_GP_K)
     p_fin = p_mkt + lam * (p_model - p_mkt)
     ev    = p_fin * (d - 1) - (1 - p_fin)

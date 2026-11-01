@@ -516,8 +516,8 @@
       "odds": -105,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "ml",
         "team_full": "Charlotte Hornets",
@@ -532,8 +532,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Adem Bona",
@@ -549,8 +549,8 @@
       "odds": 162,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Aaron Wiggins",
@@ -566,8 +566,8 @@
       "odds": -106,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "spread",
         "line": 9.5,
@@ -583,8 +583,8 @@
       "odds": 116,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Kyle Kuzma",
@@ -600,8 +600,8 @@
       "odds": -110,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.91,
       "meta": {
         "kind": "spread",
         "line": 12.5,
@@ -617,8 +617,8 @@
       "odds": 128,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Terrence Shannon Jr.",
@@ -634,8 +634,8 @@
       "odds": -106,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.94,
       "meta": {
         "kind": "prop",
         "player": "Shai Gilgeous-Alexander",
@@ -651,8 +651,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Jaylin Williams",
@@ -660,6 +660,108 @@
         "line": 15.5,
         "direction": "Under",
         "opp_full": "Houston Rockets"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Neemias Queta Under 7.5 reb",
+      "odds": -122,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Neemias Queta",
+        "prop_type": "reb",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Tristan da Silva Under 3.5 reb",
+      "odds": -105,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tristan da Silva",
+        "prop_type": "reb",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Jarace Walker Over 5.5 reb",
+      "odds": 114,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jarace Walker",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Michael Porter Jr Under 1.5 ast",
+      "odds": 138,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Michael Porter Jr",
+        "prop_type": "ast",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Derrick Jones Over 1.5 3PM",
+      "odds": 122,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Derrick Jones",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Scottie Barnes Under 5.5 ast",
+      "odds": -108,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Scottie Barnes",
+        "prop_type": "ast",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
       }
     }
   ]

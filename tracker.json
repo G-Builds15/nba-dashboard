@@ -949,6 +949,106 @@
         "direction": "Under",
         "opp_full": "Denver Nuggets"
       }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "Jarace Walker Under 17.5 pts",
+      "odds": -102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jarace Walker",
+        "prop_type": "pts",
+        "line": 17.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "Kelly Oubre Jr. Under 26.5 PRA",
+      "odds": -113,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kelly Oubre Jr.",
+        "prop_type": "pra",
+        "line": 26.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "CHI ML (CHI @ PHI moneyline)",
+      "odds": 396,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Chicago Bulls",
+        "opp_full": "Philadelphia 76ers",
+        "home_full": "Philadelphia 76ers",
+        "away_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "WAS +2.5 (WAS @ ORL spread)",
+      "odds": -102,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 2.5,
+        "team_full": "Washington Wizards",
+        "opp_full": "Orlando Magic",
+        "home_full": "Orlando Magic",
+        "away_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "Jase Richardson Under 16.5 PRA",
+      "odds": -107,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jase Richardson",
+        "prop_type": "pra",
+        "line": 16.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-11-02",
+      "pick": "GSW ML (PHX @ GSW moneyline)",
+      "odds": -138,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Golden State Warriors",
+        "opp_full": "Phoenix Suns",
+        "home_full": "Golden State Warriors",
+        "away_full": "Phoenix Suns"
+      }
     }
   ]
 }

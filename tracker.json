@@ -702,8 +702,8 @@
       "odds": 114,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.14,
       "meta": {
         "kind": "prop",
         "player": "Jarace Walker",
@@ -762,6 +762,23 @@
         "line": 5.5,
         "direction": "Under",
         "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-11-01",
+      "pick": "Darius Garland Under 2.5 reb",
+      "odds": 104,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Darius Garland",
+        "prop_type": "reb",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
       }
     }
   ]

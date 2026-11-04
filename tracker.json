@@ -1286,6 +1286,40 @@
         "direction": "Over",
         "opp_full": "Houston Rockets"
       }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "Tyrese Maxey Over 32.5 PRA",
+      "odds": -106,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyrese Maxey",
+        "prop_type": "pra",
+        "line": 32.5,
+        "direction": "Over",
+        "opp_full": "Detroit Pistons"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "Hugo Gonzalez Under 7.5 pts",
+      "odds": 100,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Hugo Gonzalez",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Milwaukee Bucks"
+      }
     }
   ]
 }

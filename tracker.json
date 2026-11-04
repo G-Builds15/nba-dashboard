@@ -1218,6 +1218,74 @@
         "home_full": "LA Clippers",
         "away_full": "Miami Heat"
       }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "Brayden Burries Under 19.5 PRA",
+      "odds": -121,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brayden Burries",
+        "prop_type": "pra",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "Landry Shamet Under 2.5 reb",
+      "odds": -114,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Landry Shamet",
+        "prop_type": "reb",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Chicago Bulls"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "MEM -5.5 (IND @ MEM spread)",
+      "odds": -104,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": -5.5,
+        "team_full": "Memphis Grizzlies",
+        "opp_full": "Indiana Pacers",
+        "home_full": "Memphis Grizzlies",
+        "away_full": "Indiana Pacers"
+      }
+    },
+    {
+      "date": "2026-11-04",
+      "pick": "Joan Beringer Over 5.5 reb",
+      "odds": 101,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Joan Beringer",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      }
     }
   ]
 }

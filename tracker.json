@@ -1090,8 +1090,8 @@
       "odds": -105,
       "grade": "A",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.95,
       "meta": {
         "kind": "total",
         "direction": "Under",

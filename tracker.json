@@ -1388,6 +1388,56 @@
         "direction": "Under",
         "opp_full": "Miami Heat"
       }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "PHX ML (ORL @ PHX moneyline)",
+      "odds": -108,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Phoenix Suns",
+        "opp_full": "Orlando Magic",
+        "home_full": "Phoenix Suns",
+        "away_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Jase Richardson Under 13.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jase Richardson",
+        "prop_type": "pra",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Phoenix Suns"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Davion Mitchell Under 2.5 reb",
+      "odds": -140,
+      "grade": "B",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Davion Mitchell",
+        "prop_type": "reb",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
     }
   ]
 }

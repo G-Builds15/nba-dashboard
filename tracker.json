@@ -905,8 +905,8 @@
       "odds": 105,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Push",
+      "pl": 0.0,
       "meta": {
         "kind": "prop",
         "player": "Paul George",
@@ -973,8 +973,8 @@
       "odds": -113,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Push",
+      "pl": 0.0,
       "meta": {
         "kind": "prop",
         "player": "Kelly Oubre Jr.",
@@ -1056,8 +1056,8 @@
       "odds": -108,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Tyrese Maxey",
@@ -1073,8 +1073,8 @@
       "odds": 172,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.72,
       "meta": {
         "kind": "prop",
         "player": "Joel Embiid",
@@ -1106,8 +1106,8 @@
       "odds": -108,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "spread",
         "line": 3.5,
@@ -1123,8 +1123,8 @@
       "odds": -112,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Derrick White",
@@ -1140,8 +1140,8 @@
       "odds": 116,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Shai Gilgeous-Alexander",
@@ -1157,8 +1157,8 @@
       "odds": 120,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.2,
       "meta": {
         "kind": "prop",
         "player": "Jaden McDaniels",
@@ -1174,8 +1174,8 @@
       "odds": 142,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.42,
       "meta": {
         "kind": "prop",
         "player": "Jonathan Kuminga",
@@ -1191,8 +1191,8 @@
       "odds": 108,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.08,
       "meta": {
         "kind": "prop",
         "player": "Luka Doncic",
@@ -1208,8 +1208,8 @@
       "odds": -105,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.95,
       "meta": {
         "kind": "spread",
         "line": 4.5,
@@ -1225,8 +1225,8 @@
       "odds": -121,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.83,
       "meta": {
         "kind": "prop",
         "player": "Brayden Burries",
@@ -1242,8 +1242,8 @@
       "odds": -114,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Landry Shamet",
@@ -1259,8 +1259,8 @@
       "odds": -104,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "spread",
         "line": -5.5,
@@ -1276,8 +1276,8 @@
       "odds": 101,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.01,
       "meta": {
         "kind": "prop",
         "player": "Joan Beringer",
@@ -1293,8 +1293,8 @@
       "odds": -106,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Tyrese Maxey",
@@ -1310,8 +1310,8 @@
       "odds": 100,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.0,
       "meta": {
         "kind": "prop",
         "player": "Hugo Gonzalez",
@@ -1319,6 +1319,74 @@
         "line": 7.5,
         "direction": "Under",
         "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Oso Ighodaro Over 2.5 ast",
+      "odds": 146,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Oso Ighodaro",
+        "prop_type": "ast",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Jalen Green Under 1.5 3PM",
+      "odds": 122,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jalen Green",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Andrew Wiggins Under 12.5 pts",
+      "odds": -114,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Andrew Wiggins",
+        "prop_type": "pts",
+        "line": 12.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Draymond Green Under 5.5 pts",
+      "odds": -102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Draymond Green",
+        "prop_type": "pts",
+        "line": 5.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
       }
     }
   ]

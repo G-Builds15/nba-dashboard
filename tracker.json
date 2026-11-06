@@ -1472,7 +1472,7 @@
         "direction": "Under",
         "opp_full": "Washington Wizards"
       },
-      "close_odds": -104,
+      "close_odds": -106,
       "close_line": 14.5
     },
     {
@@ -1643,7 +1643,7 @@
         "direction": "Under",
         "opp_full": "San Antonio Spurs"
       },
-      "close_odds": -107,
+      "close_odds": -110,
       "close_line": 17.5
     },
     {
@@ -1737,8 +1737,8 @@
         "direction": "Under",
         "opp_full": "Milwaukee Bucks"
       },
-      "close_odds": -104,
-      "close_line": 19.5
+      "close_odds": -108,
+      "close_line": 21.5
     },
     {
       "date": "2026-11-06",
@@ -1756,7 +1756,7 @@
         "direction": "Under",
         "opp_full": "Los Angeles Lakers"
       },
-      "close_odds": 101,
+      "close_odds": -103,
       "close_line": 2.5
     },
     {
@@ -1820,7 +1820,7 @@
       "ev": 0.0402,
       "p": 0.5495,
       "open_odds": -112,
-      "close_odds": -112,
+      "close_odds": -122,
       "close_line": 25.5
     },
     {
@@ -1891,6 +1891,29 @@
       "open_odds": 100,
       "close_odds": 100,
       "close_line": 12.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "NOP +3.5 (MIN @ NOP spread)",
+      "odds": -106,
+      "grade": "B",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 3.5,
+        "team_full": "New Orleans Pelicans",
+        "opp_full": "Minnesota Timberwolves",
+        "home_full": "New Orleans Pelicans",
+        "away_full": "Minnesota Timberwolves"
+      },
+      "commence": "2026-11-07T01:10:00Z",
+      "ev": 0.0366,
+      "p": 0.5334,
+      "open_odds": -106,
+      "close_odds": -106,
+      "close_line": 3.5
     }
   ]
 }

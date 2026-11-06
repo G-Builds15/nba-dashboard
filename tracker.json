@@ -1625,6 +1625,124 @@
         "direction": "Under",
         "opp_full": "San Antonio Spurs"
       }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Ryan Kalkbrenner Under 7.5 pts",
+      "odds": -128,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ryan Kalkbrenner",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Royce O'Neale Under 12.5 PRA",
+      "odds": -115,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Royce O'Neale",
+        "prop_type": "pra",
+        "line": 12.5,
+        "direction": "Under",
+        "opp_full": "Boston Celtics"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "MEM ML (OKC @ MEM moneyline)",
+      "odds": 152,
+      "grade": "A",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Memphis Grizzlies",
+        "opp_full": "Oklahoma City Thunder",
+        "home_full": "Memphis Grizzlies",
+        "away_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Jaime Jaquez Jr Over 1.5 3PM",
+      "odds": 164,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaime Jaquez Jr",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Jamal Shead Under 19.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jamal Shead",
+        "prop_type": "pra",
+        "line": 19.5,
+        "direction": "Under",
+        "opp_full": "Milwaukee Bucks"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Scoot Henderson Under 2.5 ast",
+      "odds": -103,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Scoot Henderson",
+        "prop_type": "ast",
+        "line": 2.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Devin Vassell Under 1.5 3PM",
+      "odds": 117,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Devin Vassell",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Sacramento Kings"
+      }
     }
   ]
 }

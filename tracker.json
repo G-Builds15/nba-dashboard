@@ -1327,8 +1327,8 @@
       "odds": 146,
       "grade": "B",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Oso Ighodaro",
@@ -1344,8 +1344,8 @@
       "odds": 122,
       "grade": "B",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.22,
       "meta": {
         "kind": "prop",
         "player": "Jalen Green",
@@ -1361,8 +1361,8 @@
       "odds": -114,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.88,
       "meta": {
         "kind": "prop",
         "player": "Andrew Wiggins",
@@ -1378,8 +1378,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Draymond Green",
@@ -1395,8 +1395,8 @@
       "odds": -108,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "ml",
         "team_full": "Phoenix Suns",
@@ -1411,8 +1411,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Jase Richardson",
@@ -1428,8 +1428,8 @@
       "odds": -140,
       "grade": "B",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.71,
       "meta": {
         "kind": "prop",
         "player": "Davion Mitchell",
@@ -1445,8 +1445,8 @@
       "odds": 176,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.76,
       "meta": {
         "kind": "prop",
         "player": "Bam Adebayo",
@@ -1454,6 +1454,176 @@
         "line": 0.5,
         "direction": "Under",
         "opp_full": "Golden State Warriors"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Onyeka Okongwu Under 15.5 pts",
+      "odds": -114,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Onyeka Okongwu",
+        "prop_type": "pts",
+        "line": 15.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Nickeil Alexander-Walker Over 3.5 3PM",
+      "odds": 140,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nickeil Alexander-Walker",
+        "prop_type": "3pm",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "Washington Wizards"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Evan Mobley Over 1.5 3PM",
+      "odds": 158,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Evan Mobley",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Joel Embiid Under 0.5 3PM",
+      "odds": 128,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Joel Embiid",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Under",
+        "opp_full": "Cleveland Cavaliers"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "MEM +4.5 (OKC @ MEM spread)",
+      "odds": -114,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 4.5,
+        "team_full": "Memphis Grizzlies",
+        "opp_full": "Oklahoma City Thunder",
+        "home_full": "Memphis Grizzlies",
+        "away_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Cam Spencer Over 1.5 3PM",
+      "odds": 154,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Cam Spencer",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Oklahoma City Thunder"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Kyle Kuzma Over 2.5 ast",
+      "odds": 111,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kyle Kuzma",
+        "prop_type": "ast",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Toronto Raptors"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Ziaire Williams Over 7.5 pts",
+      "odds": -110,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ziaire Williams",
+        "prop_type": "pts",
+        "line": 7.5,
+        "direction": "Over",
+        "opp_full": "Portland Trail Blazers"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "SAC +15.5 (SAS @ SAC spread)",
+      "odds": -110,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 15.5,
+        "team_full": "Sacramento Kings",
+        "opp_full": "San Antonio Spurs",
+        "home_full": "Sacramento Kings",
+        "away_full": "San Antonio Spurs"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Malik Monk Under 18.5 PRA",
+      "odds": -112,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Malik Monk",
+        "prop_type": "pra",
+        "line": 18.5,
+        "direction": "Under",
+        "opp_full": "San Antonio Spurs"
       }
     }
   ]

@@ -1438,6 +1438,23 @@
         "direction": "Under",
         "opp_full": "Golden State Warriors"
       }
+    },
+    {
+      "date": "2026-11-05",
+      "pick": "Bam Adebayo Under 0.5 3PM",
+      "odds": 176,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bam Adebayo",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      }
     }
   ]
 }

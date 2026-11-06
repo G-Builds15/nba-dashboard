@@ -1471,7 +1471,9 @@
         "line": 15.5,
         "direction": "Under",
         "opp_full": "Washington Wizards"
-      }
+      },
+      "close_odds": -104,
+      "close_line": 14.5
     },
     {
       "date": "2026-11-06",
@@ -1488,7 +1490,9 @@
         "line": 3.5,
         "direction": "Over",
         "opp_full": "Washington Wizards"
-      }
+      },
+      "close_odds": 130,
+      "close_line": 3.5
     },
     {
       "date": "2026-11-06",
@@ -1505,7 +1509,9 @@
         "line": 1.5,
         "direction": "Over",
         "opp_full": "Philadelphia 76ers"
-      }
+      },
+      "close_odds": 149,
+      "close_line": 1.5
     },
     {
       "date": "2026-11-06",
@@ -1522,7 +1528,9 @@
         "line": 0.5,
         "direction": "Under",
         "opp_full": "Cleveland Cavaliers"
-      }
+      },
+      "close_odds": 105,
+      "close_line": 0.5
     },
     {
       "date": "2026-11-06",
@@ -1539,7 +1547,9 @@
         "opp_full": "Oklahoma City Thunder",
         "home_full": "Memphis Grizzlies",
         "away_full": "Oklahoma City Thunder"
-      }
+      },
+      "close_odds": -114,
+      "close_line": 4.5
     },
     {
       "date": "2026-11-06",
@@ -1556,7 +1566,9 @@
         "line": 1.5,
         "direction": "Over",
         "opp_full": "Oklahoma City Thunder"
-      }
+      },
+      "close_odds": 142,
+      "close_line": 1.5
     },
     {
       "date": "2026-11-06",
@@ -1573,7 +1585,9 @@
         "line": 2.5,
         "direction": "Over",
         "opp_full": "Toronto Raptors"
-      }
+      },
+      "close_odds": 116,
+      "close_line": 2.5
     },
     {
       "date": "2026-11-06",
@@ -1590,7 +1604,9 @@
         "line": 7.5,
         "direction": "Over",
         "opp_full": "Portland Trail Blazers"
-      }
+      },
+      "close_odds": -121,
+      "close_line": 7.5
     },
     {
       "date": "2026-11-06",
@@ -1607,7 +1623,9 @@
         "opp_full": "San Antonio Spurs",
         "home_full": "Sacramento Kings",
         "away_full": "San Antonio Spurs"
-      }
+      },
+      "close_odds": -110,
+      "close_line": 17.5
     },
     {
       "date": "2026-11-06",
@@ -1624,7 +1642,9 @@
         "line": 18.5,
         "direction": "Under",
         "opp_full": "San Antonio Spurs"
-      }
+      },
+      "close_odds": -107,
+      "close_line": 17.5
     },
     {
       "date": "2026-11-06",
@@ -1641,7 +1661,9 @@
         "line": 7.5,
         "direction": "Under",
         "opp_full": "Boston Celtics"
-      }
+      },
+      "close_odds": -128,
+      "close_line": 7.5
     },
     {
       "date": "2026-11-06",
@@ -1658,7 +1680,9 @@
         "line": 12.5,
         "direction": "Under",
         "opp_full": "Boston Celtics"
-      }
+      },
+      "close_odds": -125,
+      "close_line": 12.5
     },
     {
       "date": "2026-11-06",
@@ -1674,7 +1698,9 @@
         "opp_full": "Oklahoma City Thunder",
         "home_full": "Memphis Grizzlies",
         "away_full": "Oklahoma City Thunder"
-      }
+      },
+      "close_odds": 152,
+      "close_line": null
     },
     {
       "date": "2026-11-06",
@@ -1691,7 +1717,9 @@
         "line": 1.5,
         "direction": "Over",
         "opp_full": "Toronto Raptors"
-      }
+      },
+      "close_odds": 164,
+      "close_line": 1.5
     },
     {
       "date": "2026-11-06",
@@ -1708,7 +1736,9 @@
         "line": 19.5,
         "direction": "Under",
         "opp_full": "Milwaukee Bucks"
-      }
+      },
+      "close_odds": -104,
+      "close_line": 19.5
     },
     {
       "date": "2026-11-06",
@@ -1725,7 +1755,9 @@
         "line": 2.5,
         "direction": "Under",
         "opp_full": "Los Angeles Lakers"
-      }
+      },
+      "close_odds": 101,
+      "close_line": 2.5
     },
     {
       "date": "2026-11-06",
@@ -1742,7 +1774,123 @@
         "line": 1.5,
         "direction": "Under",
         "opp_full": "Sacramento Kings"
-      }
+      },
+      "close_odds": 122,
+      "close_line": 1.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Under 229.5 (WAS @ ATL total)",
+      "odds": -108,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 229.5,
+        "home_full": "Atlanta Hawks",
+        "away_full": "Washington Wizards"
+      },
+      "commence": "2026-11-07T00:10:00Z",
+      "ev": 0.0564,
+      "p": 0.5485,
+      "open_odds": -108,
+      "close_odds": -108,
+      "close_line": 229.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Tyrese Maxey Over 25.5 pts",
+      "odds": -112,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tyrese Maxey",
+        "prop_type": "pts",
+        "line": 25.5,
+        "direction": "Over",
+        "opp_full": "Cleveland Cavaliers"
+      },
+      "commence": "2026-11-07T00:40:00Z",
+      "ev": 0.0402,
+      "p": 0.5495,
+      "open_odds": -112,
+      "close_odds": -112,
+      "close_line": 25.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "James Harden Over 2.5 3PM",
+      "odds": 126,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "James Harden",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      },
+      "commence": "2026-11-07T00:40:00Z",
+      "ev": 0.0376,
+      "p": 0.4591,
+      "open_odds": 126,
+      "close_odds": 126,
+      "close_line": 2.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Collin Murray-Boyles Under 22.5 PRA",
+      "odds": -114,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Collin Murray-Boyles",
+        "prop_type": "pra",
+        "line": 22.5,
+        "direction": "Under",
+        "opp_full": "Milwaukee Bucks"
+      },
+      "commence": "2026-11-07T01:10:00Z",
+      "ev": 0.0609,
+      "p": 0.5652,
+      "open_odds": -114,
+      "close_odds": -114,
+      "close_line": 22.5
+    },
+    {
+      "date": "2026-11-06",
+      "pick": "Saddiq Bey Over 12.5 pts",
+      "odds": 100,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Saddiq Bey",
+        "prop_type": "pts",
+        "line": 12.5,
+        "direction": "Over",
+        "opp_full": "Minnesota Timberwolves"
+      },
+      "commence": "2026-11-07T01:10:00Z",
+      "ev": 0.0576,
+      "p": 0.5288,
+      "open_odds": 100,
+      "close_odds": 100,
+      "close_line": 12.5
     }
   ]
 }

@@ -431,12 +431,46 @@ def _gamelog(pid):
             mins = _num(s[idx['minutes']])
             if mins <= 0:
                 continue                                    # DNP
-            games.append({'pts': _num(s[idx['points']]), 'reb': _num(s[idx['totalRebounds']]),
-                          'ast': _num(s[idx['assists']]),
-                          'fg3m': _num(str(s[idx['threePointFieldGoalsMade-threePointFieldGoalsAttempted']]).split('-')[0])})
+            tp = str(s[idx['threePointFieldGoalsMade-threePointFieldGoalsAttempted']]).split('-')
+            games.append({'min': mins, 'pts': _num(s[idx['points']]), 'reb': _num(s[idx['totalRebounds']]),
+                          'ast': _num(s[idx['assists']]), 'fg3m': _num(tp[0]),
+                          'fg3a': _num(tp[1]) if len(tp) > 1 else 0})
         except IndexError:
             continue
     return games
+
+def fetch_prior_season():
+    """
+    Last season's per-game averages for every player -> raw_prior_players.json {name: {...}}.
+    Used as the starting point for early-season projections, so a 4-game sample is blended with what the
+    player did over a full year instead of standing alone. Skipped quietly if the feed is unavailable.
+    """
+    url = (f'{ESPN_COMMON}/statistics/byathlete?region=us&lang=en&contentorigin=espn'
+           f'&isqualified=false&page=1&limit=500&sort=offensive.avgPoints%3Adesc'
+           f'&season={ESPN_SEASON - 1}&seasontype=2')
+    d = fetch_json(url, ESPN_HEADERS, 'espn_prior') or {}
+    names_by_cat = {c.get('name'): c.get('names', []) for c in d.get('categories', [])}
+    out = {}
+    for a in d.get('athletes', []):
+        ath = a.get('athlete') or {}
+        name = ath.get('displayName')
+        if not name:
+            continue
+        v = {}
+        for c in a.get('categories', []):
+            arr = c.get('totals') or c.get('values') or c.get('stats') or []
+            for n, val in zip(names_by_cat.get(c.get('name'), []), arr):
+                v[n] = val
+        gp = int(_num(v.get('gamesPlayed')))
+        if gp <= 0:
+            continue
+        out[name] = {'gp': gp, 'min': _num(v.get('avgMinutes')), 'pts': _num(v.get('avgPoints')),
+                     'reb': _num(v.get('avgRebounds')), 'ast': _num(v.get('avgAssists')),
+                     'fg3m': _num(v.get('avgThreePointFieldGoalsMade')),
+                     'fg3a': _num(v.get('avgThreePointFieldGoalsAttempted'))}
+    print(f'[fetch] prior season ({ESPN_SEASON - 1}): {len(out)} players')
+    if out:                       # never replace a good file with an empty result
+        write_json('raw_prior_players.json', out)
 
 def fetch_recent_form(players):
     """L5 / L10 averages from game logs, only for players that have a prop line today."""
@@ -506,6 +540,8 @@ if __name__ == '__main__':
     write_json('raw_schedule.json', {team_names[t]: d.isoformat() for t, d in last_games.items() if t in team_names})
     print('[fetch] fetching ESPN player stats...')
     players = fetch_espn_players(team_names, totals)
+    print('[fetch] fetching prior-season baseline...')
+    fetch_prior_season()
     print('[fetch] fetching recent form (game logs)...')
     fetch_recent_form(players)
     print('[fetch] fetching injuries...')

@@ -345,6 +345,94 @@ def dedupe(tracker):
     tracker['picks'] = keep
     return removed
 
+
+def dec_odds(o):
+    try:
+        o = float(o)
+    except (TypeError, ValueError):
+        return None
+    if o == 0:
+        return None
+    return 1 + o / 100 if o > 0 else 1 + 100 / -o
+
+def model_prob(ev, odds):
+    """Win probability the model implied at pick time: EV = p*(d-1) - (1-p)  =>  p = (1+EV)/d."""
+    d = dec_odds(odds)
+    if ev is None or not d:
+        return None
+    return round(max(0.0, min(1.0, (1 + ev) / d)), 4)
+
+def attach_model(entry, ev):
+    """Record what the model believed, so calibration can be checked later (does 60% win 60%?)."""
+    entry['ev'] = None if ev is None else round(ev, 4)
+    entry['p']  = model_prob(ev, entry.get('odds'))
+    entry['open_odds'] = entry.get('odds')
+    return entry
+
+def find_current(pick, games):
+    """(odds, line, game) the market shows now for this pick's own side, or None if it is no longer posted."""
+    meta = pick.get('meta') or {}
+    kind = meta.get('kind')
+    key = pick_key(pick)
+    for g in games:
+        label = f"{g.get('away_abbr', '')}@{g.get('home_abbr', '')}"
+        if kind in ('spread', 'total', 'ml'):
+            if key[2] != label:
+                continue
+            if kind == 'ml':
+                if g.get('lean_ml') and (g['lean_ml'] == g.get('home_abbr')) == (meta.get('team_full') == g.get('home_full')):
+                    return g.get('odds_ml'), None, g
+                return None
+            if kind == 'spread':
+                full = g.get('home_full') if g.get('lean_spread', '').split(' ')[0] == g.get('home_abbr') else g.get('away_full')
+                try:
+                    return (g.get('odds_spread'), float(g['lean_spread'].split()[1]), g) if full == meta.get('team_full') else None
+                except Exception:
+                    return None
+            try:
+                d_, ln = g['lean_total'].split()
+                return (g.get('odds_total'), float(ln), g) if d_ == meta.get('direction') else None
+            except Exception:
+                return None
+        if kind == 'prop':
+            for p in g.get('props', []):
+                if (norm_player(p.get('player_name')) == norm_player(meta.get('player'))
+                        and p.get('prop_type') == meta.get('prop_type') and p.get('direction') == meta.get('direction')):
+                    return p.get('odds'), p.get('line'), g
+    return None
+
+def update_closing(tracker, games, now_utc):
+    """Keep the latest price seen before tip-off on every unsettled pick; it freezes once the game starts."""
+    n = 0
+    for pick in tracker.get('picks', []):
+        if pick.get('result') not in (None, 'Pending'):
+            continue
+        found = find_current(pick, games)
+        if not found:
+            continue
+        odds, line, g = found
+        try:
+            if datetime.fromisoformat(str(g.get('commence_time', '')).replace('Z', '+00:00')) <= now_utc:
+                continue
+        except ValueError:
+            continue
+        if odds is None:
+            continue
+        pick['close_odds'], pick['close_line'] = odds, line
+        n += 1
+    return n
+
+def clv_points(pick):
+    """Closing-line value in percentage points of win probability: positive = we got a better price than the
+    market's last price. Only comparable when the line itself did not move; None otherwise."""
+    d0, d1 = dec_odds(pick.get('open_odds') or pick.get('odds')), dec_odds(pick.get('close_odds'))
+    if not d0 or not d1:
+        return None
+    meta = pick.get('meta') or {}
+    if meta.get('line') is not None and pick.get('close_line') is not None and float(meta['line']) != float(pick['close_line']):
+        return None
+    return round((1 / d1 - 1 / d0) * 100, 2)
+
 def settle_pending(tracker):
     changed = 0
     for pick in tracker.get('picks', []):
@@ -465,6 +553,8 @@ if __name__ == '__main__':
                     'result':   'Pending',
                     'pl':       None,
                     'meta':     spread_meta(g),
+                    'commence': g.get('commence_time'),
+                    **attach_model({'odds': g.get('odds_spread')}, g.get('ev_spread')),
                 })
 
         if g.get('best_bet_ml') and g.get('lean_ml'):
@@ -481,6 +571,8 @@ if __name__ == '__main__':
                     'result':   'Pending',
                     'pl':       None,
                     'meta':     ml_meta(g),
+                    'commence': g.get('commence_time'),
+                    **attach_model({'odds': g.get('odds_ml')}, g.get('ev_ml')),
                 })
 
         if g.get('best_bet_total') and g.get('lean_total'):
@@ -497,6 +589,8 @@ if __name__ == '__main__':
                     'result':   'Pending',
                     'pl':       None,
                     'meta':     total_meta(g),
+                    'commence': g.get('commence_time'),
+                    **attach_model({'odds': g.get('odds_total')}, g.get('ev_total')),
                 })
 
         # Best bet props (graded individually)
@@ -519,6 +613,8 @@ if __name__ == '__main__':
                     'meta':     {'kind': 'prop', 'player': p.get('player_name'), 'prop_type': p.get('prop_type'),
                                  'line': p.get('line'), 'direction': p.get('direction'),
                                  'opp_full': g.get('away_full') if player_team_home else g.get('home_full')},
+                    'commence': g.get('commence_time'),
+                    **attach_model({'odds': p.get('odds')}, p.get('ev')),
                 })
 
     if skipped_started:
@@ -533,7 +629,11 @@ if __name__ == '__main__':
     settled = settle_pending(tracker)
     print(f'[tracker] settled {settled} pick(s); {pending - settled} still pending')
 
-    if new_picks or settled or removed or migrated or not os.path.exists(TRACKER_FILE):
+    closed = update_closing(tracker, games, now_utc)
+    if closed:
+        print(f'[tracker] refreshed latest pre-tip price on {closed} unsettled pick(s)')
+
+    if new_picks or settled or closed or removed or migrated or not os.path.exists(TRACKER_FILE):
         write_tracker(tracker)
 
     # Always sync the embedded tracker, then build.py inlines the up-to-date slate

@@ -181,6 +181,10 @@ def build_player_stat_lookup(base_stats, adv_stats, l10_stats=None, l5_stats=Non
             'player_name':    name,
             'team_abbr':      _team_abbr(row),
             'gp':             row.get('GP', 0) or 0,
+            'min':            row.get('MIN', 0) or 0,
+            # pure season per-game averages (the blended values below mix in recent form)
+            's_pts': row.get('PTS', 0) or 0, 's_reb': row.get('REB', 0) or 0, 's_ast': row.get('AST', 0) or 0,
+            's_fg3m': row.get('FG3M', 0) or 0, 's_fg3a': row.get('FG3A', 0) or 0,
             # blended per-game averages
             'pts':            b('PTS'),
             'reb':            b('REB'),
@@ -422,7 +426,6 @@ PROP_VR      = {'pts': 2.6, 'reb': 1.5, 'ast': 1.4, '3pm': 1.05, 'pra': 3.2}   #
 PROP_MODEL_W = 0.60            # most weight the model ever gets against the market price
 MU_SHRINK_K  = 5               # games-played pseudo-count pulling the projected mean toward the market-implied mean (None = off)
 PROP_GP_K    = 10              # model weight = PROP_MODEL_W * gp / (gp + K)
-LOW_3PA = 3.0       # 3-point attempts per game below which a 3PM prop is capped at C
 EARLY_SCALE = 1.0   # set per run from average games played: early season shrinks the model toward the market, so cutoffs relax to match
 PROP_EV      = (0.05, 0.025, 0.01)     # EV per 1u needed for A / B / C
 OPP_WEIGHT   = 0.5             # share of an opponent's scoring-defense deviation applied to a projection
@@ -500,6 +503,103 @@ def estimate_dispersion(logs):
             vr[t] = min(5.0, max(1.02, sv / sm))
     return vr, used
 
+# ── minutes-based projection ──────────────────────────────────────────────────
+PRIOR        = {}      # normalized name -> last season's per-game averages (loaded in build())
+PRIOR_K      = 10      # last season counts like this many games when blended with the current one
+MIN_REC_K    = 4       # recent-minutes weight = n / (n + K), capped at MIN_REC_MAX
+MIN_REC_MAX  = 0.60
+RATE_REC_K   = 12      # recent per-minute rate weight = n / (n + K), capped at RATE_REC_MAX
+RATE_REC_MAX = 0.30
+B2B_MIN      = 0.97    # minutes multiplier on the second night of a back-to-back
+STARTER_MIN  = 24      # blowout minutes cuts apply to players averaging at least this much
+BLOWOUT_FROM = 7.0     # spread size where starters begin to lose minutes
+BLOWOUT_SLOPE = 0.008  # minutes lost per point of spread beyond that (favorite; underdog gets half)
+BLOWOUT_FLOOR = 0.88
+LG_3P        = 0.36    # league-average 3P% used as the anchor for shooting-percentage shrinkage
+K3_PRIOR     = 200     # attempts of league-average shooting mixed into last season's 3P%
+K3_CUR       = 120     # attempts of last-season-based shooting mixed into this season's 3P%
+
+def _rate(cur_total, cur_min, prior_total, prior_min, gp):
+    """Per-minute rate: this season's, blended with last season's by games played (None if no minutes)."""
+    cur = cur_total / cur_min if cur_min and cur_min > 0 else None
+    pri = prior_total / prior_min if prior_min and prior_min > 0 else None
+    if cur is None:
+        return pri
+    if pri is None:
+        return cur
+    return (gp * cur + PRIOR_K * pri) / (gp + PRIOR_K)
+
+def project_mean(prop_type, pkey, pdata, games, ctx=None, inj_w=0.0):
+    """
+    Expected stat = per-minute rate x projected minutes.
+      rate    : this season, blended with last season (so 4 games are not left to stand alone), nudged to recent form
+      minutes : recent minutes + season minutes (+ last season early), then back-to-back, blowout risk and
+                the player's own injury status
+      3PM     : attempts per minute x shrunk 3P%, so a non-shooter's two lucky makes do not read as a skill
+    Returns (mu, minutes, note) or None when minutes are unavailable (caller falls back to blended averages).
+    """
+    ctx = ctx or {}
+    gp = pdata.get('gp') or 0
+    cur_min = pdata.get('min') or 0
+    if gp <= 0 or cur_min <= 0:
+        return None
+    pr = PRIOR.get(pkey) or {}
+    pgp, pmin = pr.get('gp') or 0, pr.get('min') or 0
+
+    glog = [g for g in (games or [])[:10] if g.get('min')]
+    n_rec = len(glog)
+    m_season = (gp * cur_min + PRIOR_K * pmin) / (gp + PRIOR_K) if pmin > 0 else cur_min
+    if n_rec >= 3:
+        rec_min = sum(g['min'] for g in glog[:5]) / min(5, n_rec)
+        wr = min(MIN_REC_MAX, min(5, n_rec) / (min(5, n_rec) + MIN_REC_K))
+        m_base = wr * rec_min + (1 - wr) * m_season
+    else:
+        m_base = m_season
+
+    note = []
+    f = 1.0
+    if ctx.get('b2b'):
+        f *= B2B_MIN
+        note.append('back-to-back')
+    sp = ctx.get('spread_abs') or 0
+    if m_base >= STARTER_MIN and sp > BLOWOUT_FROM:
+        cut = BLOWOUT_SLOPE * (sp - BLOWOUT_FROM) * (1.0 if ctx.get('fav') else 0.5)
+        f *= max(BLOWOUT_FLOOR, 1 - cut)
+        note.append(f'blowout risk ({sp:.0f}-pt spread)')
+    if inj_w > 0:
+        f *= 1 - 0.2 * inj_w
+    mins = m_base * f
+
+    def rate_for(stat_key, season_key):
+        r = _rate((pdata.get(season_key) or 0) * gp, cur_min * gp, (pr.get(stat_key) or 0) * pgp, pmin * pgp, gp)
+        if r is None:
+            return None
+        if n_rec >= 3:
+            tot_m = sum(g['min'] for g in glog)
+            if tot_m > 0 and all(stat_key in g for g in glog):
+                r_l = sum(g[stat_key] for g in glog) / tot_m
+                w = min(RATE_REC_MAX, n_rec / (n_rec + RATE_REC_K))
+                r = (1 - w) * r + w * r_l
+        return r
+
+    if prop_type == '3pm':
+        ra = rate_for('fg3a', 's_fg3a')
+        if ra is None:
+            return None
+        a_cur, m_cur_ = (pdata.get('s_fg3a') or 0) * gp, (pdata.get('s_fg3m') or 0) * gp
+        a_pri, m_pri = (pr.get('fg3a') or 0) * pgp, (pr.get('fg3m') or 0) * pgp
+        pct_prior = (m_pri + LG_3P * K3_PRIOR) / (a_pri + K3_PRIOR)
+        pct = (m_cur_ + pct_prior * K3_CUR) / (a_cur + K3_CUR)
+        return ra * mins * pct, mins, note
+    keys = ('pts', 'reb', 'ast') if prop_type == 'pra' else (prop_type,)
+    mu = 0.0
+    for k in keys:
+        r = rate_for(k, 's_' + k)
+        if r is None:
+            return None
+        mu += r * mins
+    return mu, mins, note
+
 def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=None, opp_odds=None, disp=None):
     """
     Grade a player prop A/B/C/D on price-adjusted expected value, or 'N/A' when there is not enough data.
@@ -526,12 +626,15 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
     opp = team_stats.get(opp_abbr, {})
     pf  = pace_factor(player_team, opp_abbr, team_stats, league.get('pace', 0))
 
+    pm = project_mean(prop_type, pkey, pdata, (logs or {}).get(pkey), prop.get('ctx'), me_inj['w'] if me_inj else 0.0)
     if prop_type == 'pra':
         raw   = pdata.get('pts', 0) + pdata.get('reb', 0) + pdata.get('ast', 0)
         parts = [injury_gain(player_team, pkey, k, player_stats, injuries) for k in ('pts', 'reb', 'ast')]
     else:
         raw   = pdata.get(STAT_KEYS[prop_type], 0)
         parts = [injury_gain(player_team, pkey, STAT_KEYS[prop_type], player_stats, injuries)]
+    if pm:
+        raw = pm[0]                          # minutes-based projection replaces the blended per-game average
     if not raw:
         return 'N/A', '', None
     inj_gain = sum(g for g, _ in parts)
@@ -585,16 +688,14 @@ def grade_prop(prop, player_stats, team_stats, league=None, injuries=None, logs=
     p_fin = p_mkt + lam * (p_model - p_mkt)
     ev    = p_fin * (d - 1) - (1 - p_fin)
     grade = _grade_ev(ev, tuple(c * EARLY_SCALE for c in PROP_EV))
-    low_volume = prop_type == '3pm' and (pdata.get('fg3a') or 0) < LOW_3PA
-    if low_volume and grade in ('A', 'B'):
-        grade = 'C'     # a handful of makes from a non-shooter is noise, not an edge
 
-    rationale = (f"Proj {mu:.1f} {PROP_LABEL[prop_type]} (×{pf:.2f} pace): {p_model*100:.0f}% {direction.lower()} "
+    where = f" in {pm[1]:.0f} min" if pm else ''
+    rationale = (f"Proj {mu:.1f} {PROP_LABEL[prop_type]}{where} (×{pf:.2f} pace): {p_model*100:.0f}% {direction.lower()} "
                  f"vs market {p_mkt*100:.0f}%, EV {ev*100:+.1f}%")
+    if pm and pm[2]:
+        rationale += ' [' + ', '.join(pm[2]) + ']'
     if hr is not None and n_logs >= 3:
         rationale += f", cleared {hits}/{n_logs} L{n_logs}" if direction == 'Over' else f", stayed under {hits}/{n_logs} L{n_logs}"
-    if low_volume:
-        rationale += f"; only {pdata.get('fg3a') or 0:.1f} 3PA/g, capped at C"
     if prop_type != 'pra':
         key   = STAT_KEYS[prop_type]
         rationale += _trend_note(pdata.get(f'{key}_l5'), pdata.get(f'{key}_l10'), raw)
@@ -786,6 +887,7 @@ def build():
     raw_injuries = load_json('raw_injuries.json') or []
     raw_sched    = load_json('raw_schedule.json') or {}
     raw_logs     = load_json('raw_gamelogs.json') or {}
+    raw_prior    = load_json('raw_prior_players.json') or {}
     tracker_data = load_json('tracker.json')
 
     base_stats = parse_nba_stats(raw_base)
@@ -801,6 +903,9 @@ def build():
     sched        = {get_team_info(n)['abbr']: d for n, d in raw_sched.items()}
     logs         = {normalize_player(n): v for n, v in raw_logs.items()}
     global EARLY_SCALE
+    PRIOR.clear()
+    PRIOR.update({normalize_player(n): v for n, v in raw_prior.items()})
+    print(f'[slate] prior-season baseline: {len(PRIOR)} players' + ('' if PRIOR else '  (none - projections use this season only)'))
     gps = [v.get('gp') or 0 for v in player_stats.values() if (v.get('gp') or 0) > 0]
     avg_gp = sum(gps) / len(gps) if gps else 0
     EARLY_SCALE = 0.5 + 0.5 * min(1.0, avg_gp / 12)   # 0.5 at season start -> 1.0 by ~12 games
@@ -886,7 +991,11 @@ def build():
                 continue
             opp = away_abbr if player_team == home_abbr else home_abbr
 
-            p_with_opp = {**p, 'opp_abbr': opp, 'team': player_team}
+            sh = g.get('spread_home')
+            ctx = {'b2b': rest_days(player_team, sched, TODAY_ET) == 1,
+                   'spread_abs': abs(sh) if sh is not None else 0,
+                   'fav': sh is not None and ((sh < 0) == (player_team == home_abbr))}
+            p_with_opp = {**p, 'opp_abbr': opp, 'team': player_team, 'ctx': ctx}
             other = 'Under' if p.get('direction') == 'Over' else 'Over'
             opp_odds = pair.get((normalize_player(p.get('player_name', '')), p.get('prop_type'), p.get('line')), {}).get(other)
             grade, rationale, ev = grade_prop(p_with_opp, player_stats, team_stats, league, injuries, logs, opp_odds, disp)

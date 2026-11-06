@@ -41,3 +41,18 @@ Each NBA endpoint prints a line like `[fetch] OK team_stats: 30 rows; cols=[...]
 - Opponent rebounds / assists / 3PM allowed are not available, so only the opponent *points* signal is used.
 - With only a few games played, every average is noisy; props need 3+ games and recent splits need 3+ games.
 - Injuries come from ESPN's injury report. An absent player's scoring is split: 35% picked up by the rotation, 25% net loss to the team, 40% absorbed by the bench (tunable constants at the top of the injuries block in slate_builder.py). Out/Doubtful players are not graded; Questionable players are capped at C.
+
+
+## Projection model (props)
+- **Minutes first**: expected stat = per-minute rate x projected minutes. Rates blend this season with last season
+  (`raw_prior_players.json`, ESPN season-1) by games played, then lean slightly on the last 10 games. Minutes blend
+  recent games, season and last season, then adjust for back-to-backs, blowout risk (large spreads trim starters'
+  minutes) and the player's own injury status.
+- **3PM** = attempts per minute x shrunk 3P% (league 36% anchor -> last season -> this season).
+- The projected mean is then shrunk toward the mean the book's price implies (`MU_SHRINK_K`).
+
+## Logging for review
+Each tracker pick stores `ev`, `p` (model win probability at pick time), `open_odds`, and `close_odds`/`close_line`
+(the last price seen before tip-off; snapshots happen on each full run). `python3 review.py` prints the record,
+calibration by probability bucket, and closing-line value. Note: closing price is the last *snapshot*, not the
+exact market close, because odds are only fetched on full runs.

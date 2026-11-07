@@ -1934,7 +1934,7 @@
       "ev": 0.0495,
       "p": 0.3133,
       "open_odds": 235,
-      "close_odds": 235,
+      "close_odds": 261,
       "close_line": null
     },
     {
@@ -1956,7 +1956,7 @@
       "ev": 0.046,
       "p": 0.3218,
       "open_odds": 225,
-      "close_odds": 225,
+      "close_odds": 231,
       "close_line": null
     },
     {
@@ -2002,7 +2002,7 @@
       "ev": 0.0636,
       "p": 0.5473,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -105,
       "close_line": 11.5
     },
     {
@@ -2071,8 +2071,8 @@
       "ev": 0.039,
       "p": 0.5442,
       "open_odds": -110,
-      "close_odds": -110,
-      "close_line": 2.5
+      "close_odds": -168,
+      "close_line": 3.5
     },
     {
       "date": "2026-11-07",
@@ -2094,7 +2094,7 @@
       "ev": 0.0268,
       "p": 0.4543,
       "open_odds": 126,
-      "close_odds": 126,
+      "close_odds": 132,
       "close_line": 2.5
     },
     {
@@ -2117,7 +2117,7 @@
       "ev": 0.0559,
       "p": 0.5531,
       "open_odds": -110,
-      "close_odds": -110,
+      "close_odds": -103,
       "close_line": 5.5
     },
     {
@@ -2142,6 +2142,120 @@
       "open_odds": -118,
       "close_odds": -118,
       "close_line": 20.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "BKN +7.5 (BKN @ ATL spread)",
+      "odds": -102,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 7.5,
+        "team_full": "Brooklyn Nets",
+        "opp_full": "Atlanta Hawks",
+        "home_full": "Atlanta Hawks",
+        "away_full": "Brooklyn Nets"
+      },
+      "commence": "2026-11-08T00:40:00Z",
+      "ev": 0.0672,
+      "p": 0.5389,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 7.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "Nickeil Alexander-Walker Over 3.5 3PM",
+      "odds": 126,
+      "grade": "B",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nickeil Alexander-Walker",
+        "prop_type": "3pm",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "Brooklyn Nets"
+      },
+      "commence": "2026-11-08T00:40:00Z",
+      "ev": 0.0323,
+      "p": 0.4568,
+      "open_odds": 126,
+      "close_odds": 126,
+      "close_line": 3.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "WAS ML (WAS @ OKC moneyline)",
+      "odds": 450,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Washington Wizards",
+        "opp_full": "Oklahoma City Thunder",
+        "home_full": "Oklahoma City Thunder",
+        "away_full": "Washington Wizards"
+      },
+      "commence": "2026-11-08T01:10:00Z",
+      "ev": 0.1676,
+      "p": 0.2123,
+      "open_odds": 450,
+      "close_odds": 450,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "Franz Wagner Under 24.5 pts",
+      "odds": -118,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Franz Wagner",
+        "prop_type": "pts",
+        "line": 24.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      },
+      "commence": "2026-11-08T01:40:00Z",
+      "ev": 0.035,
+      "p": 0.5602,
+      "open_odds": -118,
+      "close_odds": -118,
+      "close_line": 24.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "Jase Richardson Under 16.5 PRA",
+      "odds": -108,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jase Richardson",
+        "prop_type": "pra",
+        "line": 16.5,
+        "direction": "Under",
+        "opp_full": "Golden State Warriors"
+      },
+      "commence": "2026-11-08T01:40:00Z",
+      "ev": 0.1008,
+      "p": 0.5716,
+      "open_odds": -108,
+      "close_odds": -108,
+      "close_line": 16.5
     }
   ]
 }

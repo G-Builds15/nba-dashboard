@@ -1921,8 +1921,8 @@
       "odds": 235,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "ml",
         "team_full": "Indiana Pacers",
@@ -2048,8 +2048,8 @@
       "ev": 0.024,
       "p": 0.4655,
       "open_odds": 120,
-      "close_odds": 120,
-      "close_line": 3.5
+      "close_odds": -113,
+      "close_line": 4.5
     },
     {
       "date": "2026-11-07",
@@ -2071,7 +2071,7 @@
       "ev": 0.039,
       "p": 0.5442,
       "open_odds": -110,
-      "close_odds": -168,
+      "close_odds": -184,
       "close_line": 3.5
     },
     {
@@ -2094,7 +2094,7 @@
       "ev": 0.0268,
       "p": 0.4543,
       "open_odds": 126,
-      "close_odds": 132,
+      "close_odds": 134,
       "close_line": 2.5
     },
     {
@@ -2117,7 +2117,7 @@
       "ev": 0.0559,
       "p": 0.5531,
       "open_odds": -110,
-      "close_odds": -103,
+      "close_odds": -108,
       "close_line": 5.5
     },
     {
@@ -2140,8 +2140,8 @@
       "ev": 0.0857,
       "p": 0.5877,
       "open_odds": -118,
-      "close_odds": -118,
-      "close_line": 20.5
+      "close_odds": -115,
+      "close_line": 17.5
     },
     {
       "date": "2026-11-07",
@@ -2231,7 +2231,7 @@
       "ev": 0.035,
       "p": 0.5602,
       "open_odds": -118,
-      "close_odds": -118,
+      "close_odds": -113,
       "close_line": 24.5
     },
     {
@@ -2254,8 +2254,54 @@
       "ev": 0.1008,
       "p": 0.5716,
       "open_odds": -108,
-      "close_odds": -108,
+      "close_odds": -122,
       "close_line": 16.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "De'Anthony Melton Over 3.5 reb",
+      "odds": 134,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "De'Anthony Melton",
+        "prop_type": "reb",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-08T01:40:00Z",
+      "ev": 0.0767,
+      "p": 0.4601,
+      "open_odds": 134,
+      "close_odds": 134,
+      "close_line": 3.5
+    },
+    {
+      "date": "2026-11-07",
+      "pick": "Toumani Camara Over 2.5 3PM",
+      "odds": 114,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Toumani Camara",
+        "prop_type": "3pm",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "San Antonio Spurs"
+      },
+      "commence": "2026-11-08T03:00:00Z",
+      "ev": 0.0599,
+      "p": 0.4953,
+      "open_odds": 114,
+      "close_odds": 114,
+      "close_line": 2.5
     }
   ]
 }

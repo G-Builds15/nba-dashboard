@@ -2619,7 +2619,7 @@
       "ev": 0.1214,
       "p": 0.5924,
       "open_odds": -112,
-      "close_odds": -112,
+      "close_odds": -136,
       "close_line": null
     },
     {
@@ -2642,8 +2642,8 @@
       "ev": 0.065,
       "p": 0.5853,
       "open_odds": -122,
-      "close_odds": -122,
-      "close_line": 7.5
+      "close_odds": 100,
+      "close_line": 10.5
     },
     {
       "date": "2026-11-09",
@@ -2665,7 +2665,7 @@
       "ev": 0.0883,
       "p": 0.5232,
       "open_odds": 108,
-      "close_odds": 108,
+      "close_odds": -158,
       "close_line": 4.5
     },
     {
@@ -2688,7 +2688,7 @@
       "ev": 0.0563,
       "p": 0.5334,
       "open_odds": -102,
-      "close_odds": -102,
+      "close_odds": -128,
       "close_line": 14.5
     },
     {
@@ -2710,7 +2710,7 @@
       "ev": 0.0495,
       "p": 0.2164,
       "open_odds": 385,
-      "close_odds": 385,
+      "close_odds": 323,
       "close_line": null
     },
     {
@@ -2733,7 +2733,7 @@
       "ev": 0.0559,
       "p": 0.5176,
       "open_odds": 104,
-      "close_odds": 104,
+      "close_odds": 102,
       "close_line": 8.5
     },
     {
@@ -2756,7 +2756,7 @@
       "ev": 0.0809,
       "p": 0.5299,
       "open_odds": 104,
-      "close_odds": 104,
+      "close_odds": -106,
       "close_line": 6.5
     },
     {
@@ -2778,7 +2778,7 @@
       "ev": 0.0594,
       "p": 0.6322,
       "open_odds": -148,
-      "close_odds": -148,
+      "close_odds": -188,
       "close_line": null
     },
     {
@@ -2824,8 +2824,145 @@
       "ev": 0.0679,
       "p": 0.445,
       "open_odds": 140,
-      "close_odds": 140,
+      "close_odds": 142,
       "close_line": 3.5
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "Collin Sexton Under 14.5 pts",
+      "odds": -104,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Collin Sexton",
+        "prop_type": "pts",
+        "line": 14.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      },
+      "commence": "2026-11-10T00:10:00Z",
+      "ev": 0.0693,
+      "p": 0.5451,
+      "open_odds": -104,
+      "close_odds": -104,
+      "close_line": 14.5
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "Meleek Thomas Over 1.5 3PM",
+      "odds": 114,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Meleek Thomas",
+        "prop_type": "3pm",
+        "line": 1.5,
+        "direction": "Over",
+        "opp_full": "Charlotte Hornets"
+      },
+      "commence": "2026-11-10T00:10:00Z",
+      "ev": 0.0676,
+      "p": 0.4989,
+      "open_odds": 114,
+      "close_odds": 114,
+      "close_line": 1.5
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "Ryan Kalkbrenner Under 15.5 PRA",
+      "odds": 100,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ryan Kalkbrenner",
+        "prop_type": "pra",
+        "line": 15.5,
+        "direction": "Under",
+        "opp_full": "Cleveland Cavaliers"
+      },
+      "commence": "2026-11-10T00:10:00Z",
+      "ev": 0.1079,
+      "p": 0.5539,
+      "open_odds": 100,
+      "close_odds": 100,
+      "close_line": 15.5
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "Jamal Shead Under 7.5 ast",
+      "odds": 200,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jamal Shead",
+        "prop_type": "ast",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Memphis Grizzlies"
+      },
+      "commence": "2026-11-10T00:40:00Z",
+      "ev": 0.1279,
+      "p": 0.376,
+      "open_odds": 200,
+      "close_odds": 200,
+      "close_line": 7.5
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "PHX ML (SAS @ PHX moneyline)",
+      "odds": 300,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Phoenix Suns",
+        "opp_full": "San Antonio Spurs",
+        "home_full": "Phoenix Suns",
+        "away_full": "San Antonio Spurs"
+      },
+      "commence": "2026-11-10T02:10:00Z",
+      "ev": 0.0625,
+      "p": 0.2656,
+      "open_odds": 300,
+      "close_odds": 300,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-09",
+      "pick": "Keldon Johnson Under 0.5 3PM",
+      "odds": 140,
+      "grade": "A",
+      "type": "3pm",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keldon Johnson",
+        "prop_type": "3pm",
+        "line": 0.5,
+        "direction": "Under",
+        "opp_full": "Phoenix Suns"
+      },
+      "commence": "2026-11-10T02:10:00Z",
+      "ev": 0.0762,
+      "p": 0.4484,
+      "open_odds": 140,
+      "close_odds": 140,
+      "close_line": 0.5
     }
   ]
 }

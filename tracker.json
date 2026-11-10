@@ -2984,8 +2984,8 @@
       "ev": 0.0478,
       "p": 0.5582,
       "open_odds": -114,
-      "close_odds": -114,
-      "close_line": 10.5
+      "close_odds": -132,
+      "close_line": 11.5
     },
     {
       "date": "2026-11-10",
@@ -3007,7 +3007,7 @@
       "ev": 0.0265,
       "p": 0.4983,
       "open_odds": 106,
-      "close_odds": 106,
+      "close_odds": -106,
       "close_line": 6.5
     },
     {
@@ -3030,7 +3030,7 @@
       "ev": 0.0266,
       "p": 0.419,
       "open_odds": 145,
-      "close_odds": 145,
+      "close_odds": 116,
       "close_line": 0.5
     },
     {
@@ -3053,7 +3053,7 @@
       "ev": 0.0844,
       "p": 0.5528,
       "open_odds": -104,
-      "close_odds": -104,
+      "close_odds": -105,
       "close_line": 3.5
     },
     {
@@ -3076,7 +3076,7 @@
       "ev": 0.0663,
       "p": 0.4596,
       "open_odds": 132,
-      "close_odds": 132,
+      "close_odds": 106,
       "close_line": 2.5
     },
     {
@@ -3098,7 +3098,7 @@
       "ev": 0.051,
       "p": 0.2723,
       "open_odds": 286,
-      "close_odds": 286,
+      "close_odds": 341,
       "close_line": null
     },
     {
@@ -3121,7 +3121,7 @@
       "ev": 0.0781,
       "p": 0.5337,
       "open_odds": 102,
-      "close_odds": 102,
+      "close_odds": 116,
       "close_line": 6.5
     },
     {
@@ -3144,7 +3144,7 @@
       "ev": 0.0534,
       "p": 0.5634,
       "open_odds": -115,
-      "close_odds": -115,
+      "close_odds": -106,
       "close_line": 6.5
     },
     {
@@ -3167,8 +3167,8 @@
       "ev": 0.0565,
       "p": 0.5335,
       "open_odds": -102,
-      "close_odds": -102,
-      "close_line": 2.5
+      "close_odds": -105,
+      "close_line": 1.5
     },
     {
       "date": "2026-11-10",
@@ -3191,6 +3191,166 @@
       "p": 0.4106,
       "open_odds": 154,
       "close_odds": 154,
+      "close_line": 2.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Brayden Burries Under 22.5 PRA",
+      "odds": -120,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brayden Burries",
+        "prop_type": "pra",
+        "line": 22.5,
+        "direction": "Under",
+        "opp_full": "New York Knicks"
+      },
+      "commence": "2026-11-11T00:40:00Z",
+      "ev": 0.0325,
+      "p": 0.5632,
+      "open_odds": -120,
+      "close_odds": -120,
+      "close_line": 22.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Keaton Wagler Over 9.5 pts",
+      "odds": -102,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keaton Wagler",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Phoenix Suns"
+      },
+      "commence": "2026-11-11T02:10:00Z",
+      "ev": 0.03,
+      "p": 0.5201,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 9.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Isaiah Collier Under 11.5 pts",
+      "odds": -114,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Isaiah Collier",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
+      },
+      "commence": "2026-11-11T02:10:00Z",
+      "ev": 0.1026,
+      "p": 0.5874,
+      "open_odds": -114,
+      "close_odds": -114,
+      "close_line": 11.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Josh Green Under 11.5 PRA",
+      "odds": -120,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Green",
+        "prop_type": "pra",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
+      },
+      "commence": "2026-11-11T02:10:00Z",
+      "ev": 0.0743,
+      "p": 0.586,
+      "open_odds": -120,
+      "close_odds": -120,
+      "close_line": 11.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "SAC ML (ORL @ SAC moneyline)",
+      "odds": 215,
+      "grade": "A",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Sacramento Kings",
+        "opp_full": "Orlando Magic",
+        "home_full": "Sacramento Kings",
+        "away_full": "Orlando Magic"
+      },
+      "commence": "2026-11-11T03:10:00Z",
+      "ev": 0.1185,
+      "p": 0.3551,
+      "open_odds": 215,
+      "close_odds": 215,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Jase Richardson Under 15.5 PRA",
+      "odds": -128,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jase Richardson",
+        "prop_type": "pra",
+        "line": 15.5,
+        "direction": "Under",
+        "opp_full": "Sacramento Kings"
+      },
+      "commence": "2026-11-11T03:10:00Z",
+      "ev": 0.0535,
+      "p": 0.5914,
+      "open_odds": -128,
+      "close_odds": -128,
+      "close_line": 15.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Alex Caruso Over 2.5 ast",
+      "odds": 146,
+      "grade": "B",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Alex Caruso",
+        "prop_type": "ast",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Portland Trail Blazers"
+      },
+      "commence": "2026-11-11T04:10:00Z",
+      "ev": 0.0341,
+      "p": 0.4204,
+      "open_odds": 146,
+      "close_odds": 146,
       "close_line": 2.5
     }
   ]

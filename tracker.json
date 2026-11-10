@@ -2984,7 +2984,7 @@
       "ev": 0.0478,
       "p": 0.5582,
       "open_odds": -114,
-      "close_odds": -132,
+      "close_odds": -128,
       "close_line": 11.5
     },
     {
@@ -3007,7 +3007,7 @@
       "ev": 0.0265,
       "p": 0.4983,
       "open_odds": 106,
-      "close_odds": -106,
+      "close_odds": -113,
       "close_line": 6.5
     },
     {
@@ -3030,7 +3030,7 @@
       "ev": 0.0266,
       "p": 0.419,
       "open_odds": 145,
-      "close_odds": 116,
+      "close_odds": 120,
       "close_line": 0.5
     },
     {
@@ -3053,7 +3053,7 @@
       "ev": 0.0844,
       "p": 0.5528,
       "open_odds": -104,
-      "close_odds": -105,
+      "close_odds": -104,
       "close_line": 3.5
     },
     {
@@ -3076,7 +3076,7 @@
       "ev": 0.0663,
       "p": 0.4596,
       "open_odds": 132,
-      "close_odds": 106,
+      "close_odds": 108,
       "close_line": 2.5
     },
     {
@@ -3144,8 +3144,8 @@
       "ev": 0.0534,
       "p": 0.5634,
       "open_odds": -115,
-      "close_odds": -106,
-      "close_line": 6.5
+      "close_odds": -105,
+      "close_line": 5.5
     },
     {
       "date": "2026-11-10",
@@ -3213,7 +3213,7 @@
       "ev": 0.0325,
       "p": 0.5632,
       "open_odds": -120,
-      "close_odds": -120,
+      "close_odds": -122,
       "close_line": 22.5
     },
     {
@@ -3236,7 +3236,7 @@
       "ev": 0.03,
       "p": 0.5201,
       "open_odds": -102,
-      "close_odds": -102,
+      "close_odds": -104,
       "close_line": 9.5
     },
     {
@@ -3259,7 +3259,7 @@
       "ev": 0.1026,
       "p": 0.5874,
       "open_odds": -114,
-      "close_odds": -114,
+      "close_odds": -120,
       "close_line": 11.5
     },
     {
@@ -3282,7 +3282,7 @@
       "ev": 0.0743,
       "p": 0.586,
       "open_odds": -120,
-      "close_odds": -120,
+      "close_odds": -115,
       "close_line": 11.5
     },
     {
@@ -3304,7 +3304,7 @@
       "ev": 0.1185,
       "p": 0.3551,
       "open_odds": 215,
-      "close_odds": 215,
+      "close_odds": 205,
       "close_line": null
     },
     {
@@ -3327,7 +3327,7 @@
       "ev": 0.0535,
       "p": 0.5914,
       "open_odds": -128,
-      "close_odds": -128,
+      "close_odds": -125,
       "close_line": 15.5
     },
     {
@@ -3350,8 +3350,77 @@
       "ev": 0.0341,
       "p": 0.4204,
       "open_odds": 146,
-      "close_odds": 146,
+      "close_odds": 140,
       "close_line": 2.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Jaylen Brown Over 3.5 ast",
+      "odds": -104,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jaylen Brown",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Over",
+        "opp_full": "Boston Celtics"
+      },
+      "commence": "2026-11-11T01:10:00Z",
+      "ev": 0.0422,
+      "p": 0.5313,
+      "open_odds": -104,
+      "close_odds": -104,
+      "close_line": 3.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Sam Hauser Over 9.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Hauser",
+        "prop_type": "pra",
+        "line": 9.5,
+        "direction": "Over",
+        "opp_full": "Philadelphia 76ers"
+      },
+      "commence": "2026-11-11T01:10:00Z",
+      "ev": 0.0515,
+      "p": 0.531,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 9.5
+    },
+    {
+      "date": "2026-11-10",
+      "pick": "Brice Sensabaugh Under 18.5 PRA",
+      "odds": -105,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brice Sensabaugh",
+        "prop_type": "pra",
+        "line": 18.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
+      },
+      "commence": "2026-11-11T02:10:00Z",
+      "ev": 0.0819,
+      "p": 0.5541,
+      "open_odds": -105,
+      "close_odds": -105,
+      "close_line": 18.5
     }
   ]
 }

@@ -3487,7 +3487,7 @@
       "ev": 0.0361,
       "p": 0.538,
       "open_odds": -108,
-      "close_odds": -108,
+      "close_odds": -105,
       "close_line": 5.5
     },
     {
@@ -3533,7 +3533,7 @@
       "ev": 0.0714,
       "p": 0.5357,
       "open_odds": 100,
-      "close_odds": 100,
+      "close_odds": -111,
       "close_line": 6.5
     },
     {
@@ -3556,7 +3556,7 @@
       "ev": 0.0569,
       "p": 0.5438,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -120,
       "close_line": 9.5
     },
     {
@@ -3579,7 +3579,7 @@
       "p": 0.5397,
       "open_odds": -108,
       "close_odds": -108,
-      "close_line": 228.5
+      "close_line": 227.5
     },
     {
       "date": "2026-11-11",
@@ -3601,7 +3601,7 @@
       "ev": 0.1126,
       "p": 0.5699,
       "open_odds": -105,
-      "close_odds": -105,
+      "close_odds": -102,
       "close_line": 3.5
     },
     {
@@ -3624,7 +3624,7 @@
       "ev": 0.0386,
       "p": 0.577,
       "open_odds": -125,
-      "close_odds": -125,
+      "close_odds": -162,
       "close_line": 1.5
     },
     {
@@ -3647,7 +3647,7 @@
       "ev": 0.0332,
       "p": 0.5388,
       "open_odds": -109,
-      "close_odds": -109,
+      "close_odds": -121,
       "close_line": 4.5
     },
     {
@@ -3670,7 +3670,7 @@
       "ev": 0.0531,
       "p": 0.4831,
       "open_odds": 118,
-      "close_odds": 118,
+      "close_odds": 125,
       "close_line": 3.5
     },
     {
@@ -3693,8 +3693,123 @@
       "ev": 0.0529,
       "p": 0.5743,
       "open_odds": -120,
-      "close_odds": -120,
+      "close_odds": 100,
       "close_line": 8.5
+    },
+    {
+      "date": "2026-11-11",
+      "pick": "Baylor Scheierman Under 13.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Baylor Scheierman",
+        "prop_type": "pra",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Toronto Raptors"
+      },
+      "commence": "2026-11-12T00:10:00Z",
+      "ev": 0.0751,
+      "p": 0.5429,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 13.5
+    },
+    {
+      "date": "2026-11-11",
+      "pick": "Kel'el Ware Under 11.5 pts",
+      "odds": -113,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kel'el Ware",
+        "prop_type": "pts",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
+      },
+      "commence": "2026-11-12T01:10:00Z",
+      "ev": 0.0654,
+      "p": 0.5652,
+      "open_odds": -113,
+      "close_odds": -113,
+      "close_line": 11.5
+    },
+    {
+      "date": "2026-11-11",
+      "pick": "Brayden Burries Under 21.5 PRA",
+      "odds": -104,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Brayden Burries",
+        "prop_type": "pra",
+        "line": 21.5,
+        "direction": "Under",
+        "opp_full": "Los Angeles Lakers"
+      },
+      "commence": "2026-11-12T01:10:00Z",
+      "ev": 0.0572,
+      "p": 0.539,
+      "open_odds": -104,
+      "close_odds": -104,
+      "close_line": 21.5
+    },
+    {
+      "date": "2026-11-11",
+      "pick": "Josh Okogie Under 6.5 pts",
+      "odds": -120,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Okogie",
+        "prop_type": "pts",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-12T02:10:00Z",
+      "ev": 0.0501,
+      "p": 0.5728,
+      "open_odds": -120,
+      "close_odds": -120,
+      "close_line": 6.5
+    },
+    {
+      "date": "2026-11-11",
+      "pick": "Josh Green Under 6.5 pts",
+      "odds": -106,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Josh Green",
+        "prop_type": "pts",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-12T02:10:00Z",
+      "ev": 0.0491,
+      "p": 0.5398,
+      "open_odds": -106,
+      "close_odds": -106,
+      "close_line": 6.5
     }
   ]
 }

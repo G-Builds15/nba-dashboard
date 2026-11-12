@@ -3831,7 +3831,7 @@
       "ev": 0.0592,
       "p": 0.5374,
       "open_odds": -103,
-      "close_odds": -103,
+      "close_odds": -114,
       "close_line": 10.5
     },
     {
@@ -3854,7 +3854,7 @@
       "ev": 0.043,
       "p": 0.5556,
       "open_odds": -114,
-      "close_odds": -114,
+      "close_odds": -113,
       "close_line": 8.5
     },
     {
@@ -3899,7 +3899,7 @@
       "ev": 0.1075,
       "p": 0.4989,
       "open_odds": 122,
-      "close_odds": 122,
+      "close_odds": -105,
       "close_line": 2.5
     },
     {
@@ -3922,7 +3922,7 @@
       "ev": 0.0305,
       "p": 0.5204,
       "open_odds": -102,
-      "close_odds": -102,
+      "close_odds": -104,
       "close_line": 5.5
     },
     {
@@ -3945,7 +3945,7 @@
       "ev": 0.0355,
       "p": 0.4643,
       "open_odds": 123,
-      "close_odds": 123,
+      "close_odds": 109,
       "close_line": 2.5
     },
     {
@@ -3990,8 +3990,31 @@
       "ev": 0.0464,
       "p": 0.5813,
       "open_odds": -125,
-      "close_odds": -125,
+      "close_odds": -130,
       "close_line": 4.5
+    },
+    {
+      "date": "2026-11-12",
+      "pick": "John Collins Under 20.5 PRA",
+      "odds": -104,
+      "grade": "B",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "John Collins",
+        "prop_type": "pra",
+        "line": 20.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      },
+      "commence": "2026-11-13T00:10:00Z",
+      "ev": 0.0406,
+      "p": 0.5305,
+      "open_odds": -104,
+      "close_odds": -104,
+      "close_line": 20.5
     }
   ]
 }

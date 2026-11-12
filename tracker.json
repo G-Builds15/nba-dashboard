@@ -3473,8 +3473,8 @@
       "odds": -108,
       "grade": "B",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "spread",
         "line": 5.5,
@@ -3542,8 +3542,8 @@
       "odds": -106,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.94,
       "meta": {
         "kind": "prop",
         "player": "Mikal Bridges",
@@ -3565,8 +3565,8 @@
       "odds": -108,
       "grade": "B",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.93,
       "meta": {
         "kind": "total",
         "direction": "Under",

@@ -3863,8 +3863,8 @@
       "odds": -106,
       "grade": "B",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "total",
         "direction": "Under",

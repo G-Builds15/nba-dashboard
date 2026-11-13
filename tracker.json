@@ -4036,7 +4036,7 @@
       "ev": 0.0507,
       "p": 0.5051,
       "open_odds": 108,
-      "close_odds": 105,
+      "close_odds": 112,
       "close_line": 3.5
     },
     {
@@ -4059,7 +4059,7 @@
       "ev": 0.0948,
       "p": 0.4147,
       "open_odds": 164,
-      "close_odds": 129,
+      "close_odds": 112,
       "close_line": 1.5
     },
     {
@@ -4081,7 +4081,7 @@
       "ev": 0.1263,
       "p": 0.2619,
       "open_odds": 330,
-      "close_odds": 286,
+      "close_odds": 312,
       "close_line": null
     },
     {
@@ -4126,7 +4126,7 @@
       "ev": 0.0551,
       "p": 0.5328,
       "open_odds": -102,
-      "close_odds": -125,
+      "close_odds": -132,
       "close_line": 8.5
     },
     {
@@ -4149,7 +4149,7 @@
       "p": 0.547,
       "open_odds": -110,
       "close_odds": -110,
-      "close_line": 235.5
+      "close_line": 236.5
     },
     {
       "date": "2026-11-13",
@@ -4171,7 +4171,7 @@
       "ev": 0.0465,
       "p": 0.3994,
       "open_odds": 162,
-      "close_odds": 162,
+      "close_odds": 164,
       "close_line": 2.5
     },
     {
@@ -4194,8 +4194,8 @@
       "ev": 0.0528,
       "p": 0.5515,
       "open_odds": -110,
-      "close_odds": -107,
-      "close_line": 11.5
+      "close_odds": -105,
+      "close_line": 12.5
     },
     {
       "date": "2026-11-13",
@@ -4239,7 +4239,7 @@
       "ev": 0.1187,
       "p": 0.5649,
       "open_odds": -102,
-      "close_odds": -105,
+      "close_odds": -112,
       "close_line": 7.5
     },
     {
@@ -4262,7 +4262,7 @@
       "ev": 0.0474,
       "p": 0.4223,
       "open_odds": 148,
-      "close_odds": 148,
+      "close_odds": 137,
       "close_line": 1.5
     },
     {
@@ -4285,7 +4285,7 @@
       "ev": 0.0497,
       "p": 0.5197,
       "open_odds": 102,
-      "close_odds": 102,
+      "close_odds": 100,
       "close_line": 17.5
     },
     {
@@ -4307,7 +4307,7 @@
       "ev": 0.0493,
       "p": 0.6028,
       "open_odds": -135,
-      "close_odds": -135,
+      "close_odds": -160,
       "close_line": null
     },
     {
@@ -4330,7 +4330,7 @@
       "ev": 0.0514,
       "p": 0.6059,
       "open_odds": -136,
-      "close_odds": -136,
+      "close_odds": -128,
       "close_line": 5.5
     },
     {
@@ -4376,7 +4376,7 @@
       "ev": 0.0815,
       "p": 0.4828,
       "open_odds": 124,
-      "close_odds": 124,
+      "close_odds": 113,
       "close_line": 0.5
     },
     {
@@ -4399,8 +4399,77 @@
       "ev": 0.0562,
       "p": 0.5333,
       "open_odds": -102,
-      "close_odds": -102,
+      "close_odds": -115,
       "close_line": 10.5
+    },
+    {
+      "date": "2026-11-13",
+      "pick": "Nate Ament Under 13.5 PRA",
+      "odds": -105,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Nate Ament",
+        "prop_type": "pra",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-14T00:10:00Z",
+      "ev": 0.0602,
+      "p": 0.543,
+      "open_odds": -105,
+      "close_odds": -105,
+      "close_line": 13.5
+    },
+    {
+      "date": "2026-11-13",
+      "pick": "Matas Buzelis Under 26.5 PRA",
+      "odds": -122,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Matas Buzelis",
+        "prop_type": "pra",
+        "line": 26.5,
+        "direction": "Under",
+        "opp_full": "Atlanta Hawks"
+      },
+      "commence": "2026-11-14T01:10:00Z",
+      "ev": 0.0559,
+      "p": 0.5803,
+      "open_odds": -122,
+      "close_odds": -122,
+      "close_line": 26.5
+    },
+    {
+      "date": "2026-11-13",
+      "pick": "Isaiah Collier Over 2.5 reb",
+      "odds": 152,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Isaiah Collier",
+        "prop_type": "reb",
+        "line": 2.5,
+        "direction": "Over",
+        "opp_full": "Houston Rockets"
+      },
+      "commence": "2026-11-14T01:40:00Z",
+      "ev": 0.1124,
+      "p": 0.4414,
+      "open_odds": 152,
+      "close_odds": 152,
+      "close_line": 2.5
     }
   ]
 }

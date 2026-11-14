@@ -4068,8 +4068,8 @@
       "odds": 330,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "ml",
         "team_full": "Milwaukee Bucks",
@@ -4216,7 +4216,7 @@
       "ev": 0.1576,
       "p": 0.2144,
       "open_odds": 440,
-      "close_odds": 370,
+      "close_odds": 375,
       "close_line": null
     },
     {
@@ -4353,7 +4353,7 @@
       "ev": 0.0647,
       "p": 0.5479,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -119,
       "close_line": 5.5
     },
     {
@@ -4376,7 +4376,7 @@
       "ev": 0.0815,
       "p": 0.4828,
       "open_odds": 124,
-      "close_odds": 113,
+      "close_odds": -151,
       "close_line": 0.5
     },
     {

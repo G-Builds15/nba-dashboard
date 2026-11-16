@@ -4876,8 +4876,8 @@
       "ev": 0.0463,
       "p": 0.548,
       "open_odds": -110,
-      "close_odds": -110,
-      "close_line": 212.5
+      "close_odds": -107,
+      "close_line": 213.5
     },
     {
       "date": "2026-11-16",
@@ -4899,7 +4899,7 @@
       "ev": 0.0493,
       "p": 0.4684,
       "open_odds": 124,
-      "close_odds": 124,
+      "close_odds": 114,
       "close_line": 4.5
     },
     {
@@ -4921,7 +4921,7 @@
       "ev": 0.1207,
       "p": 0.574,
       "open_odds": -105,
-      "close_odds": -105,
+      "close_odds": -110,
       "close_line": 241.5
     },
     {
@@ -4944,7 +4944,7 @@
       "ev": 0.0605,
       "p": 0.3815,
       "open_odds": 178,
-      "close_odds": 178,
+      "close_odds": 169,
       "close_line": 0.5
     },
     {
@@ -4967,8 +4967,8 @@
       "ev": 0.0516,
       "p": 0.5602,
       "open_odds": -114,
-      "close_odds": -114,
-      "close_line": 23.5
+      "close_odds": -118,
+      "close_line": 25.5
     },
     {
       "date": "2026-11-16",
@@ -4989,7 +4989,7 @@
       "ev": 0.1373,
       "p": 0.3842,
       "open_odds": 196,
-      "close_odds": 196,
+      "close_odds": 185,
       "close_line": null
     },
     {
@@ -5012,7 +5012,7 @@
       "ev": 0.0788,
       "p": 0.3826,
       "open_odds": 182,
-      "close_odds": 182,
+      "close_odds": 136,
       "close_line": 1.5
     },
     {
@@ -5035,7 +5035,7 @@
       "ev": 0.0504,
       "p": 0.5405,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -140,
       "close_line": 7.5
     },
     {
@@ -5058,8 +5058,8 @@
       "ev": 0.0562,
       "p": 0.5761,
       "open_odds": -120,
-      "close_odds": -120,
-      "close_line": 6.5
+      "close_odds": 100,
+      "close_line": 5.5
     },
     {
       "date": "2026-11-16",
@@ -5081,8 +5081,99 @@
       "ev": 0.0802,
       "p": 0.4866,
       "open_odds": 122,
-      "close_odds": 122,
+      "close_odds": 116,
       "close_line": 5.5
+    },
+    {
+      "date": "2026-11-16",
+      "pick": "Luka Garza Under 9.5 pts",
+      "odds": -120,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Luka Garza",
+        "prop_type": "pts",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-17T00:10:00Z",
+      "ev": 0.0804,
+      "p": 0.5893,
+      "open_odds": -120,
+      "close_odds": -120,
+      "close_line": 9.5
+    },
+    {
+      "date": "2026-11-16",
+      "pick": "Tari Eason Under 13.5 pts",
+      "odds": -102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Tari Eason",
+        "prop_type": "pts",
+        "line": 13.5,
+        "direction": "Under",
+        "opp_full": "Miami Heat"
+      },
+      "commence": "2026-11-17T00:40:00Z",
+      "ev": 0.1016,
+      "p": 0.5563,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 13.5
+    },
+    {
+      "date": "2026-11-16",
+      "pick": "Myron Gardner Under 4.5 pts",
+      "odds": 102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Myron Gardner",
+        "prop_type": "pts",
+        "line": 4.5,
+        "direction": "Under",
+        "opp_full": "Houston Rockets"
+      },
+      "commence": "2026-11-17T00:40:00Z",
+      "ev": 0.0892,
+      "p": 0.5392,
+      "open_odds": 102,
+      "close_odds": 102,
+      "close_line": 4.5
+    },
+    {
+      "date": "2026-11-16",
+      "pick": "MIN ML (POR @ MIN moneyline)",
+      "odds": -130,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Minnesota Timberwolves",
+        "opp_full": "Portland Trail Blazers",
+        "home_full": "Minnesota Timberwolves",
+        "away_full": "Portland Trail Blazers"
+      },
+      "commence": "2026-11-17T01:10:00Z",
+      "ev": 0.0548,
+      "p": 0.5962,
+      "open_odds": -130,
+      "close_odds": -130,
+      "close_line": null
     }
   ]
 }

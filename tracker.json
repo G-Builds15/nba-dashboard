@@ -4681,8 +4681,8 @@
       "odds": 100,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Quentin Grimes",
@@ -4704,8 +4704,8 @@
       "odds": -105,
       "grade": "A",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.95,
       "meta": {
         "kind": "ml",
         "team_full": "LA Clippers",
@@ -4749,8 +4749,8 @@
       "odds": 118,
       "grade": "A",
       "type": "reb",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.18,
       "meta": {
         "kind": "prop",
         "player": "Ace Bailey",

@@ -5195,7 +5195,7 @@
       "ev": 0.1647,
       "p": 0.5546,
       "open_odds": 110,
-      "close_odds": 110,
+      "close_odds": -115,
       "close_line": 4.5
     },
     {
@@ -5241,7 +5241,7 @@
       "ev": 0.0442,
       "p": 0.5517,
       "open_odds": -112,
-      "close_odds": -112,
+      "close_odds": -115,
       "close_line": 19.5
     },
     {
@@ -5263,7 +5263,7 @@
       "ev": 0.0525,
       "p": 0.5988,
       "open_odds": -132,
-      "close_odds": -132,
+      "close_odds": -140,
       "close_line": null
     },
     {
@@ -5286,7 +5286,7 @@
       "ev": 0.0593,
       "p": 0.5451,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -104,
       "close_line": 14.5
     },
     {
@@ -5308,7 +5308,7 @@
       "ev": 0.0629,
       "p": 0.7358,
       "open_odds": -225,
-      "close_odds": -225,
+      "close_odds": -235,
       "close_line": null
     },
     {
@@ -5331,7 +5331,7 @@
       "ev": 0.0939,
       "p": 0.4097,
       "open_odds": 167,
-      "close_odds": 167,
+      "close_odds": 162,
       "close_line": 1.5
     },
     {
@@ -5354,8 +5354,8 @@
       "ev": 0.0772,
       "p": 0.6497,
       "open_odds": -152,
-      "close_odds": -152,
-      "close_line": 7.5
+      "close_odds": -130,
+      "close_line": 6.5
     },
     {
       "date": "2026-11-17",
@@ -5377,8 +5377,169 @@
       "ev": 0.0467,
       "p": 0.382,
       "open_odds": 174,
-      "close_odds": 174,
+      "close_odds": 128,
       "close_line": 1.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Jakob Poeltl Over 5.5 reb",
+      "odds": 124,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Jakob Poeltl",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "New York Knicks"
+      },
+      "commence": "2026-11-18T00:40:00Z",
+      "ev": 0.0683,
+      "p": 0.4769,
+      "open_odds": 124,
+      "close_odds": 124,
+      "close_line": 5.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Keldon Johnson Over 5.5 reb",
+      "odds": 128,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Keldon Johnson",
+        "prop_type": "reb",
+        "line": 5.5,
+        "direction": "Over",
+        "opp_full": "Detroit Pistons"
+      },
+      "commence": "2026-11-18T01:10:00Z",
+      "ev": 0.0552,
+      "p": 0.4628,
+      "open_odds": 128,
+      "close_odds": 128,
+      "close_line": 5.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Javonte Green Under 11.5 PRA",
+      "odds": -108,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Javonte Green",
+        "prop_type": "pra",
+        "line": 11.5,
+        "direction": "Under",
+        "opp_full": "San Antonio Spurs"
+      },
+      "commence": "2026-11-18T01:10:00Z",
+      "ev": 0.1192,
+      "p": 0.5811,
+      "open_odds": -108,
+      "close_odds": -108,
+      "close_line": 11.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Bones Hyland Under 1.5 reb",
+      "odds": 132,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Bones Hyland",
+        "prop_type": "reb",
+        "line": 1.5,
+        "direction": "Under",
+        "opp_full": "Portland Trail Blazers"
+      },
+      "commence": "2026-11-18T01:10:00Z",
+      "ev": 0.083,
+      "p": 0.4668,
+      "open_odds": 132,
+      "close_odds": 132,
+      "close_line": 1.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Scoot Henderson Under 16.5 PRA",
+      "odds": -113,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Scoot Henderson",
+        "prop_type": "pra",
+        "line": 16.5,
+        "direction": "Under",
+        "opp_full": "Minnesota Timberwolves"
+      },
+      "commence": "2026-11-18T01:10:00Z",
+      "ev": 0.078,
+      "p": 0.5719,
+      "open_odds": -113,
+      "close_odds": -113,
+      "close_line": 16.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Mo Bamba Under 9.5 reb",
+      "odds": -109,
+      "grade": "A",
+      "type": "reb",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Mo Bamba",
+        "prop_type": "reb",
+        "line": 9.5,
+        "direction": "Under",
+        "opp_full": "LA Clippers"
+      },
+      "commence": "2026-11-18T03:40:00Z",
+      "ev": 0.1133,
+      "p": 0.5806,
+      "open_odds": -109,
+      "close_odds": -109,
+      "close_line": 9.5
+    },
+    {
+      "date": "2026-11-17",
+      "pick": "Quentin Grimes Under 12.5 pts",
+      "odds": -102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Quentin Grimes",
+        "prop_type": "pts",
+        "line": 12.5,
+        "direction": "Under",
+        "opp_full": "Charlotte Hornets"
+      },
+      "commence": "2026-11-18T04:10:00Z",
+      "ev": 0.0527,
+      "p": 0.5316,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 12.5
     }
   ]
 }

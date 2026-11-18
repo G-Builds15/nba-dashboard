@@ -5584,7 +5584,7 @@
       "ev": 0.0822,
       "p": 0.5543,
       "open_odds": -105,
-      "close_odds": -105,
+      "close_odds": -102,
       "close_line": 4.5
     },
     {
@@ -5606,8 +5606,8 @@
       "ev": 0.1139,
       "p": 0.5705,
       "open_odds": -105,
-      "close_odds": -105,
-      "close_line": 235.5
+      "close_odds": -108,
+      "close_line": 237.5
     },
     {
       "date": "2026-11-18",
@@ -5629,7 +5629,7 @@
       "ev": 0.0628,
       "p": 0.4581,
       "open_odds": 132,
-      "close_odds": 132,
+      "close_odds": 108,
       "close_line": 1.5
     },
     {
@@ -5652,7 +5652,7 @@
       "ev": 0.0675,
       "p": 0.4304,
       "open_odds": 148,
-      "close_odds": 148,
+      "close_odds": 128,
       "close_line": 1.5
     },
     {
@@ -5675,7 +5675,7 @@
       "ev": 0.0487,
       "p": 0.5371,
       "open_odds": -105,
-      "close_odds": -105,
+      "close_odds": -106,
       "close_line": 16.5
     },
     {
@@ -5698,8 +5698,8 @@
       "ev": 0.0757,
       "p": 0.5484,
       "open_odds": -104,
-      "close_odds": -104,
-      "close_line": -2.5
+      "close_odds": -108,
+      "close_line": -1.5
     },
     {
       "date": "2026-11-18",
@@ -5720,7 +5720,7 @@
       "ev": 0.07,
       "p": 0.5506,
       "open_odds": -106,
-      "close_odds": -106,
+      "close_odds": -110,
       "close_line": 239.5
     },
     {
@@ -5743,7 +5743,7 @@
       "p": 0.5422,
       "open_odds": -106,
       "close_odds": -106,
-      "close_line": 227.5
+      "close_line": 228.5
     },
     {
       "date": "2026-11-18",
@@ -5765,7 +5765,7 @@
       "ev": 0.0425,
       "p": 0.5413,
       "open_odds": -108,
-      "close_odds": -108,
+      "close_odds": 100,
       "close_line": 14.5
     },
     {
@@ -5788,8 +5788,166 @@
       "ev": 0.0479,
       "p": 0.5822,
       "open_odds": -125,
-      "close_odds": -125,
+      "close_odds": -154,
       "close_line": 3.5
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "Under 236.5 (MIL @ MIA total)",
+      "odds": -105,
+      "grade": "A",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 236.5,
+        "home_full": "Miami Heat",
+        "away_full": "Milwaukee Bucks"
+      },
+      "commence": "2026-11-19T00:10:00Z",
+      "ev": 0.072,
+      "p": 0.5491,
+      "open_odds": -105,
+      "close_odds": -105,
+      "close_line": 236.5
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "ORL ML (PHI @ ORL moneyline)",
+      "odds": -105,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Orlando Magic",
+        "opp_full": "Philadelphia 76ers",
+        "home_full": "Orlando Magic",
+        "away_full": "Philadelphia 76ers"
+      },
+      "commence": "2026-11-19T00:10:00Z",
+      "ev": 0.0758,
+      "p": 0.551,
+      "open_odds": -105,
+      "close_odds": -105,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "BKN ML (CHI @ BKN moneyline)",
+      "odds": -122,
+      "grade": "A",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Brooklyn Nets",
+        "opp_full": "Chicago Bulls",
+        "home_full": "Brooklyn Nets",
+        "away_full": "Chicago Bulls"
+      },
+      "commence": "2026-11-19T00:40:00Z",
+      "ev": 0.1071,
+      "p": 0.6084,
+      "open_odds": -122,
+      "close_odds": -122,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "Ja'Kobe Walter Under 21.5 PRA",
+      "odds": -125,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Ja'Kobe Walter",
+        "prop_type": "pra",
+        "line": 21.5,
+        "direction": "Under",
+        "opp_full": "Washington Wizards"
+      },
+      "commence": "2026-11-19T00:40:00Z",
+      "ev": 0.0742,
+      "p": 0.5968,
+      "open_odds": -125,
+      "close_odds": -125,
+      "close_line": 21.5
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "Daniss Jenkins Under 7.5 ast",
+      "odds": -142,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Daniss Jenkins",
+        "prop_type": "ast",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      },
+      "commence": "2026-11-19T01:10:00Z",
+      "ev": 0.0902,
+      "p": 0.6397,
+      "open_odds": -142,
+      "close_odds": -142,
+      "close_line": 7.5
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "Kevin Huerter Under 3.5 ast",
+      "odds": 116,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Kevin Huerter",
+        "prop_type": "ast",
+        "line": 3.5,
+        "direction": "Under",
+        "opp_full": "New Orleans Pelicans"
+      },
+      "commence": "2026-11-19T01:10:00Z",
+      "ev": 0.1125,
+      "p": 0.515,
+      "open_odds": 116,
+      "close_odds": 116,
+      "close_line": 3.5
+    },
+    {
+      "date": "2026-11-18",
+      "pick": "Quentin Grimes Under 15.5 pts",
+      "odds": -102,
+      "grade": "A",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Quentin Grimes",
+        "prop_type": "pts",
+        "line": 15.5,
+        "direction": "Under",
+        "opp_full": "Utah Jazz"
+      },
+      "commence": "2026-11-19T03:10:00Z",
+      "ev": 0.0688,
+      "p": 0.5397,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 15.5
     }
   ]
 }

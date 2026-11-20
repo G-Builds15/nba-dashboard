@@ -6245,7 +6245,7 @@
       "p": 0.5443,
       "open_odds": -105,
       "close_odds": -105,
-      "close_line": -6.5
+      "close_line": -7.5
     },
     {
       "date": "2026-11-20",
@@ -6267,7 +6267,7 @@
       "ev": 0.0743,
       "p": 0.5425,
       "open_odds": -102,
-      "close_odds": -102,
+      "close_odds": 106,
       "close_line": 1.5
     },
     {
@@ -6289,7 +6289,7 @@
       "ev": 0.1615,
       "p": 0.363,
       "open_odds": 220,
-      "close_odds": 220,
+      "close_odds": 217,
       "close_line": null
     },
     {
@@ -6357,7 +6357,7 @@
       "ev": 0.0736,
       "p": 0.5017,
       "open_odds": 114,
-      "close_odds": 114,
+      "close_odds": 119,
       "close_line": 5.5
     },
     {
@@ -6379,7 +6379,7 @@
       "ev": 0.0626,
       "p": 0.5517,
       "open_odds": -108,
-      "close_odds": -108,
+      "close_odds": -110,
       "close_line": 238.5
     },
     {
@@ -6402,7 +6402,7 @@
       "ev": 0.1121,
       "p": 0.4634,
       "open_odds": 140,
-      "close_odds": 140,
+      "close_odds": 132,
       "close_line": 2.5
     },
     {
@@ -6448,8 +6448,53 @@
       "ev": 0.0541,
       "p": 0.5271,
       "open_odds": 100,
-      "close_odds": 100,
+      "close_odds": -122,
       "close_line": 16.5
+    },
+    {
+      "date": "2026-11-20",
+      "pick": "ATL ML (CHA @ ATL moneyline)",
+      "odds": -249,
+      "grade": "B",
+      "type": "moneyline",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "ml",
+        "team_full": "Atlanta Hawks",
+        "opp_full": "Charlotte Hornets",
+        "home_full": "Atlanta Hawks",
+        "away_full": "Charlotte Hornets"
+      },
+      "commence": "2026-11-21T00:10:00Z",
+      "ev": 0.065,
+      "p": 0.7598,
+      "open_odds": -249,
+      "close_odds": -249,
+      "close_line": null
+    },
+    {
+      "date": "2026-11-20",
+      "pick": "Sam Merrill Over 10.5 PRA",
+      "odds": -102,
+      "grade": "A",
+      "type": "pra",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Merrill",
+        "prop_type": "pra",
+        "line": 10.5,
+        "direction": "Over",
+        "opp_full": "Indiana Pacers"
+      },
+      "commence": "2026-11-21T00:40:00Z",
+      "ev": 0.0698,
+      "p": 0.5402,
+      "open_odds": -102,
+      "close_odds": -102,
+      "close_line": 10.5
     }
   ]
 }

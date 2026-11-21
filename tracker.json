@@ -6230,8 +6230,8 @@
       "odds": -105,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.95,
       "meta": {
         "kind": "spread",
         "line": -6.5,
@@ -6276,8 +6276,8 @@
       "odds": 220,
       "grade": "A",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "ml",
         "team_full": "Brooklyn Nets",
@@ -6298,8 +6298,8 @@
       "odds": -110,
       "grade": "A",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "total",
         "direction": "Under",
@@ -6457,8 +6457,8 @@
       "odds": -249,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.4,
       "meta": {
         "kind": "ml",
         "team_full": "Atlanta Hawks",

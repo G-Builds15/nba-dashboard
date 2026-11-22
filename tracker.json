@@ -6699,7 +6699,7 @@
       "ev": 0.1745,
       "p": 0.6098,
       "open_odds": -108,
-      "close_odds": -108,
+      "close_odds": -132,
       "close_line": 12.5
     },
     {
@@ -6722,8 +6722,31 @@
       "ev": 0.152,
       "p": 0.6137,
       "open_odds": -114,
-      "close_odds": -114,
-      "close_line": 30.5
+      "close_odds": -120,
+      "close_line": 31.5
+    },
+    {
+      "date": "2026-11-21",
+      "pick": "Payton Pritchard Under 6.5 ast",
+      "odds": -122,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Payton Pritchard",
+        "prop_type": "ast",
+        "line": 6.5,
+        "direction": "Under",
+        "opp_full": "Sacramento Kings"
+      },
+      "commence": "2026-11-22T03:10:00Z",
+      "ev": 0.1312,
+      "p": 0.6217,
+      "open_odds": -122,
+      "close_odds": -122,
+      "close_line": 6.5
     }
   ]
 }

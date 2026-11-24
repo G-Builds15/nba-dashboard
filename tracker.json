@@ -6959,8 +6959,8 @@
       "odds": -118,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.85,
       "meta": {
         "kind": "prop",
         "player": "Cam Spencer",
@@ -7027,8 +7027,8 @@
       "odds": -102,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.98,
       "meta": {
         "kind": "prop",
         "player": "Allen Graves",
@@ -7072,8 +7072,8 @@
       "odds": 104,
       "grade": "A",
       "type": "pts",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.04,
       "meta": {
         "kind": "prop",
         "player": "Meleek Thomas",
@@ -7095,8 +7095,8 @@
       "odds": 128,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 1.28,
       "meta": {
         "kind": "prop",
         "player": "Saddiq Bey",
@@ -7118,8 +7118,8 @@
       "odds": -104,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Keaton Wagler",
@@ -7141,8 +7141,8 @@
       "odds": -112,
       "grade": "A",
       "type": "pra",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Stephon Castle",
@@ -7177,8 +7177,8 @@
       "ev": 0.0406,
       "p": 0.5451,
       "open_odds": -110,
-      "close_odds": -110,
-      "close_line": 213.5
+      "close_odds": -105,
+      "close_line": 210.5
     },
     {
       "date": "2026-11-24",
@@ -7200,7 +7200,7 @@
       "ev": 0.061,
       "p": 0.5558,
       "open_odds": -110,
-      "close_odds": -110,
+      "close_odds": -104,
       "close_line": 10.5
     },
     {
@@ -7246,7 +7246,53 @@
       "p": 0.5395,
       "open_odds": -106,
       "close_odds": -106,
-      "close_line": 232.5
+      "close_line": 234.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "Daniss Jenkins Under 7.5 ast",
+      "odds": -160,
+      "grade": "A",
+      "type": "ast",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Daniss Jenkins",
+        "prop_type": "ast",
+        "line": 7.5,
+        "direction": "Under",
+        "opp_full": "Orlando Magic"
+      },
+      "commence": "2026-11-25T00:11:00Z",
+      "ev": 0.0578,
+      "p": 0.651,
+      "open_odds": -160,
+      "close_odds": -160,
+      "close_line": 7.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "Sam Hauser Over 6.5 pts",
+      "odds": -116,
+      "grade": "B",
+      "type": "pts",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "prop",
+        "player": "Sam Hauser",
+        "prop_type": "pts",
+        "line": 6.5,
+        "direction": "Over",
+        "opp_full": "Washington Wizards"
+      },
+      "commence": "2026-11-25T01:10:00Z",
+      "ev": 0.0456,
+      "p": 0.5615,
+      "open_odds": -116,
+      "close_odds": -116,
+      "close_line": 6.5
     }
   ]
 }

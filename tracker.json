@@ -6937,8 +6937,8 @@
       "odds": -160,
       "grade": "A",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.62,
       "meta": {
         "kind": "ml",
         "team_full": "Memphis Grizzlies",
@@ -6982,8 +6982,8 @@
       "odds": -105,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.95,
       "meta": {
         "kind": "spread",
         "line": 5.5,
@@ -7005,8 +7005,8 @@
       "odds": 378,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 3.78,
       "meta": {
         "kind": "ml",
         "team_full": "Milwaukee Bucks",
@@ -7050,8 +7050,8 @@
       "odds": -106,
       "grade": "A",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.94,
       "meta": {
         "kind": "total",
         "direction": "Under",
@@ -7157,6 +7157,96 @@
       "open_odds": -112,
       "close_odds": -113,
       "close_line": 37.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "Over 213.5 (DET @ ORL total)",
+      "odds": -110,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Over",
+        "line": 213.5,
+        "home_full": "Orlando Magic",
+        "away_full": "Detroit Pistons"
+      },
+      "commence": "2026-11-25T00:11:00Z",
+      "ev": 0.0406,
+      "p": 0.5451,
+      "open_odds": -110,
+      "close_odds": -110,
+      "close_line": 213.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "WAS +10.5 (BOS @ WAS spread)",
+      "odds": -110,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 10.5,
+        "team_full": "Washington Wizards",
+        "opp_full": "Boston Celtics",
+        "home_full": "Washington Wizards",
+        "away_full": "Boston Celtics"
+      },
+      "commence": "2026-11-25T01:10:00Z",
+      "ev": 0.061,
+      "p": 0.5558,
+      "open_odds": -110,
+      "close_odds": -110,
+      "close_line": 10.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "DAL +8.5 (DAL @ DEN spread)",
+      "odds": -110,
+      "grade": "A",
+      "type": "spread",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "spread",
+        "line": 8.5,
+        "team_full": "Dallas Mavericks",
+        "opp_full": "Denver Nuggets",
+        "home_full": "Denver Nuggets",
+        "away_full": "Dallas Mavericks"
+      },
+      "commence": "2026-11-25T03:10:00Z",
+      "ev": 0.0631,
+      "p": 0.5569,
+      "open_odds": -110,
+      "close_odds": -110,
+      "close_line": 8.5
+    },
+    {
+      "date": "2026-11-24",
+      "pick": "Under 232.5 (DAL @ DEN total)",
+      "odds": -106,
+      "grade": "B",
+      "type": "total",
+      "result": "Pending",
+      "pl": null,
+      "meta": {
+        "kind": "total",
+        "direction": "Under",
+        "line": 232.5,
+        "home_full": "Denver Nuggets",
+        "away_full": "Dallas Mavericks"
+      },
+      "commence": "2026-11-25T03:10:00Z",
+      "ev": 0.0485,
+      "p": 0.5395,
+      "open_odds": -106,
+      "close_odds": -106,
+      "close_line": 232.5
     }
   ]
 }

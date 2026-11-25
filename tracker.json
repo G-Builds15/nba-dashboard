@@ -7164,8 +7164,8 @@
       "odds": -110,
       "grade": "B",
       "type": "total",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "total",
         "direction": "Over",
@@ -7186,8 +7186,8 @@
       "odds": -110,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "spread",
         "line": 10.5,
@@ -7254,8 +7254,8 @@
       "odds": -160,
       "grade": "A",
       "type": "ast",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "Daniss Jenkins",

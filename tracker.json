@@ -7323,8 +7323,8 @@
       "odds": 122,
       "grade": "A",
       "type": "3pm",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "prop",
         "player": "James Harden",
@@ -7346,8 +7346,8 @@
       "odds": -110,
       "grade": "A",
       "type": "spread",
-      "result": "Pending",
-      "pl": null,
+      "result": "Win",
+      "pl": 0.91,
       "meta": {
         "kind": "spread",
         "line": 2.5,

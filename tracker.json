@@ -7529,8 +7529,8 @@
       "odds": 142,
       "grade": "B",
       "type": "moneyline",
-      "result": "Pending",
-      "pl": null,
+      "result": "Loss",
+      "pl": -1.0,
       "meta": {
         "kind": "ml",
         "team_full": "Indiana Pacers",
